@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:common="http://www.group.singtel.com.au/cdm/v2_0_0/common"
+    xmlns:tns="http://au.com.singtel.group.commonservices/v1_0/ShortMessageService" xmlns:service="http://www.group.singtel.com.au/cdm/v2_0_0/service"
+    targetNamespace="http://au.com.singtel.group.commonservices/v1_0/ShortMessageService" elementFormDefault="qualified">
+
+    <xsd:import namespace="http://www.group.singtel.com.au/cdm/v2_0_0/service" schemaLocation="service.xsd" />
+    <xsd:import namespace="http://www.group.singtel.com.au/cdm/v2_0_0/common" schemaLocation="common.xsd" />
+
+    <xsd:complexType name="sendSmsRequestDto">
+                <xsd:annotation>
+                        <xsd:documentation>DTO used to represent an SMS.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexContent>
+                        <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+                </xsd:complexContent>
+        </xsd:complexType>
+        <xsd:element name="sendSmsRequest" type="tns:sendSmsRequestDto"/>
+        <xsd:complexType name="sendSmsResponseDto">
+                <xsd:annotation>
+                        <xsd:documentation>DTO used to represent an SMS.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexContent>
+                        <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+                </xsd:complexContent>
+        </xsd:complexType>
+        <xsd:element name="sendSmsResponse" type="tns:sendSmsResponseDto"/>
+
+        <xsd:complexType name="receiveSmsRequestDto">
+                <xsd:annotation>
+                        <xsd:documentation>DTO used to represent an SMS.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexContent>
+                        <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+                </xsd:complexContent>
+        </xsd:complexType>
+        <xsd:element name="receiveSmsRequest" type="tns:receiveSmsRequestDto"/>
+
+        <xsd:complexType name="receiveSmsResponseDto">
+                <xsd:annotation>
+                        <xsd:documentation>DTO used to represent an SMS.</xsd:documentation>
+                </xsd:annotation>
+                <xsd:complexContent>
+                        <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+                </xsd:complexContent>
+        </xsd:complexType>
+        <xsd:element name="receiveSmsResponse" type="tns:receiveSmsResponseDto"/>
+</xsd:schema>

@@ -1,0 +1,1257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.group.singtel.com.au/cdm/v2_0_0/product" elementFormDefault="qualified"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:product="http://www.group.singtel.com.au/cdm/v2_0_0/product"
+    xmlns:common="http://www.group.singtel.com.au/cdm/v2_0_0/common">
+    <xsd:import schemaLocation="common.xsd" namespace="http://www.group.singtel.com.au/cdm/v2_0_0/common" />
+    <!-- ============================ All enums ============================== -->
+    <!-- =========================== All complex types ============================== -->
+    <xsd:complexType name="ProductSpecCharacteristicValue" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">A number or text that can be assigned to a
+                ProductSpecCharacteristic.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="valueType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A kind of value that the characteristic can take on,
+                        such as numeric, text, and so forth.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="defaultValue" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Indicates if the value is the default value for a
+                        characteristic.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="value" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A discrete value that the characteristic can take on.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="unitOfMeasure" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A length, surface, volume, dry measure, liquid
+                        measure, money, weight, time, and the like. Iin general, a determinate quantity or magnitude of
+                        the kind designated, taken as a standard of comparison for others of the same kind, in assigning
+                        to them numerical values, as 1 foot, 1 yard, 1 mile, 1 square foot.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="valueFrom" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">The low range value that a characteristic can take on.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="valueTo" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">The upper range value that a characteristic can take
+                        on.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="rangeInterval" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">An indicator that specifies the inclusion or exclusion
+                        of the valueFrom and valueTo attributes. Possible values are "open", "closed", "closedBottom"
+                        and "closedTop".
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="validFor" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">The period of time for which a value is applicable.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="productOfferingPrice" type="product:ProductOfferingPrice" minOccurs="0"
+                maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ProductSpecCharUse" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="productSpecCharacteristic" type="product:ProductSpecCharacteristic"
+                minOccurs="0" maxOccurs="1">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ProductCategory" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">A method used to group a set of ProductSpecifications that are
+                classified together because of common characteristics.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="product:ProductSpecificationType">
+                <xsd:sequence>
+                    <xsd:element name="productCategory" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="AtomicProductSpecification" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">A type of ProductSpecification that does not have any
+                subordinate ProductSpecifications, that is, an AtomicProductSpecification is a leaf-level
+                ProductSpecification.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="product:ProductSpecification">
+                <xsd:sequence>
+                    <xsd:element name="atomicProductSpecification" type="xsd:string" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="atomicProductUsageSpec" type="product:AtomicProductUsageSpec"
+                        minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ProductSpecificationType" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">A classification that groups ProductSpecifications that share
+                common characteristics.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="type" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">The name of the product specification type.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A narrative that explains in detail what the product
+                        spec is.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ProductSpecCharacteristic" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">A characteristic quality or distinctive feature of a
+                ProductSpecification. The characteristic can be take on a discrete value, such as color, can take on a
+                range of values, (for example, sensitivity of 100-240 mV), or can be derived from a formula (for
+                example, usage time (hrs) = 30 - talk time *3). Certain characteristics, such as color, may be
+                configured during the ordering or some other process.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A unique identifier for the ProductSpecCharacteristic.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A word, term, or phrase by which the characteristic is
+                        known and distinguished from characteristics.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A narrative that explains the characteristic.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="unique" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">An indicator that specifies if a value is unique for
+                        the specification. Possible values are; "unique while value is in effect" and "unique whether
+                        value is in effect or not"
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="valueType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A kind of value that the characteristic can take on,
+                        such as numeric, text, and so forth.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="minCardinality" type="xsd:int" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">The minimum number of instances a CharacteristicValue
+                        can take on. For example, zero to five phone numbers in a group calling plan, where zero is the
+                        value for the minCardinality.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="maxCardinality" type="xsd:int" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">The maximum number of instances a CharacteristicValue
+                        can take on. For example, zero to five phone numbers in a group calling plan, where five is the
+                        value for the maxCardinality.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="extensible" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">An indicator that specifies that the values for the
+                        characteristic can be extended by adding new values when instantiating a characteristic for an
+                        Entity.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="derivationFormula" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A rule or principle represented in symbols, numbers,
+                        or letters, often in the form of an equation used to derive the value of a characteristic value.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="validFor" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">The period of time for which a characteristic is
+                        applicable.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="action" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="type" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="productCharacteristicValue" type="product:ProductCharacteristicValue"
+                minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="productSpecCharacteristicValue" type="product:ProductSpecCharacteristicValue"
+                minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ProductSpecification" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">A detailed description of a tangible or intangible object made
+                available externally in the form of a ProductOffering to Customers or other Parties playing a PartyRole.
+                A ProductSpecification may consist of other ProductSpecifications supplied together as a collection.
+                Members of the collection may be offered in their own right. ProductSpecifications may also exist within
+                groupings, such as ProductCategories, ProductLines, and ProductTypes.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">The name of the product specification.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A narrative that explains in detail what the product
+                        spec is.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="productNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">An identification number assigned to uniquely identify
+                        the specification.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="brand" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">The manufacturer or trademark of the specification.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="validFor" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">The period for which the product specification is
+                        valid.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="lifecycleStatus" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">The condition of the product specification, such as
+                        active, inactive, planned.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="vendorName" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="vendorDescription" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="customerFacingServiceSpec" type="xsd:long" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="resourceSpecification" type="xsd:long" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="productSpecCharUse" type="product:ProductSpecCharUse" minOccurs="0"
+                maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="productSpecificationCostForProductSpecification" type="product:ProductSpecificationCost"
+                minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="productSpecificationType" type="product:ProductSpecificationType" minOccurs="0"
+                maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="productUsageSpec" type="product:ProductUsageSpec" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ComponentProdOfferPrice" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">Part of a ProductOfferingPrice representing a single element
+                of the price. Subclasses further define these elements.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="product:ProductOfferingPrice">
+                <xsd:sequence>
+                    <xsd:element name="priceType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">A category that describes the price, such as
+                                recurring, discount, allowance, penalty, and so forth.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="unitOfMeasure" type="common:Quantity" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">A number and unit representing how many (for
+                                instance 1 dozen) of an ProductOffering is available at the offfered price. Its meaning
+                                depends on the priceType. It could be a price, a rate, or a discount.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="price" type="common:Money" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">The amount of money that characterizes the
+                                price.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ProdOfferPriceCharge" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">An amount, usually of money, that is asked for when a
+                ProductOffering is bought, rented, or leased.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="product:ComponentProdOfferPrice">
+                <xsd:sequence>
+                    <xsd:element name="tariffUsageProdOfferPriceCharge" type="xsd:string" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="simpleUsageProdOfferPriceCharge" type="xsd:string" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="alternateProdOfferPriceCharge" type="xsd:string" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="recurringChargePeriod" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="oneTimeChargeProdOfferPriceCharge" type="xsd:string" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="feeProdOfferingPrice" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ProdOfferPriceAlteration" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">An amount, usually of money, that modifies a price charged for
+                a ProductOffering.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="product:ComponentProdOfferPrice">
+                <xsd:sequence>
+                    <xsd:element name="prodOfferPriceAlteration" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="allowanceProdOfferPriceAlteration" type="xsd:string" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="discountProdOfferPriceAlteration" type="xsd:string" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ProductOfferingPrice" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">An amount, usually of money, that is asked for or allowed when
+                a ProductOffering is bought, rented, or leased. The price is valid for a defined period of time and may
+                not represent the actual price paid by a customer.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A short descriptive name such as "affinity discount" .
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A narrative that explains in detail the semantics of
+                        this component.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="validFor" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">The period for which the price is valid.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="businessInteractionItemPrice" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CompositeProdOfferPrice" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">A ProductOfferingPrice that is made up of parts. The parts may
+                be other CompositeProdOfferPrices or ComponentProdOfferPrices.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="product:ProductOfferingPrice">
+                <xsd:sequence>
+                    <xsd:element name="compositeProductOfferPrice" type="xsd:string" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="productOfferingPrice" type="product:ProductOfferingPrice" minOccurs="0"
+                        maxOccurs="unbounded">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ProductPromotion" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">Publication of a ProductOffering to encourage Parties to buy,
+                rent, or in some other way procure the offering.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="promotionCode" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="campaign" type="common:Campaign" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ProductCatalog" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">A list of ProductOfferings for sale, with prices and
+                illustrations, for example in book form or on the web. ProductCatalogs can be used by Customers during a
+                self-care ordering process and may be used across one or more DistributionChannels.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A unique identifier for an offering in the catalog.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="type" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A categorization of an entry in the catalog, such as
+                        web, book.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="validFor" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">The period during which the catalog is applicable.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="productOffering" type="product:ProductOffering" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="productCatalog" type="product:ProductCatalogSpecification" minOccurs="0"
+                maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="SimpleProductOffering" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">A type of ProductOffering that does not have any subordinate
+                ProductOfferings, that is, an SimpleProductOffering is a leaf-level ProductOffering.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="product:ProductOffering">
+                <xsd:sequence>
+                    <xsd:element name="simpleProductOffering" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="BundledProductOffering" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">
+                <br />
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="product:ProductOffering">
+                <xsd:sequence>
+                    <xsd:element name="bundledProductOffering" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ProductOffering" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">The presentation of one or more ProductSpecifications to the
+                marketplace for sale, rental, or lease for a ProductOfferingPrice. A ProductOffering may target one or
+                more MarketSegments, be included in one or more ProductCatalog, presented in support of one or more
+                ProductStrategies, and made available in one or more Places. ProductOffering may represent a simple
+                offering of a single ProductSpecification or could represent a bundling of one or more other
+                ProductOffering.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A unique identifier for the ProductOffering.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A word, term, or phrase by which the ProductOffeirng
+                        is known and distinguished from other ProductOfferings.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A narrative that explains what the offering is.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="validFor" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">The period during which the offering is applicable.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">The condition in which the offering exists, such as
+                        planned, obsolete, active
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="type" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="premiumOfferingFlag" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="policySet" type="xsd:string" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="productForProductOffering" type="product:Product" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="distributionChannel" type="product:DistributionChannel" minOccurs="0"
+                maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="marketSegment" type="common:MarketSegment" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="productOfferingTerm" type="product:ProductOfferingTerm" minOccurs="0"
+                maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="productOfferingPrice" type="product:ProductOfferingPrice" minOccurs="0"
+                maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="productSpecification" type="product:ProductSpecification" minOccurs="0"
+                maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="partyRole" type="common:PartyRole" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="DistributionChannel" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">A distribution channel is the organization or entity by which
+                a product catalog is presented to a customer.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ProductOfferingTerm" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">A condition under which a ProductOffering is made available to
+                Customers. ProductOfferingTerm include ProductOfferingFinancialTerm, which includes such things as
+                acceptable methods of payment, ShipmentTerm, and ServiceTerm.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="productOfferingFinancialTerm" type="product:ProductOfferingFinancialTerm"
+                minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="agreement" type="common:Agreement" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ComponentProdPrice" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">Part of a ProductPrice representing a single element of the
+                price.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="product:ProductPrice">
+                <xsd:sequence>
+                    <xsd:element name="priceType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">A category that describes the price, such as
+                                recurring, discount, allowance, penalty, tax, vat, free and so forth.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="unitofmeasure" type="common:Quantity" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">A number representing the value of this
+                                component and units (such as each) of the price. Its meaning depends on the priceType.
+                                It could be a price, a rate, or a discount.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="price" type="common:Money" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">The amount of money that characterizes the
+                                price.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ProdPriceCharge" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">An amount, usually of money, that is asked for when a Product
+                is bought, rented, or leased.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="product:ComponentProdPrice">
+                <xsd:sequence>
+                    <xsd:element name="prodPriceCharge" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="prodPriceAlteration" type="product:ProdPriceAlteration" minOccurs="0"
+                        maxOccurs="unbounded">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ProductPrice" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">An amount, usually of money, that represents the actual price
+                paid by a Customer for a purchase, a rent or a lease of a Product. The price is valid for a defined
+                period of time.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A short descriptive name such as "affinity discount".
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A narrative that explains in detail the semantics of
+                        this component.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="validFor" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">The period for which the price is valid.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="product" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="productOfferingPrice" type="product:ProductOfferingPrice" minOccurs="0"
+                maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="compositeProdPrice" type="product:ProductPrice" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ProductComponent" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">A ProductComponent is an instantiation of
+                SimpleProductOffering which keeps the business terms under which the customer purchased the product
+                (using a SimpleProductOffering).
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="product:Product">
+                <xsd:sequence>
+                    <xsd:element name="productComponentUsage" type="product:ProductComponentUsage"
+                        minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ProductInvolvementRole" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">A role a business entity (such as PartyRole, ResourceRole or
+                CustomerAccount) plays in the relationship for a Product. For example: user, owner, payer and so forth.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="productInvolvementRole" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Product" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">A ProductOffering procured by a Customer, or other interested
+                Party playing a PartyRole, appearing as a BusinessInteractionItem, which could take the form of a
+                Agreement. ProductSpecificationCharacteristic(s) in part define the Product. A Product is realized as
+                one or more Service(s) and/or Resource(s).
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A word, term, or phrase by which the product is known
+                        and distinguished from other products.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">An explanation of what the product is.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="productStatus" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">The condition of the product, such as planned,
+                        designed, activated, disconnected.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="productSerialNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A set of identifying characters and/or numbers
+                        assigned to, and usually marked on, each of a series of identical products.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="validFor" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">The period during which the product is applicable.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="productCategory" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="productType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension Plan, Deposit
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="physicalResourceType" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="productNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="productOffering" type="xsd:string" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="resource" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="physicalResource" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="customerFacingService" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="productPromotion" type="product:ProductPromotion" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="productSpecification" type="product:ProductSpecification" minOccurs="0"
+                maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="productInvolvementRole" type="product:ProductInvolvementRole" minOccurs="0"
+                maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="productPrice" type="product:ProductPrice" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="businessInteractionItem" type="common:BusinessInteractionItem" minOccurs="0"
+                maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="productTerm" type="product:ProductTerm" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="productCharacteristicValueForProduct" type="product:ProductCharacteristicValue"
+                minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="productUsageForProduct" type="product:ProductUsage" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="AtomicProductUsageSpec" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">A detailed description of the usage of a product, described by
+                AtomicProductSpecification
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="product:ProductUsageSpec">
+                <xsd:sequence>
+                    <xsd:element name="atomicProductUsageSpec" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ProductUsageSpec" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">A detailed description of a product usage event. It represents
+                customer's transaction as a whole or its autonomously billable part.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:UsageSpecification">
+                <xsd:sequence>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ProductComponentUsage" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">A detailed product component usage event.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="product:ProductUsage">
+                <xsd:sequence>
+                    <xsd:element name="productComponentUsage" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ProductUsage" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">An occurrence of employing a Product for its intended purpose.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:Usage">
+                <xsd:sequence>
+                    <xsd:element name="productUsage" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="serviceUsage" type="xsd:string" minOccurs="0" maxOccurs="1">
+                    </xsd:element>
+                    <xsd:element name="productPrice" type="product:ProductPrice" minOccurs="0" maxOccurs="1">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerAccountProductInvolvement" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="product:ProductInvolvementRole">
+                <xsd:sequence>
+                    <xsd:element name="customerAccountProductInvolvement" type="xsd:string" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ProdPriceAlteration" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="product:ComponentProdPrice">
+                <xsd:sequence>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ProductSpecificationCost" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="costToBusiness" type="common:Money" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="validFor" type="common:Money" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ProductCharacteristicValue" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="value" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ProductBusinessInteractionItem" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:long" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="product" type="product:Product" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ProductCatalogSpecification" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="validFor" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="marketingCampaign" type="common:Campaign" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="marketSegment" type="common:MarketSegment" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="DiscountProdPriceAlteration" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="product:ProdPriceAlteration">
+                <xsd:sequence>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="AllowanceProdPriceAlteration" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="product:ProdPriceAlteration">
+                <xsd:sequence>
+                    <xsd:element name="quantity" type="common:Quantity" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="allowanceType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension Free, Trail
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ProductBundle" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="product:Product">
+                <xsd:sequence>
+                    <xsd:element name="productBundleComprisedOf" type="product:Product" minOccurs="0"
+                        maxOccurs="unbounded">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ProductOfferingFinancialTerm" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="paymentMethod" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension - Credit Card, Direct Debit
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="RecurringChargeProdPriceCharge" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="product:ProdPriceCharge">
+                <xsd:sequence>
+                    <xsd:element name="period" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">weekly, monthly, quarterly, yearly
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="OneTimeChargeProdPriceCharge" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="product:ProdPriceCharge">
+                <xsd:sequence>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ProductTerm" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="agreement" type="common:Agreement" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

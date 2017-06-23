@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:util="http://www.springframework.org/schema/util" xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-2.5.xsd
+    http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-2.5.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd"
+    default-lazy-init="true">
+
+	<context:annotation-config />
+
+	<context:component-scan base-package="au.com.optus.mcas.sdp.nbnenabler">
+	</context:component-scan>
+	
+	<context:property-placeholder location="classpath:biz_config/nbn_enabler.properties" />
+	
+	<util:properties id="nbnEnablerProperties"
+        location="classpath:biz_config/nbn_enabler_code.properties"/>
+        
+    <bean id="nbn-enabler-properties" class="au.com.optus.mcas.sdp.nbnenabler.util.NbnEnablerPropertiesContainer">
+        <property name="propertiesFileName" value="biz_config/nbn_enabler_code.properties" />
+    </bean>
+	
+	
+	<bean id="nbnDogerMapper" class="org.dozer.spring.DozerBeanMapperFactoryBean">
+        <property name="mappingFiles" value="classpath:/dozerBeanMapping.xml" />
+    </bean>
+	
+
+    <util:map id="jaxwsCustomProperties">
+        <entry key="com.sun.xml.ws.request.timeout">
+            <value type="java.lang.Integer">${appointment.service.request.timeout}</value>
+        </entry>
+        <entry key="com.sun.xml.ws.connect.timeout">
+            <value type="java.lang.Integer">${appointment.service.connection.timeout}</value>
+        </entry>
+        <entry key="com.sun.xml.internal.ws.request.timeout">
+            <value type="java.lang.Integer">${appointment.service.request.timeout}</value>
+        </entry>
+        <entry key="com.sun.xml.internal.ws.connect.timeout">
+            <value type="java.lang.Integer">${appointment.service.connection.timeout}</value>
+        </entry>
+    </util:map>
+    
+    <!-- Appointment Service client  -->
+    <bean id="appointmentServiceClient" class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
+        <property name="serviceInterface" value="au.com.singtel.group.ops.osr.rmo.manageworkforce.v4_0_0.appointmentservice.AppointmentServiceEndpoint" />
+        <property name="wsdlDocumentUrl" value="${appointment.service.client.wsdlDocumentUrl}" />
+        <property name="serviceName" value="AppointmentServiceEndpointService" />
+        <property name="namespaceUri" value="${appointment.service.client.namespaceUri}" />
+        <property name="customProperties" ref="jaxwsCustomProperties" />
+        <property name="endpointAddress" value="${appointment.service.client.wsdlDocumentUrl}" />
+        <property name="portName" value="AppointmentServiceEndpointPort" />
+    </bean>
+
+    <!-- Gateway Service client  -->
+    <bean id="NBNManagerServiceClient" class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
+        <property name="serviceInterface" value="au.com.optus.sdp.enabler.nbn.nbnmanagerservice.NBNManagerService" />
+        <property name="wsdlDocumentUrl" value="${nbnmanager.service.client.wsdlDocumentUrl}" />
+        <property name="serviceName" value="NBNManagerService" />
+        <property name="namespaceUri" value="${nbnmanager.service.client.namespaceUri}" />
+        <property name="customProperties" ref="jaxwsCustomProperties" />
+    </bean>
+
+    <!-- Service Order client  -->
+    <bean id="ServiceOrderClient" class="org.springframework.remoting.jaxws.JaxWsPortProxyFactoryBean">
+        <property name="serviceInterface" value="au.com.singtel.group.ops.ff.smo.svccfgact.v4_0_0.serviceorderservice.ServiceOrderServiceEndpoint" />
+        <property name="wsdlDocumentUrl" value="${service.order.client.wsdlDocumentUrl}" />
+        <property name="serviceName" value="ServiceOrderServiceEndpointService" />
+        <property name="namespaceUri" value="${service.order.client.namespaceUri}" />
+        <property name="customProperties" ref="jaxwsCustomProperties" />
+         <property name="endpointAddress" value="${service.order.client.wsdlDocumentUrl}" />
+        <property name="portName" value="ServiceOrderServiceEndpointPort" />
+    </bean>
+    
+    <bean id="log4jInitializer"
+        class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetClass" value="org.springframework.util.Log4jConfigurer" />
+        <property name="targetMethod" value="initLogging" />
+        <property name="arguments">
+            <list>
+                <value>classpath:biz_config/log4j.xml</value>
+                <value>15000</value>
+            </list>
+        </property>
+    </bean>
+</beans>

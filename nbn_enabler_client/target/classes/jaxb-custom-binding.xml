@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<jxb:bindings version="2.1"
+   xmlns:jxb="http://java.sun.com/xml/ns/jaxb"
+   xmlns:xsi="http://www.w3.org/2001/XMLSchema">
+
+   <jxb:globalBindings>
+       <jxb:serializable  />
+   </jxb:globalBindings>
+
+</jxb:bindings>

@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.group.singtel.com.au/ServiceOrderService/v2_0/ServiceOrderService"
+    xmlns:product="http://www.group.singtel.com.au/cdm/v2_0_0/product" xmlns:customer="http://www.group.singtel.com.au/cdm/v2_0_0/customer"
+    xmlns:common="http://www.group.singtel.com.au/cdm/v2_0_0/common" xmlns:service="http://www.group.singtel.com.au/cdm/v2_0_0/service"
+    xmlns:resource="http://www.group.singtel.com.au/cdm/v2_0_0/resource" targetNamespace="http://www.group.singtel.com.au/ServiceOrderService/v2_0/ServiceOrderService"
+    elementFormDefault="qualified">
+	<xsd:import namespace="http://www.group.singtel.com.au/cdm/v2_0_0/customer" schemaLocation="customer.xsd"/>
+	<xsd:import namespace="http://www.group.singtel.com.au/cdm/v2_0_0/product" schemaLocation="product.xsd"/>
+	<xsd:import namespace="http://www.group.singtel.com.au/cdm/v2_0_0/resource" schemaLocation="resource.xsd"/>
+	<xsd:import namespace="http://www.group.singtel.com.au/cdm/v2_0_0/service" schemaLocation="service.xsd"/>
+	<xsd:import namespace="http://www.group.singtel.com.au/cdm/v2_0_0/common" schemaLocation="common.xsd"/>
+	<!-- ============================ All enums ============================== -->
+	<!-- =========================== All complex types ============================== -->
+	<xsd:complexType name="createServiceOrderRequest" abstract="false">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en-AU"/>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="common:BaseDto">
+				<xsd:sequence>
+					<xsd:element name="customer" type="customer:Customer" minOccurs="1" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="en-AU"/>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="1" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="en-AU"/>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="resource" type="resource:Resource" minOccurs="1" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="en-AU"/>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="createServiceOrderRequest" type="tns:createServiceOrderRequest"/>
+	<xsd:complexType name="createServiceOrderResponse" abstract="false">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en-AU"/>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="common:BaseDto">
+				<xsd:sequence>
+					<xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="en-AU"/>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="en-AU"/>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="createServiceOrderResponse" type="tns:createServiceOrderResponse"/>
+
+	<xsd:complexType name="createServiceOrderNotificationRequest" abstract="false">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en-AU"/>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="common:BaseDto">
+				<xsd:sequence>
+					<xsd:element name="customer" type="customer:Customer" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="en-AU"/>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="en-AU"/>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="resource" type="resource:Resource" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="en-AU"/>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="createServiceOrderNotificationRequest" type="tns:createServiceOrderNotificationRequest"/>
+	<xsd:complexType name="createServiceOrderNotificationResponse" abstract="false">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en-AU"/>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="common:BaseDto">
+				<xsd:sequence>
+
+					<xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="en-AU"/>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="createServiceOrderNotificationResponse" type="tns:createServiceOrderNotificationResponse"/>
+
+	<xsd:complexType name="getServiceOrderByIdRequest" abstract="false">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en-AU"/>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="common:BaseDto">
+				<xsd:sequence>
+					<xsd:element name="Id" type="xsd:long" minOccurs="1" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="en-AU"/>
+						</xsd:annotation>
+					</xsd:element>
+
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="getServiceOrderByIdRequest" type="tns:getServiceOrderByIdRequest"/>
+	<xsd:complexType name="getServiceOrderByIdResponse" abstract="false">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en-AU"/>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="common:BaseDto">
+				<xsd:sequence>
+                    <xsd:element name="customer" type="customer:Customer" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+					<xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="resource" type="resource:Resource" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="en-AU"/>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="en-AU"/>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="getServiceOrderByIdResponse" type="tns:getServiceOrderByIdResponse"/>
+	<xsd:complexType name="updateTransactionStatusRequest" abstract="false">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en-AU"/>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="common:BaseDto">
+				<xsd:sequence>
+					<xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="1" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="en-AU"/>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="updateTransactionStatusRequest" type="tns:updateTransactionStatusRequest"/>
+	<xsd:complexType name="updateTransactionStatusResponse" abstract="false">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en-AU"/>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="common:BaseDto">
+				<xsd:sequence>
+					<xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="1" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="en-AU"/>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="updateTransactionStatusResponse" type="tns:updateTransactionStatusResponse"/>
+	<!-- OW-NBN Changes start -->
+	<xsd:complexType name="getServiceOrderRequest" abstract="false">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en-AU"/>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="common:BaseDto">
+				<xsd:sequence>
+					<xsd:element name="serviceOrderNumber" type="xsd:string" minOccurs="1" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="en-AU"/>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="en-AU"/>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!-- OW-NBN Changes end -->
+	<xsd:element name="getServiceOrderRequest" type="tns:getServiceOrderRequest"/>
+	<xsd:complexType name="getServiceOrderResponse" abstract="false">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en-AU"/>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="common:BaseDto">
+				<xsd:sequence>
+                     <xsd:element name="customer" type="customer:Customer" minOccurs="1" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="en-AU"/>
+						</xsd:annotation>
+					</xsd:element>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="1" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="en-AU"/>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="resource" type="resource:Resource" minOccurs="1" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="en-AU"/>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="getServiceOrderResponse" type="tns:getServiceOrderResponse"/>
+	<!-- OW-NBN Changes starts -->
+	<xsd:complexType name="processServiceOrderRequest" abstract="false">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en-AU"/>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="common:BaseDto">
+				<xsd:sequence>
+					<xsd:element name="customer" type="customer:Customer" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="en-AU"/>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="1" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="en-AU"/>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="resource" type="resource:Resource" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="en-AU"/>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="processServiceOrderRequest" type="tns:processServiceOrderRequest"/>
+	<xsd:complexType name="processServiceOrderResponse" abstract="false">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en-AU"/>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="common:BaseDto">
+				<xsd:sequence>
+					<xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="1" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="en-AU"/>
+						</xsd:annotation>
+					</xsd:element>
+					<xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+						<xsd:annotation>
+							<xsd:documentation xml:lang="en-AU"/>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="processServiceOrderResponse" type="tns:processServiceOrderResponse"/>
+	<!-- OW-NBN Changes ends -->
+    <xsd:complexType name="getServiceOrderNotificationRequest" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="customer" type="customer:Customer" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="resource" type="resource:Resource" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="getServiceOrderNotificationRequest" type="tns:getServiceOrderNotificationRequest" />
+    <xsd:complexType name="getServiceOrderNotificationResponse" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="getServiceOrderNotificationResponse" type="tns:getServiceOrderNotificationResponse" />
+    <xsd:complexType name="cancelServiceOrderRequest" abstract="false">
+                <xsd:annotation>
+                        <xsd:documentation xml:lang="en-AU"/>
+                </xsd:annotation>
+                <xsd:complexContent>
+                        <xsd:extension base="common:BaseDto">
+                                <xsd:sequence>
+                                        <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="1" maxOccurs="1">
+                                                <xsd:annotation>
+                                                        <xsd:documentation xml:lang="en-AU"/>
+                                                </xsd:annotation>
+                                        </xsd:element>
+                                </xsd:sequence>
+                        </xsd:extension>
+                </xsd:complexContent>
+        </xsd:complexType>
+        <xsd:element name="cancelServiceOrderRequest" type="tns:cancelServiceOrderRequest"/>
+        <xsd:complexType name="cancelServiceOrderResponse" abstract="false">
+                <xsd:annotation>
+                        <xsd:documentation xml:lang="en-AU"/>
+                </xsd:annotation>
+                <xsd:complexContent>
+                        <xsd:extension base="common:BaseDto">
+                                <xsd:sequence>
+                                        <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="0" maxOccurs="1">
+                                                <xsd:annotation>
+                                                        <xsd:documentation xml:lang="en-AU"/>
+                                                </xsd:annotation>
+                                        </xsd:element>
+                                        <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                                                <xsd:annotation>
+                                                        <xsd:documentation xml:lang="en-AU"/>
+                                                </xsd:annotation>
+                                        </xsd:element>
+                                </xsd:sequence>
+                        </xsd:extension>
+                </xsd:complexContent>
+        </xsd:complexType>
+        <xsd:element name="cancelServiceOrderResponse" type="tns:cancelServiceOrderResponse"/>
+</xsd:schema>

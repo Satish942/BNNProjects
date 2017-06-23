@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.nbnco.com.au/cim/common/accessSeeker/v3" version="V3.05"
+    xmlns:ase="http://www.nbnco.com.au/cim/common/accessSeeker/v3" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:complexType name="AccessSeeker">
+        <xsd:annotation>
+            <xsd:documentation>Access Seeker details.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="AccessSeekerContact" type="ase:AccessSeekerContact">
+                <xsd:annotation>
+                    <xsd:documentation>Access Seeker contact information by which communication may be established
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="accessSeekerName" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Name of the access seeker</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="accountStatus" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Overall Access Seeker Account Status. This will hold the Sell Flag. Refer to the
+                        "List of Values" spreadsheet for a complete list of values.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="AccessSeekerBillingAccountRelationship"
+                type="ase:AccessSeekerBillingAccount" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="AccessSeekerBillingAccount">
+        <xsd:annotation>
+            <xsd:documentation>Contact information through which communication can be established with the Access Seeker
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="AccessSeekerAccountRelationship"
+                type="ase:AccessSeekerBillingAccountRelationship">
+                <xsd:annotation>
+                    <xsd:documentation>Associated Access Seeker account relationship information</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="type" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Categorization of the Access Seeker account</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="ID" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>NBN unique identifier for the Access Seeker account</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="name" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Name to easily identify the billing account</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="status" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>The current status of the Access Seekers account, such as Open or Suspended.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="AccessSeekerBillingAccountRelationship">
+        <xsd:annotation>
+            <xsd:documentation>AccessSeeker account relationship information</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="AccessSeekerAccount" type="ase:AccessSeekerBillingAccount">
+                <xsd:annotation>
+                    <xsd:documentation>Reference to the Access Seeker account</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="name" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Account relationship name</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="AccessSeekerContact">
+        <xsd:annotation>
+            <xsd:documentation>Access Seeker contact information by which communication may be established
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="contactName" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Access Seeker contact name</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="contactPhone" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Access Seeker contact phone.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="emailAddress" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>The contact email address.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="AccessSeekerInteraction">
+        <xsd:annotation>
+            <xsd:documentation>Business Interactions with the Access Seeker</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="ID" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Unique identifier for the Access Seeker interaction</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="billingAccountID" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>This field is for the billing account id.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="AccessSeekerInterationItem">
+        <xsd:annotation>
+            <xsd:documentation>Business Interactions item associated with the Access Seeker</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="ID" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>NBN unique identifier for interaction item</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

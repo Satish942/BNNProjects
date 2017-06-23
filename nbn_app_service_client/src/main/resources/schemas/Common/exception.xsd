@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema attributeFormDefault="qualified"
+	elementFormDefault="qualified" version="1.0"
+	targetNamespace="http://www.group.singtel.com.au/cdm/v1_0_0/exception"
+	xmlns:tns="http://www.group.singtel.com.au/cdm/v1_0_0/exception"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="BusinessException" type="tns:BusinessException" />
+
+	<xs:element name="ServiceException" type="tns:ServiceException" />
+
+	<xs:element name="errorResponse" type="tns:ErrorResponse" />
+
+	<xs:element name="errorResponseItem" type="tns:ErrorResponseItem" />
+
+	<xs:element name="sourceSystemFault" type="tns:SourceSystemFault" />
+
+	<xs:complexType name="ServiceException">
+		<xs:sequence>
+			<xs:element ref="tns:errorResponse" minOccurs="0" />
+			<xs:element name="message" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ErrorResponse">
+		<xs:sequence>
+			<xs:element name="exceptionClass" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="exceptionMessage" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="errorResponseItems" type="tns:ErrorResponseItem"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="stackTrace" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="ErrorResponseItem">
+		<xs:sequence>
+			<xs:element name="defaultErrorDescription" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="descriptionVariables" type="xs:string"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="errorCode" type="xs:string" minOccurs="0" />
+			<xs:element ref="tns:sourceSystemFault" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="SourceSystemFault">
+		<xs:sequence>
+			<xs:element name="calloutParameters" type="xs:string"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="errorCode" type="xs:string" minOccurs="0" />
+			<xs:element name="errorDescription" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="operationName" type="xs:string"
+				minOccurs="0" />
+			<xs:element name="serviceName" type="xs:string" minOccurs="0" />
+			<xs:element name="system" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="BusinessException">
+		<xs:sequence>
+			<xs:element ref="tns:errorResponse" minOccurs="0" />
+			<xs:element name="message" type="xs:string" minOccurs="0" />
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>
+

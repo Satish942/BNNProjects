@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:addrsrv="http://www.group.singtel.com.au/ops/ff/crm/orderhandling/v2_0/AddressService"
+    xmlns:common="http://www.group.singtel.com.au/cdm/v2_0_0/common" targetNamespace="http://www.group.singtel.com.au/ops/ff/crm/orderhandling/v2_0/AddressService"
+    elementFormDefault="qualified">
+    <xsd:import namespace="http://www.group.singtel.com.au/cdm/v2_0_0/common" schemaLocation="common.xsd" />
+    <!-- ============================ All enums ============================== -->
+    <!-- =========================== All complex types ============================== -->
+    <xsd:complexType name="queryAddressRequest" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="address" type="common:AustralianPropertyAddress" minOccurs="1"
+                        maxOccurs="unbounded">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="queryAddressRequest" type="addrsrv:queryAddressRequest" />
+    <xsd:complexType name="queryAddressResponse" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="address" type="common:AustralianPropertyAddress" minOccurs="0"
+                        maxOccurs="unbounded">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="queryAddressResponse" type="addrsrv:queryAddressResponse" />
+    <xsd:complexType name="queryAddressNotificationRequest" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="address" type="common:AustralianPropertyAddress" minOccurs="0"
+                        maxOccurs="unbounded">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="queryAddressNotificationRequest" type="addrsrv:queryAddressNotificationRequest" />
+    <xsd:complexType name="queryAddressNotificationResponse" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="queryAddressNotificationResponse" type="addrsrv:queryAddressNotificationResponse" />
+    <xsd:complexType name="queryAddressByIdRequest" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="Id" type="xsd:long" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="queryAddressByIdRequest" type="addrsrv:queryAddressByIdRequest" />
+    <xsd:complexType name="queryAddressByIdResponse" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="address" type="common:AustralianPropertyAddress" minOccurs="0"
+                        maxOccurs="unbounded">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="queryAddressByIdResponse" type="addrsrv:queryAddressByIdResponse" />
+</xsd:schema>

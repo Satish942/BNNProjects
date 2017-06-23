@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd">
+<log4j:configuration xmlns:log4j='http://jakarta.apache.org/log4j/'>
+    <appender name="CONSOLE" class="org.apache.log4j.ConsoleAppender">
+        <param name="Target" value="System.out" />
+        <param name="Threshold" value="DEBUG" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-5p [%d\{ISO8601\}] [%t] [%L] %C\{1\}: %m%n" />
+        </layout>
+    </appender>
+    <appender name="FILE" class="org.apache.log4j.RollingFileAppender">
+    <!-- Change below location latter -->
+        <param name="File" value="/var/log/weblogic/apps/nbn_app_biz.log" />
+        <param name="Threshold" value="DEBUG" />
+        <param name="MaxFileSize" value="10MB" />
+        <param name="MaxBackupIndex" value="10" />
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%d\{ISO8601\}: %p [%t] %C\{1\} %X\{ProcessId\}: %m%n" />
+        </layout>
+    </appender>
+
+    <logger name="au.com.optus.mcas.sdp">
+        <level value="DEBUG" />
+        <appender-ref ref="FILE" />
+    </logger>
+    <logger name="org.springframework">
+        <level value="INFO" />
+        <appender-ref ref="FILE" />
+    </logger>
+    <logger name="org.springframework.jms">
+        <level value="INFO" />
+        <appender-ref ref="FILE" />
+    </logger>
+    <root>
+        <level value="INFO" />
+        <appender-ref ref="FILE" />
+        <appender-ref ref="CONSOLE" />
+    </root>
+</log4j:configuration>

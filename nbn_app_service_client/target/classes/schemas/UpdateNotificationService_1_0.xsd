@@ -1,0 +1,41 @@
+<xsd:schema targetNamespace="http://www.group.singtel.com.au/UpdateNotificationService/v1_0/UpdateNotificationService"
+    xmlns:service="http://www.group.singtel.com.au/cdm/v2_0_0/service" xmlns:tns="http://www.group.singtel.com.au/UpdateNotificationService/v1_0/UpdateNotificationService"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:common="http://www.group.singtel.com.au/cdm/v2_0_0/common"
+    elementFormDefault="qualified">
+    <xsd:import namespace="http://www.group.singtel.com.au/cdm/v2_0_0/service" schemaLocation="service.xsd" />
+    <xsd:import namespace="http://www.group.singtel.com.au/cdm/v2_0_0/common" schemaLocation="common.xsd" />
+    <xsd:complexType name="updateNotificationRequest" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="updateNotificationRequest" type="tns:updateNotificationRequest" />
+    <xsd:complexType name="updateNotificationResponse" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="updateNotificationResponse" type="tns:updateNotificationResponse" />
+</xsd:schema>

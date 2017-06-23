@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema version="1.0"
+	targetNamespace="http://www.group.singtel.com.au/ops/ff/cmo/svccfgact/v2_0/ServiceProfileService"
+	xmlns:ns2="http://www.group.singtel.com.au/cdm/v2_0_0/common"
+	xmlns:ns1="http://www.group.singtel.com.au/cdm/v2_0_0/service"
+	xmlns:tns="http://www.group.singtel.com.au/ops/ff/cmo/svccfgact/v2_0/ServiceProfileService"
+	xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:import namespace="http://www.group.singtel.com.au/cdm/v2_0_0/service" schemaLocation="service.xsd" />
+
+	<xs:import namespace="http://www.group.singtel.com.au/cdm/v2_0_0/common" schemaLocation="common.xsd" />
+
+	<xs:element name="getRelatedServices" nillable="true"
+		type="tns:getRelatedServicesRequest" />
+
+	<xs:element name="getRelatedServicesRequest" type="tns:getRelatedServicesRequest" />
+
+	<xs:element name="getRelatedServicesResponse" type="tns:getRelatedServicesResponse" />
+
+	<xs:element name="getServiceConsents" nillable="true"
+		type="tns:getServiceConsentsRequest" />
+
+	<xs:element name="getServiceConsentsRequest" type="tns:getServiceConsentsRequest" />
+
+	<xs:element name="getServiceConsentsResponse" type="tns:getServiceConsentsResponse" />
+
+	<xs:element name="getServiceConsentsWrapper" type="tns:GetServiceConsentsWrapper" />
+
+	<xs:element name="getServiceMarketSegment" nillable="true"
+		type="tns:getServiceMarketSegmentRequest" />
+
+	<xs:element name="getServiceMarketSegmentRequest" type="tns:getServiceMarketSegmentRequest" />
+
+	<xs:element name="getServiceMarketSegmentResponse" type="tns:getServiceMarketSegmentResponse" />
+
+	<xs:element name="getServiceProfile" nillable="true"
+		type="tns:getServiceProfileRequest" />
+
+	<xs:element name="getServiceProfileRequest" type="tns:getServiceProfileRequest" />
+
+	<xs:element name="getServiceProfileResponse" type="tns:getServiceProfileResponse" />
+
+
+	<xs:element name="getServiceProfileNotificationRequest"
+		nillable="true" type="tns:getServiceProfileNotificationRequest" />
+
+	<xs:element name="getServiceProfileNotificationResponse"
+		type="tns:getServiceProfileNotificationResponse" />
+
+
+	<xs:element name="getServiceProfileByIdRequest" nillable="true"
+		type="tns:getServiceProfileByIdRequest" />
+
+	<xs:element name="getServiceProfileByIdResponse" type="tns:getServiceProfileByIdResponse" />
+
+
+
+	<xs:complexType name="getServiceConsentsRequest">
+		<xs:complexContent>
+			<xs:extension base="ns2:BaseDto">
+				<xs:sequence>
+					<xs:element name="customerIdentifier" type="ns2:InteractionParameter"
+						form="unqualified" minOccurs="0" />
+					<xs:element name="serviceIdentifier" type="ns2:InteractionParameter"
+						form="unqualified" minOccurs="0" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="getServiceConsentsResponse">
+		<xs:complexContent>
+			<xs:extension base="ns2:BaseDto">
+				<xs:sequence>
+					<xs:element name="response" type="tns:GetServiceConsentsWrapper"
+						form="unqualified" minOccurs="0" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="GetServiceConsentsWrapper">
+		<xs:sequence>
+			<xs:element name="consent" type="ns2:Consent" nillable="true"
+				minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="service" type="ns1:Service" nillable="true"
+				minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="getServiceProfileRequest">
+		<xs:complexContent>
+			<xs:extension base="ns2:BaseDto">
+				<xs:sequence>
+					<xs:element name="service" type="ns1:Service" minOccurs="0" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="getServiceProfileResponse">
+		<xs:complexContent>
+			<xs:extension base="ns2:BaseDto">
+				<xs:sequence>
+					<xs:element name="service" type="ns1:Service" minOccurs="0" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="getRelatedServicesRequest">
+		<xs:complexContent>
+			<xs:extension base="ns2:BaseDto">
+				<xs:sequence>
+					<xs:element name="service" type="ns1:Service" minOccurs="0" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="getRelatedServicesResponse">
+		<xs:complexContent>
+			<xs:extension base="ns2:BaseDto">
+				<xs:sequence>
+					<xs:element name="service" type="ns1:Service" nillable="true"
+						minOccurs="0" maxOccurs="unbounded" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="getServiceMarketSegmentRequest">
+		<xs:complexContent>
+			<xs:extension base="ns2:BaseDto">
+				<xs:sequence>
+					<xs:element name="service" type="ns1:Service" minOccurs="0" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="getServiceMarketSegmentResponse">
+		<xs:complexContent>
+			<xs:extension base="ns2:BaseDto">
+				<xs:sequence>
+					<xs:element name="response" type="ns1:Service"
+						minOccurs="0" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="getServiceProfileNotificationRequest">
+		<xs:complexContent>
+			<xs:extension base="ns2:BaseDto">
+				<xs:sequence>
+					<xs:element name="service" type="ns1:Service" minOccurs="0" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="getServiceProfileNotificationResponse">
+        <xs:complexContent>
+            <xs:extension base="ns2:BaseDto">
+                <xs:sequence>
+                    <xs:element name="status" type="xs:string" minOccurs="0" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en-AU" />
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+	</xs:complexType>
+
+
+	<xs:complexType name="getServiceProfileByIdRequest">
+        <xs:complexContent>
+            <xs:extension base="ns2:BaseDto">
+                <xs:sequence>
+                    <xs:element name="Id" type="xs:long" minOccurs="1" maxOccurs="1">
+                        <xs:annotation>
+                            <xs:documentation xml:lang="en-AU" />
+                        </xs:annotation>
+                    </xs:element>
+                </xs:sequence>
+            </xs:extension>
+        </xs:complexContent>
+	</xs:complexType>
+
+	<xs:complexType name="getServiceProfileByIdResponse">
+		<xs:complexContent>
+			<xs:extension base="ns2:BaseDto">
+				<xs:sequence>
+					<xs:element name="service" type="ns1:Service" minOccurs="0" />
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+
+</xs:schema>
+

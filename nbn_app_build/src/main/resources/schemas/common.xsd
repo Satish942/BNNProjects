@@ -1,0 +1,3256 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.group.singtel.com.au/cdm/v2_0_0/common" elementFormDefault="qualified"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:common="http://www.group.singtel.com.au/cdm/v2_0_0/common">
+    <!--============================ All enums ============================== -->
+    <xsd:simpleType name="CustomerSearchCriteria">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="INDIVIDUAL">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="ORGANIZATION">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="SERVICE">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="ADDRESS">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="BusinessInteractionItemActionEnum">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="ADD">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="UPDATE">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CANCEL">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="NOCHANGE">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="OPT-OUT">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+             <xsd:enumeration value="DELETE">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+             <xsd:enumeration value="MODIFY">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="BusinessInteractionActionEnum">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="ADD">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="UPDATE">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CANCEL">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="NOCHANGE">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="OPT-OUT">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+             <xsd:enumeration value="DELETE">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+             <xsd:enumeration value="MODIFY">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="BusinessInteractionTypeEnum">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="INQUIRY">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="QUOTE">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="PROBLEM_REPORT">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CONNECT">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="DISCONNECT">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+             <xsd:enumeration value="MODIFY">
+            <xsd:annotation>
+               <xsd:documentation xml:lang="en-AU"/>
+            </xsd:annotation>
+         </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="PaymentMethodTypeEnum">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="VISA">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="MASTER">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="AMEX">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CASH">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="CHEQUE">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+            <xsd:enumeration value="BPAY">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:enumeration>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <!--=========================== All complex types ============================== -->
+    <xsd:complexType name="Money" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="units" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="amount" type="xsd:decimal" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="TimePeriod" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="startDateTime" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="endDateTime" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="GeographicSubAddress" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">Optus - GeographicAddress has AbstractGeographicAddress
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="subUnitType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="subUnitNr" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="levelType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="levelNr" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="buildingName" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="privateStreetName" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="locationDescriptor" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="buildingNameMinor" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="buildingNameMajor" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="secondaryComplexName" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension - NBN</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="complexRoadNumber1" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension - NBN</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="complexRoadNumber2" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension - NBN</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="complexRoadName" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension - NBN</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="complexRoadTypeCode" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension - NBN</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="complexRoadSuffixCode" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension - NBN</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="LogicalAddress" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="PostalDeliveryAddress" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:LogicalAddress">
+                <xsd:sequence />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="UrbanPropertyAddress" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:GeographicAddress">
+                <xsd:sequence>
+                    <xsd:element name="streetNrFirst" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="streetNrFirstSuffix" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="streetNrLast" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="streetNrLastSuffix" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="streetName" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="streetType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="streetSuffix" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="locality" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="postcode" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="suburbPlaceLocality" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="latitude" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="longitude" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="gnafId" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="subAddressType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="lotNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="localityCode" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="planNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension - NBN
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element minOccurs="0" name="status" type="xsd:string" />
+                    <xsd:element minOccurs="0" name="statusCode" type="xsd:string" />
+                    <xsd:element minOccurs="0" name="statusDescription" type="xsd:string" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="GeographicAddress" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">Optus - Directly extends Place instead of GeographicPlace and
+                AbstractGeographicAddress
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:Place">
+                <xsd:sequence>
+                    <xsd:element name="country" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="stateOrProvince" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="subAddress" type="common:GeographicSubAddress" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="contactMedium" type="xsd:string" minOccurs="0" maxOccurs="1" />
+                    <xsd:element name="logicalAddress" type="common:LogicalAddress" minOccurs="0" maxOccurs="unbounded" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="AustralianPropertyAddress" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:UrbanPropertyAddress">
+                <xsd:sequence>
+                    <xsd:element name="addressType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension - Billing, Delivery, Postal
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="addressValue" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="unformattedAddress" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="formattedAddress" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="partialAddress" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="pickList" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="isFullAddress" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="exchangeId" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="addressFormat" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension - Physical, Geocode
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="GeographicLocation" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:Place">
+                <xsd:sequence>
+                    <xsd:element name="latitude" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="longitue" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="geographicAddress" type="common:GeographicAddress" minOccurs="0"
+                        maxOccurs="1" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="Place" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="validFor" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="placeType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="specification" type="common:Specification" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="PlacePartyRoleAssoc" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="validFor" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="placeForPlacePartyRoleAssoc" type="common:Place" minOccurs="0" maxOccurs="1" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="IndividualIdentification" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:PartyIdentification">
+                <xsd:sequence>
+                    <xsd:element name="preferredIdentification" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="alternateIdentification" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="identifierValue" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension - Check if required
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="relationship" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension - Check if required
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="PartyIdentification" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="issueDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="validFor" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="identification" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="identificationType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension ABN, ACN, UEN Number
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="identificationOrigin" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="DriversLicenseIdentification" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:IndividualIdentification">
+                <xsd:sequence>
+                    <xsd:element name="state" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="MedicareIdentification" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">Optus Extension Entity</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:IndividualIdentification">
+                <xsd:sequence>
+                    <xsd:element name="positionNumber" type="xsd:byte" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="PassportIdentification" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:IndividualIdentification">
+                <xsd:sequence>
+                    <xsd:element name="passportType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="IndividualName" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:PartyName">
+                <xsd:sequence>
+                    <xsd:element name="formOfAddress" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="givenNames" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="middleNames" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="familyNames" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="PartyName" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="validFor" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ContactMedium" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="validFor" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="usage" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="primary" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="otherUsage" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="contactPreference" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension EMAIL, SMS, Mobile
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="partyRole" type="xsd:string" minOccurs="0" maxOccurs="1" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="EmailContact" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:ContactMedium">
+                <xsd:sequence>
+                    <xsd:element name="emailAddress" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="TelephoneNumber" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:ContactMedium">
+                <xsd:sequence>
+                    <xsd:element name="number" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="type" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="countryCode" type="xsd:byte" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="areaCode" type="xsd:byte" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="timeOfContact" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="Individual" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:Party">
+                <xsd:sequence>
+                    <xsd:element name="gender" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="placeOfBirth" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="nationality" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="maritalStatus" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="aliveDuring" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="residentialStatus" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="race" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="skills" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="individualIdentification" type="common:IndividualIdentification"
+                        minOccurs="0" maxOccurs="unbounded" />
+                    <xsd:element name="individualName" type="common:IndividualName" minOccurs="0" maxOccurs="1" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="Party" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension - Change PartyId to ID
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="validFor" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="partyRole" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="PartyRole" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension - Change PartyRoleId to ID
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="party" type="common:Party" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="contactMedium" type="common:ContactMedium" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="partyProfile" type="common:PartyProfile" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="partyDemographic" type="common:PartyDemographic" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="placePartyRoleAssoc" type="common:PlacePartyRoleAssoc" minOccurs="0"
+                maxOccurs="unbounded" />
+            <xsd:element name="partyRoleAssociation" type="common:PartyRole" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="OrganizationPost" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:PartyRole">
+                <xsd:sequence>
+                    <xsd:element name="jobTitle" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="Employee" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:PartyRole">
+                <xsd:sequence>
+                    <xsd:element name="employeeNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="employeeType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="numOfYears" type="xsd:int" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="numOfMonths" type="xsd:int" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="income" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="payFrequency" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="PoBoxAddress" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:PostalDeliveryAddress">
+                <xsd:sequence>
+                    <xsd:element name="boxType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="boxNr" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="BusinessInteraction" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="interactionDate" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="interactionDateComplete" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="interactionStatus" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="interactionStatusCode" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="action" type="common:BusinessInteractionActionEnum" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="plannedCompletionDate" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="interactionDateExpiry" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="businessInteractionItem" type="common:BusinessInteractionItem" minOccurs="0"
+                maxOccurs="unbounded" />
+            <xsd:element name="businessInteractionRole" type="common:BusinessInteractionRole" minOccurs="0"
+                maxOccurs="unbounded" />
+            <xsd:element name="businessInteractionLocation" type="common:BusinessInteractionLocation"
+                minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="businessInteractionRelationship" type="common:BusinessInteraction" minOccurs="0"
+                maxOccurs="unbounded" />
+            <xsd:element name="businessInteractionRequirements" type="common:BusinessInteractionRequirements"
+                minOccurs="0" maxOccurs="1" />
+            <xsd:element name="businessInteractionType" type="common:BusinessInteractionType" minOccurs="0"
+                maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="BusinessInteractionItem" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="quantity" type="common:Quantity" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="action" type="common:BusinessInteractionItemActionEnum" minOccurs="0"
+                maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="interactionDate" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="interactionStatus" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="type" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="businessInteractionId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="products" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="resources" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="services" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="businessInteractionItemFor" type="common:BusinessInteractionItem" minOccurs="0"
+                maxOccurs="unbounded" />
+            <xsd:element name="businessInteractionLocation" type="common:BusinessInteractionLocation"
+                minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="businessInteractionRole" type="common:BusinessInteractionRole" minOccurs="0"
+                maxOccurs="unbounded" />
+            <xsd:element name="businessInteractionItemPrice" type="common:BusinessInteractionItemPrice"
+                minOccurs="0" maxOccurs="1" />
+            <xsd:element name="appointment" type="common:Appointment" minOccurs="0" maxOccurs="1" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="BusinessInteractionRole" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="interactionRole" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="action" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension - New, Modify
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="agreementAuthorizationForBusinessInteractionRole" type="common:AgreementAuthorization"
+                minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerAccountInteractionRole" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BusinessInteractionRole">
+                <xsd:sequence>
+                    <xsd:element name="customerAccount" type="xsd:string" minOccurs="0" maxOccurs="unbounded" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="Notification" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BusinessInteraction">
+                <xsd:sequence>
+                    <xsd:element name="message" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="messageType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension - HTML, ASCII
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="messageFrom" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension - From address could be short
+                                code or email address
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="PartyInteractionRole" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BusinessInteractionRole">
+                <xsd:sequence>
+                    <xsd:element name="partyRole" type="common:PartyRole" minOccurs="0" maxOccurs="unbounded" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="Request" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BusinessInteraction">
+                <xsd:sequence />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="request" type="common:Request" />
+    <xsd:complexType name="Response" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BusinessInteraction">
+                <xsd:sequence />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="response" type="common:Response" />
+    <xsd:complexType name="Quantity" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="amount" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="units" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="BusinessInteractionItemPrice" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="quantity" type="common:Quantity" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="price" type="common:Money" minOccurs="0" maxOccurs="unbounded">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Agreement" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BusinessInteraction">
+                <xsd:sequence>
+                    <xsd:element name="agreementDocumentNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="agreementPeriod" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="agreementStatementOfIntent" type="xsd:string" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="agreementType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="agreementDuration" type="common:Quantity" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension 1Month. 3 Months
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="minimumAgreementPeriod" type="common:TimePeriod" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension - Minimum period to be served
+                                so no penalty will be charged
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="minimumAgreementDuration" type="common:Quantity" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension 1Month. 3 Months
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="agreementItem" type="common:AgreementItem" minOccurs="0" maxOccurs="unbounded" />
+                    <xsd:element name="AgreementResultsIn" type="common:Appointment" minOccurs="0"
+                        maxOccurs="1" />
+                    <xsd:element name="resourceAgreement" type="common:ResourceAgreement" minOccurs="0"
+                        maxOccurs="unbounded" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="AgreementItem" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BusinessInteractionItem">
+                <xsd:sequence>
+                    <xsd:element name="termOrCondition" type="common:AgreementTermOrCondition" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="AgreementTermOrCondition" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="validFor" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Usage" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="usageDate" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="usageStatus" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="usageCharacteristicValue" type="common:UsageCharacteristicValue" minOccurs="0"
+                maxOccurs="unbounded" />
+            <xsd:element name="usageSpecification" type="common:UsageSpecification" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="partyRole" type="common:PartyRole" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="UsageSpecification" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="lifecycleStatus" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="usageSpecCharUse" type="common:UsageSpecCharUse" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="UsageSpecCharacteristic" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="unique" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="valueType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="minCardinality" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="maxCardinality" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="extensible" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="derivationFormula" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="type" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="usageCharValue" type="common:UsageCharacteristicValue" minOccurs="0"
+                maxOccurs="unbounded" />
+            <xsd:element name="usageSpecCharacteristicValue" type="common:UsageSpecCharacteristicValue"
+                minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="UsageSpecCharacteristicValue" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="valueType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="defaultValue" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="value" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="unitOfMeasure" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="valueFrom" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="valueTo" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="rangeInterval" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="UsageSpecCharUse" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="usageSpecCharacteristic" type="common:UsageSpecCharacteristic" minOccurs="0"
+                maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Organization" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:Party">
+                <xsd:sequence>
+                    <xsd:element name="type" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="industryType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="noOfEmployees" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="yearsOfTrading" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="organizationName" type="common:OrganizationName" minOccurs="0"
+                        maxOccurs="unbounded" />
+                    <xsd:element name="organizationIdentification" type="common:OrganizationIdentification"
+                        minOccurs="0" maxOccurs="unbounded" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="OrganizationIdentification" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:PartyIdentification">
+                <xsd:sequence>
+                    <xsd:element name="industryType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="OrganizationName" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:PartyName">
+                <xsd:sequence>
+                    <xsd:element name="tradingName" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="nameType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="CompanyRegistration" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:OrganizationIdentification">
+                <xsd:sequence>
+                    <xsd:element name="businessNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="companyNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="registeredBodyNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="businessNumberType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="FaxNumber" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:ContactMedium">
+                <xsd:sequence>
+                    <xsd:element name="number" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="Appointment" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">From SID 12</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BusinessInteraction">
+                <xsd:sequence>
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element minOccurs="0" name="statusCode" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element minOccurs="0" name="statusDescription" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="appointmentType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension Installation, Pick up
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="appointmentReason" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="appointmentCategory" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="appointmentDetails" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="appointmentContactDetails" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="appointmentLeadTime" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension - Lead Time for the
+                                appointment in days
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="noOfSlots" type="xsd:integer"  minOccurs="0"  maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension </xsd:documentation>
+                </xsd:annotation>                      
+            </xsd:element>
+                    <xsd:element name="appointmentSlot" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="appointmentSlotCode" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="appointmentPaymentMethodType" type="common:PaymentMethodTypeEnum"
+                        minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="appointmentPriority" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="appointmentIsAssociatedWithCalendarEntry" type="common:CalendarEntry"
+                        minOccurs="0" maxOccurs="unbounded" />
+                    <xsd:element name="specification" type="common:Specification" minOccurs="0" maxOccurs="unbounded" />
+                    <xsd:element name="place" type="common:Place" minOccurs="0" maxOccurs="unbounded" />
+                    <xsd:element name="skill" type="common:Skill" minOccurs="0" maxOccurs="unbounded" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="CalendarEntry" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">Removed abstract sterotype
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:long" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="summary" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="comment" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="creationDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="lastModifiedDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="simpleTemporalExpression" type="common:SimpleTemporalExpression" minOccurs="0"
+                maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="code" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension - Each time slot is associated with
+                        code. Example S1, S2
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="WorkOrder" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:Request">
+                <xsd:sequence>
+                    <xsd:element name="requestedDeliveryDate" type="common:TimePeriod" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="revisedDeliveryDate" type="common:TimePeriod" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="priority" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="businessUnit" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="businessNotes" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="quotaPoints" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="workOrderNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="workOrderItem" type="common:WorkOrderItem" minOccurs="0" maxOccurs="unbounded" />
+                    <xsd:element name="relatedWorkOrder" type="common:WorkOrder" minOccurs="0" maxOccurs="unbounded" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WorkOrderItem" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BusinessInteractionItem">
+                <xsd:sequence>
+                    <xsd:element name="notes" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="provisionDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="workOrderItemNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="WorkOrderItemInvolvesWork" type="common:Work" minOccurs="0"
+                        maxOccurs="1" />
+                    <xsd:element name="WorkOrderItemInvolvesWorkSpec" type="common:WorkSpecification"
+                        minOccurs="0" maxOccurs="1" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="Work" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="quantity" type="common:Quantity" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:long" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="workRequiresAppointment" type="common:Appointment" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="WorkSpecification" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="isAppointmentRequired" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="lifeCycleStatus" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="amountDue" type="common:Money" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="categorizesWorkSpecs" type="common:WorkSpecificationType" minOccurs="0"
+                maxOccurs="1" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="TemporalExpression" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="calendricalSystem" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="timeZone" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="SimpleTemporalExpression" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:TemporalExpression">
+                <xsd:sequence>
+                    <xsd:element name="timePeriod" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="WorkSpecificationType" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="type" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="category" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="PolicyRule" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:Policy">
+                <xsd:sequence>
+                    <xsd:element name="isMandatoryEvaluation" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="usage" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="isCNF" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="policyRule" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="policyCondition" type="common:PolicyCondition" minOccurs="0"
+                        maxOccurs="unbounded" />
+                    <xsd:element name="policyAction" type="common:PolicyAction" minOccurs="0" maxOccurs="unbounded" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="Policy" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:RootEntity">
+                <xsd:sequence>
+                    <xsd:element name="policyName" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="businessInteractionItemPrice" type="xsd:string" minOccurs="0"
+                        maxOccurs="1" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="RootEntity" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="commonName" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Collection" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:RootEntity">
+                <xsd:sequence>
+                    <xsd:element name="orderMethod" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="PolicyEvent" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:Collection">
+                <xsd:sequence>
+                    <xsd:element name="hasEventEvaluated" type="xsd:float" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="eventSequenceNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="policyEventAtomic" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="eventTriggerDetails" type="xsd:string" minOccurs="0" maxOccurs="1" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="EventTriggerDetails" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:CoreEntity">
+                <xsd:sequence>
+                    <xsd:element name="triggerStartTime" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="triggerEndTime" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="CoreEntity" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:RootEntity">
+                <xsd:sequence>
+                    <xsd:element name="version" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="PolicyAction" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="PolicyAction" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="actionSequenceNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="PolicyCondition" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="policyCondition" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="conditionSequenceNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="PolicyStatement" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="opType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="policyValue" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="policyVariable" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="policyCondition" type="common:PolicyCondition" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="policyAction" type="common:PolicyAction" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Specification" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:RootEntity">
+                <xsd:sequence>
+                    <xsd:element name="specificationName" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="specificationType" type="common:SpecificationType" minOccurs="0"
+                        maxOccurs="unbounded" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="BusinessInteractionType" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="name" type="common:BusinessInteractionTypeEnum" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ServiceProvider" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:ValueNetworkRole">
+                <xsd:sequence>
+                    <xsd:element name="serviceProviderName" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ValueNetworkRole" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:PartyRole">
+                <xsd:sequence>
+                    <xsd:element name="valueNetworkRole" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="TroubleTicket" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BusinessInteraction">
+                <xsd:sequence>
+                    <xsd:element name="troubleTicketState" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="troubleDetectionDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="priority" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="causeCode" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="clearCode" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="clearLocationCode" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="originator" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="lastCallbackTime" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="parentTTKey" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="severity" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="facilityType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="netAffectCode" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="productGroup" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="symptonCode" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="symptonType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="TroubleTicketItem" type="common:TroubleTicketItem" minOccurs="0"
+                        maxOccurs="unbounded" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="TroubleTicketItem" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BusinessInteractionItem">
+                <xsd:sequence>
+                    <xsd:element name="troubleTicketItem" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="style" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="Problem" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:long" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="originatingSytem" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="impactImportanceFactor" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="priority" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="firstAlert" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="category" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="responsibleParty" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="problemEscalation" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="timeRaised" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="reason" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="ackStatus" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="problemNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="parentProblemNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="responsiblePartyNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="symptomType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="severity" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="reportingPartyNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="reportingWorkGroup" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="creatingWorkGroup" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="problemType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="reportingRefNo" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="reportingPartyName" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="symptomCode" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="isBusinessAccount" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="isCallBackRequired" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="extReferenceNo" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="isAccountCreationRequired" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="isMajorAccount" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="type" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="style" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="lineNum" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="number" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="featureClass" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="featureName" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="nextAction" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="durationToResolve" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="transactionName" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="validateUser" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="isSpecialInvestigationRequired" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="isLongTermInvestigationRequired" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="region" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="networkAffectedCode" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="genericProblem" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="statusCode" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="statusDescription" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="interactionDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="interactionDateComplete" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="timeResolved" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="lastRestoredTime" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="detectionDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="lastCallbackTime" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="isIntermittent" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="isCustomerSatisfied" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="isCustomerAffecting" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="isAutoCloseOnClear" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="appointment" type="common:Appointment" minOccurs="0" maxOccurs="unbounded" />
+            <xsd:element name="trobleTicket" type="common:TroubleTicket" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="FunctionOrProcessProvider" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:ValueNetworkRole">
+                <xsd:sequence>
+                    <xsd:element name="providerName" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="UsageCharacteristicValue" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="value" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="Id" type="xsd:long" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="MarketSegment" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Skill" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:long" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="group" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Sponser" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:PartyRole">
+                <xsd:sequence />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="BusinessInteractionLocation" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="place" type="common:Place" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="SupplyPartner" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:PartyRole">
+                <xsd:sequence>
+                    <xsd:element name="supplyPartner" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="Campaign" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="validFor" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="PartyProfile" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="partyProfileType" type="common:PartyProfileType" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="PartyProfileType" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="PartyDemographic" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="partyDemographicSource" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="dateCreated" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="validFor" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="partyDemographicValue" type="common:PartyDemographicValue" minOccurs="0"
+                maxOccurs="unbounded" />
+            <xsd:element name="marketSegment" type="common:MarketSegment" minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="PartyDemographicValue" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="value" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="validFor" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="demographicCharacteristicForPartyDemographicValue" type="common:DemographicCharacteristic"
+                minOccurs="0" maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="DemographicCharacteristic" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="validFor" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="demoCharacteristicValue" type="common:DemoCharacteristicValue" minOccurs="0"
+                maxOccurs="unbounded" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="DemoCharacteristicValue" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="valueType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="value" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="unitOfMeasure" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="AtomicPartyDemographic" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:PartyDemographic">
+                <xsd:sequence />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="Director" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:PartyRole">
+                <xsd:sequence>
+                    <xsd:element name="directorType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="Opportunity" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BusinessInteraction">
+                <xsd:sequence />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="AgreementAuthorization" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="agreementAuthorizationState" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="agreementSignatureRepresentation" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="agreementAuthorizationDate" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="SingaporePropertyAddress" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:AustralianPropertyAddress">
+                <xsd:sequence />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="OthersIdentification" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:IndividualIdentification">
+                <xsd:sequence />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="AccessSeeker" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">Optus Extension - Required for NBN to send representative
+                details like name, phone etc
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:PartyRole">
+                <xsd:sequence>
+                    <xsd:element name="identifier" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="Bearer" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">Optus Extension - Representative of cutsomer where customer
+                send them to shop to perform the transaction
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:PartyRole">
+                <xsd:sequence />
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="BusinessInteractionRequirements" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="identificationReq" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension - This is to catpture if
+                        identification check is required
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="authorisationReq" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension - This is to catpture if authorisation
+                        letter is required
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ResourceAgreement" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="resourceAgreementPeriod" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="resourceAgreementDuration" type="common:Quantity" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="resourceReplacementPeriod" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="resourceReplacementDuration" type="common:Quantity" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="SpecificationType" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="version" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:long" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU" />
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="BaseDto">
+        <xsd:annotation>
+            <xsd:documentation> All ESB service requests and responses extend core dto type. Contains fields useful for
+                operational support.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="interactionId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="processId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="signOnIdentity" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="callerIdentity" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="callerIdentityRole" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="callerIdentityType" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="salesmanCode" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="vendorCode" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="dealerCode" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="receiverIdentity" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="receiverIdentityRole" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="receiverIdentityType" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="requestDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="clientId" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="password" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="version" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="operation" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element name="action" type="xsd:string" minOccurs="0" maxOccurs="1" />
+            <xsd:element minOccurs="0" name="status" type="xsd:string" />
+            <xsd:element minOccurs="0" name="statusCode" type="xsd:string" />
+            <xsd:element minOccurs="0" name="statusDescription" type="xsd:string" />
+        </xsd:sequence>
+    </xsd:complexType>
+      <xsd:complexType name="InteractionParameter">
+      <xsd:sequence>
+         <xsd:element minOccurs="0" name="paramName" type="xsd:string"/>
+         <xsd:element minOccurs="0" name="paramValue" type="xsd:string"/>
+      </xsd:sequence>
+   </xsd:complexType>
+   <xsd:complexType name="Consent">
+      <xsd:sequence>
+         <xsd:element minOccurs="0" name="description" type="xsd:string"/>
+         <xsd:element minOccurs="0" name="id" type="xsd:string"/>
+         <xsd:element minOccurs="0" name="lastUpdatedBy" type="xsd:string"/>
+         <xsd:element minOccurs="0" name="lastUpdatedDate" type="xsd:dateTime"/>
+         <xsd:element minOccurs="0" name="name" type="xsd:string"/>
+         <xsd:element minOccurs="0" name="value" type="xsd:boolean"/>
+      </xsd:sequence>
+   </xsd:complexType>
+</xsd:schema>

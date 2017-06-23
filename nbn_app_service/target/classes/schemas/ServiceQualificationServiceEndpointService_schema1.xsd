@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.group.singtel.com.au/ops/ff/cmo/svccfgact/v2_0/ServiceQualificationService"
+    xmlns:common="http://www.group.singtel.com.au/cdm/v2_0_0/common" xmlns:service="http://www.group.singtel.com.au/cdm/v2_0_0/service"
+    targetNamespace="http://www.group.singtel.com.au/ops/ff/cmo/svccfgact/v2_0/ServiceQualificationService"
+    elementFormDefault="qualified">
+    <xsd:import namespace="http://www.group.singtel.com.au/cdm/v2_0_0/service" schemaLocation="service.xsd" />
+    <xsd:import namespace="http://www.group.singtel.com.au/cdm/v2_0_0/common" schemaLocation="common.xsd" />
+    <!-- ============================ All enums ============================== -->
+    <!-- =========================== All complex types ============================== -->
+    <xsd:complexType name="queryServiceQualificationRequest" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="service" type="service:Service" minOccurs="1" maxOccurs="unbounded">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="isCapacityCheckRequired" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="queryServiceQualificationRequest" type="tns:queryServiceQualificationRequest" />
+    <xsd:complexType name="queryServiceQualificationResponse" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="service" type="service:Service" minOccurs="0" maxOccurs="unbounded">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="queryServiceQualificationResponse" type="tns:queryServiceQualificationResponse" />
+    <xsd:complexType name="queryServiceQualificationNotificationRequest" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="service" type="service:Service" minOccurs="0" maxOccurs="unbounded">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="queryServiceQualificationNotificationRequest" type="tns:queryServiceQualificationNotificationRequest" />
+    <xsd:complexType name="queryServiceQualificationNotificationResponse" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="queryServiceQualificationNotificationResponse" type="tns:queryServiceQualificationNotificationResponse" />
+    <xsd:complexType name="queryServiceQualificationByIdRequest" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="Id" type="xsd:long" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="isCapacityCheckRequired" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="queryServiceQualificationByIdRequest" type="tns:queryServiceQualificationByIdRequest" />
+    <xsd:complexType name="queryServiceQualificationByIdResponse" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="service" type="service:Service" minOccurs="0" maxOccurs="unbounded">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="queryServiceQualificationByIdResponse" type="tns:queryServiceQualificationByIdResponse" />
+    <xsd:complexType name="processCoverageCheckRequest" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="service" type="service:Service" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="processCoverageCheckRequest" type="tns:processCoverageCheckRequest" />
+    <xsd:complexType name="processCoverageCheckResponse" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="service" type="service:Service" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="processCoverageCheckResponse" type="tns:processCoverageCheckResponse" />
+    <xsd:complexType name="processFullQualificationCheckRequest" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="service" type="service:Service" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="processFullQualificationCheckRequest" type="tns:processFullQualificationCheckRequest" />
+    <xsd:complexType name="processFullQualificationCheckResponse" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="service" type="service:Service" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="processFullQualificationCheckResponse" type="tns:processFullQualificationCheckResponse" />
+</xsd:schema>

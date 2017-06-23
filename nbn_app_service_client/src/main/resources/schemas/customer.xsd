@@ -1,0 +1,1371 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.group.singtel.com.au/cdm/v2_0_0/customer" elementFormDefault="qualified"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:customer="http://www.group.singtel.com.au/cdm/v2_0_0/customer"
+    xmlns:common="http://www.group.singtel.com.au/cdm/v2_0_0/common">
+    <xsd:import schemaLocation="common.xsd" namespace="http://www.group.singtel.com.au/cdm/v2_0_0/common" />
+    <!-- ============================ All enums ============================== -->
+    <!-- =========================== All complex types ============================== -->
+    <xsd:complexType name="Customer" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:PartyRole">
+                <xsd:sequence>
+                    <xsd:element name="customerStatus" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="customerRank" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension Gold Valued, High Value, Low
+                                Value
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="customerType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension Retail or Wholsale.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="salesClass" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="isListingRequired" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="privacyType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension - To indicate if it is secret
+                                account i.e. can only be accessed by authorized persion. If it is at customer level then
+                                all accounts under that customer will be secret accounts
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="customerUID" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension - UID used in the customer
+                                master data management system
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="customerExternalIdentifier" type="xsd:string" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension - It could be email address or
+                                passport number
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="creditCardsOwnedByCustomer" type="customer:CreditCardPM" minOccurs="0"
+                        maxOccurs="unbounded">
+                    </xsd:element>
+                    <xsd:element name="customerQuote" type="customer:CustomerQuote" minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                    <xsd:element name="loyaltyAccount" type="customer:LoyaltyAccount" minOccurs="0"
+                        maxOccurs="unbounded">
+                    </xsd:element>
+                    <xsd:element name="customerCreditProfile" type="customer:CustomerCreditProfile"
+                        minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                    <xsd:element name="marketSegment" type="common:MarketSegment" minOccurs="0" maxOccurs="1">
+                    </xsd:element>
+                    <xsd:element name="customerAccount" type="customer:CustomerAccount" minOccurs="0"
+                        maxOccurs="unbounded">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerCreditProfile" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="creditProfileDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="validFor" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="creditRiskRating" type="xsd:int" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="creditScore" type="xsd:int" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="overrideCreditCheck" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="creditRiskRatingReason" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="riskStatus" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="historicalCreditScore" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension average rating of all historical
+                        accounts
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="currentCreditScore" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension average rating of all current accounts
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="custCreditProfileReference" type="customer:CustCreditProfileReference"
+                minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="externalCreditCheckDetails" type="customer:ExternalCreditCheckDetails"
+                minOccurs="0" maxOccurs="1">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CustCreditProfileReference" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="financialInstitutionName" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="financialInstitutionAccoutNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="financialInstitutionAccountType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerAccountContact" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="contactType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Primary or Secondary
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="partyRole" type="common:PartyRole" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerAccount" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="accountType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Single or Joint
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="accountStatus" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="creditLimit" type="xsd:long" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="pin" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="accountNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="customerAccountCreationDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="billingAccountType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension Prepaid or Postpaid
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="alternateIdentifier" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="billingAccountNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="reasonCode" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="marketCode" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="serviceProvider" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="customerAccountRelationshipType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="pinStatus" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="sourceSystem" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension - Check if it can be elsewhere
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="privacyType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension - To indicate if it is secret account
+                        i.e. can only be accessed by authorized persion. If it is at customer account level then one of
+                        the account could be normal or other could be secret
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="customerAccountInteractionRole" type="xsd:long" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="customerAccountProductInvolvement" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="appliedCustomerBillingRate" type="customer:AppliedCustomerBillingRate"
+                minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="customerBillingCredit" type="customer:CustomerBillingCredit" minOccurs="0"
+                maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="customerAllowance" type="customer:CustomerAllowance" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="customerAccountContact" type="customer:CustomerAccountContact" minOccurs="0"
+                maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="customerAccountRelationshipHas" type="customer:CustomerAccount" minOccurs="0"
+                maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="customerPaymentForCustomerAccount" type="customer:CustomerPayment" minOccurs="0"
+                maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="customerBill" type="customer:CustomerBill" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="AtomicAppliedCustomerBillingRate" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="customer:AppliedCustomerBillingRate">
+                <xsd:sequence>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="AppliedCustomerBillingCharge" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="customer:AtomicAppliedCustomerBillingRate">
+                <xsd:sequence>
+                    <xsd:element name="prodPriceCharge" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="AppliedCustomerBillingCredit" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">Payment Disputes
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="customer:AtomicAppliedCustomerBillingRate">
+                <xsd:sequence>
+                    <xsd:element name="appliedCustomerBillingProductAlteration" type="xsd:string" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="appliedCustomerBillingDiscount" type="xsd:float" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="prodPriceAlteration" type="xsd:string" minOccurs="0" maxOccurs="1">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="AppliedCustomerBillingTaxRate" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="customer:AtomicAppliedCustomerBillingRate">
+                <xsd:sequence>
+                    <xsd:element name="taxCategory" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="AppliedCustomerBillingRate" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="date" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="quantity" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension - Required by TT
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerBillFormat" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="customerBillPresentationMedias" type="customer:CustomerBillPresentationMedia"
+                minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerBillSpec" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="validFor" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="customerBillFormat" type="customer:CustomerBillFormat" minOccurs="0"
+                maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerBillPresentationMedia" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">email, SMS
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerBillingCycle" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="billingDate" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="chargeDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="paymentDueDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="customerBillingCycleSpecification" type="customer:CustomerBillingCycleSpecification"
+                minOccurs="0" maxOccurs="1">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerBill" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="billNo" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="billAmount" type="common:Money" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="billDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="chargeDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="creditDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="mailingDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="paymentDueDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="relationshipType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="overdueAmount" type="common:Money" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="amountDue" type="common:Money" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="lastPaymentAmmount" type="common:Money" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="lastPaymentDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="paymentItem" type="xsd:string" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="customerBillingCycle" type="customer:CustomerBillingCycle" minOccurs="0"
+                maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="customerBillSpec" type="customer:CustomerBillSpec" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="appliedCustomerBillingRate" type="customer:AppliedCustomerBillingRate"
+                minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ThirdPartyCollectionPM" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="customer:PaymentMethod">
+                <xsd:sequence>
+                    <xsd:element name="thirdPartyType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="thirdPartyID" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="branchNumber" type="xsd:int" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="accountNumber" type="xsd:long" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="bankName" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="CashPM" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="customer:PaymentMethod">
+                <xsd:sequence>
+                    <xsd:element name="cashierInfo" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="PaymentPlan" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="priority" type="xsd:int" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="paymentPlanType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="status" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="directDebit" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Optus Extension
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="creditCardPM" type="customer:CreditCardPM" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="cashPM" type="customer:CashPM" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="thirdPartyCollectionPM" type="customer:ThirdPartyCollectionPM" minOccurs="0"
+                maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="customerPayment" type="customer:CustomerPayment" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="customerAccount" type="customer:CustomerAccount" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CreditCardPM" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="customer:PaymentMethod">
+                <xsd:sequence>
+                    <xsd:element name="creditCardNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="nameOnCard" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="expirationDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="cardType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="creditCardNumberTokenised" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="nickname" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="securityCode" type="xsd:byte" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="PaymentMethod" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="paymentMethodType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="paymentMethodTerm" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="paymentVerification" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerPayment" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="amount" type="common:Money" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="paymentDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="remainingAmount" type="common:Money" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="processDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="customerAccountId" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="paymentMethod" type="customer:PaymentMethod" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="paymentItem" type="customer:PaymentItem" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerOrder" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:Request">
+                <xsd:sequence>
+                    <xsd:element name="customerOrderType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="purchaseOrderNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="dueDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="revisionNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="parentPurchaseOrderNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="parentPurchaseOrderRevisionNumber" type="xsd:string" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="statusDescription" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="reasonCode" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="promotionId" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="relocationWaiveOffIndicator" type="xsd:string" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="macNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="approvalStatus" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="priority" type="xsd:byte" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="responsibilityDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="expectedDeliveryDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="productOffering" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                    <xsd:element name="customerOrderItem" type="customer:CustomerOrderItem" minOccurs="0"
+                        maxOccurs="unbounded">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerOrderItem" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BusinessInteractionItem">
+                <xsd:sequence>
+                    <xsd:element name="customerOrderItemType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="statusDescription" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="purchaseOrderItemNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="relocationWaiveOffIndicator" type="xsd:string" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerBillingCycleSpecification" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="billingPeriod" type="customer:BillingPeriod" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="BillingPeriod" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ExternalCreditCheckDetails" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">Optus Extension
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="maximumMobileServices" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="maximumFixedLineServices" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="maximumCombinedServices" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerBillingCredit" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="creditForPeriod" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="customerBillingCreditBalance" type="customer:CustomerBillingCreditBalance"
+                minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerBillingCreditBalance" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="validFor" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="creditBalanceAmount" type="common:Money" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerDiscount" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="customer:CustomerBillingCredit">
+                <xsd:sequence>
+                    <xsd:element name="customerDiscount" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="discountProdPriceAlteration" type="xsd:string" minOccurs="0"
+                        maxOccurs="1">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerAllowance" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="customer:CustomerBillingCredit">
+                <xsd:sequence>
+                    <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="allowanceProdPriceAlteration" type="xsd:string" minOccurs="0"
+                        maxOccurs="1">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerDiscountBalance" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="customer:CustomerBillingCreditBalance">
+                <xsd:sequence>
+                    <xsd:element name="customerDiscountBalance" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerAllowanceBalance" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="customer:CustomerBillingCreditBalance">
+                <xsd:sequence>
+                    <xsd:element name="customerAllowanceBalance" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="PaymentItem" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="appliedAmount" type="common:Money" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="customerPayment" type="xsd:string" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="appliedCustomerBillingRate" type="customer:AppliedCustomerBillingRate"
+                minOccurs="0" maxOccurs="1">
+            </xsd:element>
+            <xsd:element name="customerBill" type="customer:CustomerBill" minOccurs="0" maxOccurs="1">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerProblem" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:Problem">
+                <xsd:sequence>
+                    <xsd:element name="customerProblem" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="InquiryResponse" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:Response">
+                <xsd:sequence>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="inquiryResponse" type="customer:InquiryResponse"></xsd:element>
+    <xsd:complexType name="CustomerQuote" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="customer:InquiryResponse">
+                <xsd:sequence>
+                    <xsd:element name="opportunity" type="common:Opportunity" minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerBillingStatistic" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="statisticForPeriod" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerAccountChargeSum" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="customer:CustomerBillingStatistic">
+                <xsd:sequence>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="LoyaltyAccount" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="membership" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="membershipType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="points" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="redemption" type="customer:Redemption" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Redemption" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="voucherNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="points" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="partnerId" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="AppliedCustomerBillingProductUsageRate" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="customer:AppliedCustomerBillingProductCharge">
+                <xsd:sequence>
+                    <xsd:element name="productUsage" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="AppliedCustomerBillingProductCharge" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="customer:AppliedCustomerBillingCharge">
+                <xsd:sequence>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="VoucherPM" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="customer:PaymentMethod">
+                <xsd:sequence>
+                    <xsd:element name="voucherCode" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="voucherDescription" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+</xsd:schema>

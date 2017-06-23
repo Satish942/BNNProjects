@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:tns="http://www.group.singtel.com.au/FaultNotificationService/v2_0/FaultNotificationService" xmlns:common="http://www.group.singtel.com.au/cdm/v2_0_0/common"
+    targetNamespace="http://www.group.singtel.com.au/FaultNotificationService/v2_0/FaultNotificationService"
+    elementFormDefault="qualified">
+    <xsd:import namespace="http://www.group.singtel.com.au/cdm/v2_0_0/common" schemaLocation="common.xsd" />
+    <!-- ============================ All enums ============================== -->
+    <!-- =========================== All complex types ============================== -->
+    <xsd:complexType name="handleFaultNotificationRequest" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="handleFaultNotificationRequest" type="tns:handleFaultNotificationRequest" />
+    <xsd:complexType name="handleFaultNotificationResponse" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="handleFaultNotificationResponse" type="tns:handleFaultNotificationResponse" />
+</xsd:schema>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mappings xmlns="http://dozer.sourceforge.net" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://dozer.sourceforge.net http://dozer.sourceforge.net/schema/beanmapping.xsd">
+
+	<configuration>
+		<stop-on-errors>true</stop-on-errors>
+		<wildcard>true</wildcard>
+	</configuration>
+
+	<mapping map-null="false">
+		<class-a>au.com.singtel.group.ops.osr.rmo.manageworkforce.v4_0_0.appointmentservice.CreateAppointmentRequest</class-a>
+		<class-b>au.com.singtel.group.sdp.appointment.service.model.CreateAppointmentRequestModel</class-b>
+	</mapping>
+	
+	<mapping map-null="false">
+		<class-a>au.com.singtel.group.sdp.appointment.service.model.CreateAppointmentResponseModel</class-a>
+		<class-b>au.com.singtel.group.ops.osr.rmo.manageworkforce.v4_0_0.appointmentservice.CreateAppointmentResponse</class-b>
+	</mapping>
+	
+	<mapping map-null="false">
+		<class-a>au.com.singtel.group.ops.osr.rmo.manageworkforce.v4_0_0.appointmentservice.CancelAppointmentRequest</class-a>
+		<class-b>au.com.singtel.group.sdp.appointment.service.model.CancelAppointmentRequestModel</class-b>
+	</mapping>
+	
+	<mapping map-null="false">
+		<class-a>au.com.singtel.group.sdp.appointment.service.model.CancelAppointmentResponseModel</class-a>
+		<class-b>au.com.singtel.group.ops.osr.rmo.manageworkforce.v4_0_0.appointmentservice.CancelAppointmentResponse</class-b>
+	</mapping>
+	
+	<mapping map-null="false">
+		<class-a>au.com.singtel.group.ops.osr.rmo.manageworkforce.v4_0_0.appointmentservice.GetAppointmentsByOrderRequest</class-a>
+		<class-b>au.com.singtel.group.sdp.appointment.service.model.GetAppointmentsByOrderRequestModel</class-b>
+	</mapping>
+	
+	<mapping map-null="false">
+		<class-a>au.com.singtel.group.sdp.appointment.service.model.GetAppointmentsByOrderResponseModel</class-a>
+		<class-b>au.com.singtel.group.ops.osr.rmo.manageworkforce.v4_0_0.appointmentservice.GetAppointmentsByOrderResponse</class-b>
+	</mapping>
+	
+	<mapping map-null="false">
+		<class-a>au.com.singtel.group.ops.osr.rmo.manageworkforce.v4_0_0.appointmentservice.GetAppointmentByIdRequest</class-a>
+		<class-b>au.com.singtel.group.sdp.appointment.service.model.GetAppointmentByIdRequestModel</class-b>
+	</mapping>
+	
+	<mapping map-null="false">
+		<class-a>au.com.singtel.group.sdp.appointment.service.model.GetAppointmentByIdResponseModel</class-a>
+		<class-b>au.com.singtel.group.ops.osr.rmo.manageworkforce.v4_0_0.appointmentservice.GetAppointmentByIdResponse</class-b>
+	</mapping>
+	
+	<mapping map-null="false">
+		<class-a>au.com.singtel.group.ops.osr.rmo.manageworkforce.v4_0_0.appointmentservice.CheckAvailableAppointmentRequest</class-a>
+		<class-b>au.com.singtel.group.sdp.appointment.service.model.CheckAvailableAppointmentRequestModel</class-b>
+	</mapping>
+	
+	<mapping map-null="false">
+		<class-a>au.com.singtel.group.ops.osr.rmo.manageworkforce.v4_0_0.appointmentservice.CheckAvailableAppointmentResponse</class-a>
+		<class-b>au.com.singtel.group.sdp.appointment.service.model.CheckAvailableAppointmentResponseModel</class-b>
+	</mapping>
+	
+	<mapping map-null="false">
+		<class-a>au.com.singtel.group.ops.osr.rmo.manageworkforce.v4_0_0.appointmentservice.GetRequiredAppointmentTypeRequest</class-a>
+		<class-b>au.com.singtel.group.sdp.appointment.service.model.GetRequiredAppointmentTypeRequestModel</class-b>
+	</mapping>
+	
+	<mapping map-null="false">
+		<class-a>au.com.singtel.group.sdp.appointment.service.model.GetRequiredAppointmentTypeResponseModel</class-a>
+		<class-b>au.com.singtel.group.ops.osr.rmo.manageworkforce.v4_0_0.appointmentservice.GetRequiredAppointmentTypeResponse</class-b>
+	</mapping>
+	
+	<mapping map-null="false">
+		<class-a>au.com.singtel.group.ops.osr.rmo.manageworkforce.v4_0_0.appointmentservice.CheckAvailableAppointmentNotificationRequest</class-a>
+		<class-b>au.com.singtel.group.sdp.appointment.service.model.CheckAvailableAppointmentNotificationRequestModel</class-b>
+	</mapping>
+	
+	<mapping map-null="false">
+		<class-a>au.com.singtel.group.sdp.appointment.service.model.CheckAvailableAppointmentNotificationResponseModel</class-a>
+		<class-b>au.com.singtel.group.ops.osr.rmo.manageworkforce.v4_0_0.appointmentservice.CheckAvailableAppointmentNotificationResponse</class-b>
+	</mapping>
+	
+	<mapping map-null="false">
+		<class-a>au.com.singtel.group.ops.osr.rmo.manageworkforce.v4_0_0.appointmentservice.CreateAppointmentNotificationRequest</class-a>
+		<class-b>au.com.singtel.group.sdp.appointment.service.model.CreateAppointmentNotificationRequestModel</class-b>
+	</mapping>
+	
+	<mapping map-null="false">
+		<class-a>au.com.singtel.group.sdp.appointment.service.model.CreateAppointmentNotificationResponseModel</class-a>
+		<class-b>au.com.singtel.group.ops.osr.rmo.manageworkforce.v4_0_0.appointmentservice.CreateAppointmentNotificationResponse</class-b>
+	</mapping>	
+						
+	
+</mappings>

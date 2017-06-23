@@ -1,0 +1,23 @@
+<jwshc:handler-config xmlns:jwshc="http://www.bea.com/xml/ns/jws"
+	xmlns:soap1="http://HandlerInfo.org/Server1" xmlns:soap2="http://HandlerInfo.org/Server2"
+	xmlns="http://java.sun.com/xml/ns/j2ee">
+	<jwshc:handler-chain>
+		<jwshc:handler-chain-name>
+			JwsConfigChain
+		</jwshc:handler-chain-name>
+		<jwshc:handler>
+			<handler-name>JwsLogHandler</handler-name>
+			<handler-class>
+				au.com.optus.mcas.core.ws.jws.JwsLogHandler
+			</handler-class>
+			<init-param>
+				<param-name>PROCESS_IDENTIFIER_NAME_IN_REQUEST</param-name>
+				<param-value>processId</param-value>
+			</init-param>
+			<init-param>
+				<param-name>PROCESS_IDENTIFIER_NAME_FOR_MDC</param-name>
+				<param-value>ProcessId</param-value>
+			</init-param>
+		</jwshc:handler>
+	</jwshc:handler-chain>
+</jwshc:handler-config>

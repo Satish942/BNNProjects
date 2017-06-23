@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<bindings xmlns="http://java.sun.com/xml/ns/jaxws">
+        <!-- Disable default wrapper style -->
+        <enableWrapperStyle>false</enableWrapperStyle>
+</bindings>

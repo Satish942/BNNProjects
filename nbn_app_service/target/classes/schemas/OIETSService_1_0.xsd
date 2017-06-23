@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    xmlns:common="http://www.group.singtel.com.au/cdm/v2_0_0/common"
+    xmlns:tns="http://au.com.singtel.group.commonservices/v1_0/OIETSService"
+    xmlns:service="http://www.group.singtel.com.au/cdm/v2_0_0/service"  targetNamespace="http://au.com.singtel.group.commonservices/v1_0/OIETSService" elementFormDefault="qualified">
+    <xsd:import namespace="http://www.group.singtel.com.au/cdm/v2_0_0/service" schemaLocation="service.xsd" />
+    <xsd:import namespace="http://www.group.singtel.com.au/cdm/v2_0_0/common" schemaLocation="common.xsd" />
+    <!-- ============================ All enums ============================== -->
+    <!-- =========================== All complex types ============================== -->
+    <xsd:complexType name="nsiCheckCVCAvailableForCSARequest" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="nsiCheckCVCAvailableForCSARequest" type="tns:nsiCheckCVCAvailableForCSARequest" />
+    <xsd:complexType name="nsiCheckCVCAvailableForCSAResponse" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="nsiCheckCVCAvailableForCSAResponse" type="tns:nsiCheckCVCAvailableForCSAResponse" />
+    <xsd:complexType name="nsiReserveCTAGForCSARequest" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="nsiReserveCTAGForCSARequest" type="tns:nsiReserveCTAGForCSARequest" />
+    <xsd:complexType name="nsiReserveCTAGForCSAResponse" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="nsiReserveCTAGForCSAResponse" type="tns:nsiReserveCTAGForCSAResponse" />
+    <xsd:complexType name="nsiReturnReservedCTAGRequest" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="nsiReturnReservedCTAGRequest" type="tns:nsiReturnReservedCTAGRequest" />
+    <xsd:complexType name="nsiReturnReservedCTAGResponse" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="nsiReturnReservedCTAGResponse" type="tns:nsiReturnReservedCTAGResponse" />
+    <xsd:complexType name="saveAVCRequest" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="saveAVCRequest" type="tns:saveAVCRequest" />
+    <xsd:complexType name="saveAVCResponse" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="saveAVCResponse" type="tns:saveAVCResponse" />
+    <xsd:complexType name="getSpeedDetailsRequest" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="getSpeedDetailsRequest" type="tns:getSpeedDetailsRequest" />
+    <xsd:complexType name="getSpeedDetailsResponse" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="getSpeedDetailsResponse" type="tns:getSpeedDetailsResponse" />
+    <xsd:complexType name="nsiBatchCheckCVCAvailableForCSARequest" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="1" maxOccurs="unbounded">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="nsiBatchCheckCVCAvailableForCSARequest" type="tns:nsiBatchCheckCVCAvailableForCSARequest" />
+    <xsd:complexType name="nsiBatchCheckCVCAvailableForCSAResponse" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU" />
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="0" maxOccurs="unbounded">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU" />
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="nsiBatchCheckCVCAvailableForCSAResponse" type="tns:nsiBatchCheckCVCAvailableForCSAResponse" />
+      <xsd:complexType name="getNsiCvcCtagAvcByGsidRequest" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"/>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"/>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="getNsiCvcCtagAvcByGsidRequest" type="tns:getNsiCvcCtagAvcByGsidRequest"/>
+    <xsd:complexType name="getNsiCvcCtagAvcByGsidResponse" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"/>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"/>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"/>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="getNsiCvcCtagAvcByGsidResponse" type="tns:getNsiCvcCtagAvcByGsidResponse"/>
+    
+     
+     <!-- OW-NBN Changes start -->
+	<xsd:complexType name="saveOWOrderRequest" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"/>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"/>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="saveOWOrderRequest" type="tns:saveOWOrderRequest"/>
+    <xsd:complexType name="saveOWOrderResponse" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"/>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"/>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"/>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="saveOWOrderResponse" type="tns:saveOWOrderResponse"/>
+	
+	
+	 <xsd:complexType name="nsiGetBandwidthProfileRequest" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"/>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"/>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="nsiGetBandwidthProfileRequest" type="tns:nsiGetBandwidthProfileRequest"/>
+    <xsd:complexType name="nsiGetBandwidthProfileResponse" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"/>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"/>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"/>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="nsiGetBandwidthProfileResponse" type="tns:nsiGetBandwidthProfileResponse"/>
+	
+	
+	 <xsd:complexType name="nsiGetNbnTemplateRequest" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"/>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="1" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"/>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="nsiGetNbnTemplateRequest" type="tns:nsiGetNbnTemplateRequest"/>
+    <xsd:complexType name="nsiGetNbnTemplateResponse" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"/>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BaseDto">
+                <xsd:sequence>
+                    <xsd:element name="serviceOrder" type="service:ServiceOrder" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"/>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"/>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="nsiGetNbnTemplateResponse" type="tns:nsiGetNbnTemplateResponse"/>
+	
+	 <!-- OW-NBN Changes end -->    
+    
+</xsd:schema>

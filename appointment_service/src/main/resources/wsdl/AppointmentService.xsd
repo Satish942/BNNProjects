@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" version="1.0" targetNamespace="http://www.group.singtel.com.au/ops/osr/rmo/manageworkforce/v4_0_0/AppointmentService" xmlns:tns="http://www.group.singtel.com.au/ops/osr/rmo/manageworkforce/v4_0_0/AppointmentService" xmlns:cdm="http://www.group.singtel.com.au/cdm/v4_0_0/cdm" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:import namespace="http://www.group.singtel.com.au/cdm/v4_0_0/cdm" schemaLocation="../common/cdm.xsd"/>
+
+  <xs:element name="cancelAppointment" nillable="true" type="tns:cancelAppointmentRequest"/>
+
+  <xs:element name="cancelAppointmentRequest" type="tns:cancelAppointmentRequest"/>
+
+  <xs:element name="cancelAppointmentResponse" type="tns:cancelAppointmentResponse"/>
+
+  <xs:element name="checkAvailableAppointment" nillable="true" type="tns:checkAvailableAppointmentRequest"/>
+
+  <xs:element name="checkAvailableAppointmentNotification" nillable="true" type="tns:checkAvailableAppointmentNotificationRequest"/>
+
+  <xs:element name="checkAvailableAppointmentNotificationRequest" type="tns:checkAvailableAppointmentNotificationRequest"/>
+
+  <xs:element name="checkAvailableAppointmentNotificationResponse" type="tns:checkAvailableAppointmentNotificationResponse"/>
+
+  <xs:element name="checkAvailableAppointmentRequest" type="tns:checkAvailableAppointmentRequest"/>
+
+  <xs:element name="checkAvailableAppointmentResponse" type="tns:checkAvailableAppointmentResponse"/>
+
+  <xs:element name="checkAvailableAppointmentWrapper" type="tns:CheckAvailableAppointmentWrapper"/>
+
+  <xs:element name="createAppointment" nillable="true" type="tns:createAppointmentRequest"/>
+
+  <xs:element name="createAppointmentNotification" nillable="true" type="tns:createAppointmentNotificationRequest"/>
+
+  <xs:element name="createAppointmentNotificationRequest" type="tns:createAppointmentNotificationRequest"/>
+
+  <xs:element name="createAppointmentNotificationResponse" type="tns:createAppointmentNotificationResponse"/>
+
+  <xs:element name="createAppointmentRequest" type="tns:createAppointmentRequest"/>
+
+  <xs:element name="createAppointmentResponse" type="tns:createAppointmentResponse"/>
+
+  <xs:element name="createAppointmentWrapper" type="tns:CreateAppointmentWrapper"/>
+
+  <xs:element name="getAppointmentById" nillable="true" type="tns:getAppointmentByIdRequest"/>
+
+  <xs:element name="getAppointmentByIdRequest" type="tns:getAppointmentByIdRequest"/>
+
+  <xs:element name="getAppointmentByIdResponse" type="tns:getAppointmentByIdResponse"/>
+
+  <xs:element name="getAppointmentByIdWrapper" type="tns:GetAppointmentByIdWrapper"/>
+
+  <xs:element name="getAppointmentsByOrder" nillable="true" type="tns:getAppointmentsByOrderRequest"/>
+
+  <xs:element name="getAppointmentsByOrderRequest" type="tns:getAppointmentsByOrderRequest"/>
+
+  <xs:element name="getAppointmentsByOrderResponse" type="tns:getAppointmentsByOrderResponse"/>
+
+  <xs:element name="getAppointmentsByOrderWrapper" type="tns:GetAppointmentsByOrderWrapper"/>
+
+  <xs:element name="getRequiredAppointmentType" nillable="true" type="tns:getRequiredAppointmentTypeRequest"/>
+
+  <xs:element name="getRequiredAppointmentTypeRequest" type="tns:getRequiredAppointmentTypeRequest"/>
+
+  <xs:element name="getRequiredAppointmentTypeResponse" type="tns:getRequiredAppointmentTypeResponse"/>
+
+  <xs:element name="getRequiredAppointmentTypeWrapper" type="tns:GetRequiredAppointmentTypeWrapper"/>
+
+  <xs:element name="updateAppointment" nillable="true" type="tns:updateAppointmentRequest"/>
+
+  <xs:element name="updateAppointmentRequest" type="tns:updateAppointmentRequest"/>
+
+  <xs:element name="updateAppointmentResponse" type="tns:updateAppointmentResponse"/>
+
+  <xs:element name="updateAppointmentWrapper" type="tns:UpdateAppointmentWrapper"/>
+
+  <xs:complexType name="createAppointmentRequest">
+    <xs:complexContent>
+      <xs:extension base="cdm:BaseDto">
+        <xs:sequence>
+          <xs:element name="customerSelectedAppointment" type="cdm:Appointment" minOccurs="0"/>
+          <xs:element name="identification" type="xs:string" minOccurs="0"/>
+          <xs:element name="identificationType" type="xs:string" minOccurs="0"/>
+          <xs:element name="serviceIdentifier" type="xs:string" minOccurs="0"/>
+          <xs:element name="serviceIdentifierType" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="createAppointmentResponse">
+    <xs:complexContent>
+      <xs:extension base="cdm:BaseDto">
+        <xs:sequence>
+          <xs:element name="createAppointmentResponse" type="tns:CreateAppointmentWrapper" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="CreateAppointmentWrapper">
+    <xs:sequence>
+      <xs:element name="customerBookedAppointment" type="cdm:Appointment" minOccurs="0"/>
+      <xs:element name="mustDoAppointment" type="cdm:Appointment" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updateAppointmentRequest">
+    <xs:complexContent>
+      <xs:extension base="cdm:BaseDto">
+        <xs:sequence>
+          <xs:element name="customerPreviousAppointment" type="cdm:Appointment" minOccurs="0"/>
+          <xs:element name="customerSelectedAppointment" type="cdm:Appointment" minOccurs="0"/>
+          <xs:element name="identification" type="xs:string" minOccurs="0"/>
+          <xs:element name="identificationType" type="xs:string" minOccurs="0"/>
+          <xs:element name="serviceIdentifier" type="xs:string" minOccurs="0"/>
+          <xs:element name="serviceIdentifierType" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="updateAppointmentResponse">
+    <xs:complexContent>
+      <xs:extension base="cdm:BaseDto">
+        <xs:sequence>
+          <xs:element name="updateAppointmentResponse" type="tns:UpdateAppointmentWrapper" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="UpdateAppointmentWrapper">
+    <xs:sequence>
+      <xs:element name="customerBookedAppointment" type="cdm:Appointment" minOccurs="0"/>
+      <xs:element name="mustDoAppointment" type="cdm:Appointment" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getRequiredAppointmentTypeRequest">
+    <xs:complexContent>
+      <xs:extension base="cdm:BaseDto">
+        <xs:sequence>
+          <xs:element ref="cdm:customerOrder" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getRequiredAppointmentTypeResponse">
+    <xs:complexContent>
+      <xs:extension base="cdm:BaseDto">
+        <xs:sequence>
+          <xs:element name="getRequiredAppointmentTypeResponse" type="tns:GetRequiredAppointmentTypeWrapper" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="GetRequiredAppointmentTypeWrapper">
+    <xs:sequence>
+      <xs:element ref="cdm:appointment" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="cancelAppointmentRequest">
+    <xs:complexContent>
+      <xs:extension base="cdm:BaseDto">
+        <xs:sequence>
+          <xs:element name="customerBookedAppointment" type="cdm:Appointment" minOccurs="0"/>
+          <xs:element name="identification" type="xs:string" minOccurs="0"/>
+          <xs:element name="identificationType" type="xs:string" minOccurs="0"/>
+          <xs:element name="serviceIdentifier" type="xs:string" minOccurs="0"/>
+          <xs:element name="serviceIdentifierType" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="cancelAppointmentResponse">
+    <xs:complexContent>
+      <xs:extension base="cdm:BaseDto">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getAppointmentByIdRequest">
+    <xs:complexContent>
+      <xs:extension base="cdm:BaseDto">
+        <xs:sequence>
+          <xs:element name="id" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getAppointmentByIdResponse">
+    <xs:complexContent>
+      <xs:extension base="cdm:BaseDto">
+        <xs:sequence>
+          <xs:element name="getAppointmentByIdResponse" type="tns:GetAppointmentByIdWrapper" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="GetAppointmentByIdWrapper">
+    <xs:sequence>
+      <xs:element ref="cdm:appointment" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element ref="cdm:customerFacingService" minOccurs="0"/>
+      <xs:element name="linkedAppointment" type="cdm:Appointment" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element ref="cdm:product" minOccurs="0"/>
+      <xs:element ref="cdm:resource" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createAppointmentNotificationRequest">
+    <xs:complexContent>
+      <xs:extension base="cdm:BaseDto">
+        <xs:sequence>
+          <xs:element name="customerSelectedAppointment" type="cdm:Appointment" minOccurs="0"/>
+          <xs:element name="mustDoAppointment" type="cdm:Appointment" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="createAppointmentNotificationResponse">
+    <xs:complexContent>
+      <xs:extension base="cdm:BaseDto">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="checkAvailableAppointmentRequest">
+    <xs:complexContent>
+      <xs:extension base="cdm:BaseDto">
+        <xs:sequence>
+          <xs:element name="customerRequestedAppointment" type="cdm:Appointment" minOccurs="0"/>
+          <xs:element name="mustDoAppointment" type="cdm:Appointment" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="checkAvailableAppointmentResponse">
+    <xs:complexContent>
+      <xs:extension base="cdm:BaseDto">
+        <xs:sequence>
+          <xs:element name="checkAvailableAppointmentResponse" type="tns:CheckAvailableAppointmentWrapper" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="CheckAvailableAppointmentWrapper">
+    <xs:sequence>
+      <xs:element name="availableAppointments" type="cdm:Appointment" minOccurs="0" maxOccurs="unbounded"/>
+      <xs:element name="customerRequestedAppointment" type="cdm:Appointment" minOccurs="0"/>
+      <xs:element name="firstAvailableAppointment" type="cdm:Appointment" minOccurs="0"/>
+      <xs:element name="mustDoAppointment" type="cdm:Appointment" minOccurs="0"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getAppointmentsByOrderRequest">
+    <xs:complexContent>
+      <xs:extension base="cdm:BaseDto">
+        <xs:sequence>
+          <xs:element name="purchaseOrderNumber" type="xs:string" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="getAppointmentsByOrderResponse">
+    <xs:complexContent>
+      <xs:extension base="cdm:BaseDto">
+        <xs:sequence>
+          <xs:element name="getAppointmentsByOrderResponse" type="tns:GetAppointmentsByOrderWrapper" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="GetAppointmentsByOrderWrapper">
+    <xs:sequence>
+      <xs:element ref="cdm:appointment" minOccurs="0" maxOccurs="unbounded"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="checkAvailableAppointmentNotificationRequest">
+    <xs:complexContent>
+      <xs:extension base="cdm:BaseDto">
+        <xs:sequence>
+          <xs:element name="customerRequestedAppointment" type="cdm:Appointment" minOccurs="0"/>
+          <xs:element name="mustDoAppointment" type="cdm:Appointment" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="checkAvailableAppointmentNotificationResponse">
+    <xs:complexContent>
+      <xs:extension base="cdm:BaseDto">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>
+

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" version="1.0" targetNamespace="http://www.group.singtel.com.au/optus/oss/enabler/NbnEnablerService/v4_0_0/NbnEnablerService" xmlns:tns="http://www.group.singtel.com.au/optus/oss/enabler/NbnEnablerService/v4_0_0/NbnEnablerService" xmlns:cdm="http://www.group.singtel.com.au/cdm/v4_0_0/cdm" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:import namespace="http://www.group.singtel.com.au/cdm/v4_0_0/cdm" schemaLocation="../common/cdm.xsd"/>
+
+  <xs:element name="checkAvailableAppointment" nillable="true" type="tns:checkAvailableAppointmentRequest"/>
+
+  <xs:element name="checkAvailableAppointmentRequest" type="tns:checkAvailableAppointmentRequest"/>
+
+  <xs:element name="checkAvailableAppointmentResponse" type="tns:checkAvailableAppointmentResponse"/>
+
+  <xs:element name="createAppointment" nillable="true" type="tns:createAppointmentRequest"/>
+
+  <xs:element name="createAppointmentRequest" type="tns:createAppointmentRequest"/>
+
+  <xs:element name="createAppointmentResponse" type="tns:createAppointmentResponse"/>
+
+  <xs:element name="createServiceOrder" nillable="true" type="tns:createServiceOrderRequest"/>
+
+  <xs:element name="createServiceOrderRequest" type="tns:createServiceOrderRequest"/>
+
+  <xs:element name="createServiceOrderResponse" type="tns:createServiceOrderResponse"/>
+
+  <xs:complexType name="createAppointmentRequest">
+    <xs:complexContent>
+      <xs:extension base="cdm:BaseDto">
+        <xs:sequence>
+          <xs:element name="customerRequestedAppointment" type="cdm:Appointment" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="createAppointmentResponse">
+    <xs:complexContent>
+      <xs:extension base="cdm:BaseDto">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="createServiceOrderRequest">
+    <xs:complexContent>
+      <xs:extension base="cdm:BaseDto">
+        <xs:sequence>
+          <xs:element ref="cdm:serviceOrder" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="createServiceOrderResponse">
+    <xs:complexContent>
+      <xs:extension base="cdm:BaseDto">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="checkAvailableAppointmentRequest">
+    <xs:complexContent>
+      <xs:extension base="cdm:BaseDto">
+        <xs:sequence>
+          <xs:element name="customerRequestedAppointment" type="cdm:Appointment" minOccurs="0"/>
+        </xs:sequence>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+
+  <xs:complexType name="checkAvailableAppointmentResponse">
+    <xs:complexContent>
+      <xs:extension base="cdm:BaseDto">
+        <xs:sequence/>
+      </xs:extension>
+    </xs:complexContent>
+  </xs:complexType>
+</xs:schema>
+

@@ -1,0 +1,1359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.group.singtel.com.au/cdm/v2_0_0/service" elementFormDefault="qualified"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:service="http://www.group.singtel.com.au/cdm/v2_0_0/service"
+    xmlns:common="http://www.group.singtel.com.au/cdm/v2_0_0/common">
+    <xsd:import schemaLocation="common.xsd" namespace="http://www.group.singtel.com.au/cdm/v2_0_0/common" />
+    <!-- ============================ All enums ============================== -->
+    <!-- =========================== All complex types ============================== -->
+    <xsd:complexType name="Service" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">This is an abstract base class for defining the Service
+                hierarchy. All Services are characterized as either being possibly visible and usable by a Customer or
+                not. This gives rise to the two subclasses of Service: CustomerFacingService and ResourceFacingService.
+                Services are defined as being tightly bound to Products. A Product defines the context of the Service,
+                Service and its related entities (e.g., ServiceSpecification, ServiceRole, and so forth) are related to
+                entities in the Resource, Product, and other domains through a set of relationships. A Service
+                represents the object that will be instantiated. Each Service instance can be different; therefore,
+                Service is limited to owning just the changeable attributes, methods, relationships, and constraints
+                that can be instantiated. The invariant attributes, methods, relationships, and constraints that can be
+                instantiated are defined by a ServiceSpecification. The purpose of this entity is twofold. First, it is
+                used to define attributes, methods, and relationships that are common to all Services. Second, it
+                provides a convenient point to define how Services interact with other parts business entities. Service
+                is a first-class entity, inheriting directly from ManagedEntity. It is therefore a sibling with
+                Resource, Product, and other first-class entities. Note that the CIM models Service as a subclass of
+                LogicalElement, which is a subclass of ManagedSystemElement, which is a subclass of ManagedElement
+                (which is equivalent to ManagedEntity).
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:RootEntity">
+                <xsd:sequence>
+                    <xsd:element name="isServiceEnabled" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">This is a Boolean attribute that, if TRUE,
+                                signifies that this Service has been enabled for use. If the value of this attribute is
+                                FALSE, then this means that this particular Service has NOT been enabled for use.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="hasStarted" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">This is a Boolean attribute that, if TRUE,
+                                signifies that this Service has already been started. If the value of this attribute is
+                                FALSE, then this signifies that this Service has NOT been Started.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="isMandatory" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">This is a Boolean attribute that, if TRUE,
+                                signifies that this Service is mandatory (i.e., this Service must be running when the
+                                managed environment is in a non-failed state). If the value of this attribute is FALSE,
+                                then this means that this Service is not required to run.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="startMode" type="xsd:int" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">This attribute is an enumerated integer that
+                                indicates how the Service is started. Values include: 0: Unknown 1: Automatically by the
+                                managed environment 2: Automatically by the owning device 3: Manually by the Provider of
+                                the Service 4: Manually by a Customer of the Provider 5: Any of the above
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="isStateful" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">This is a Boolean attribute that, if TRUE,
+                                means that this Service can be changed without affecting any other services.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="password" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="serviceStartDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="serviceEndDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="identifier" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="provisionDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="reasonCode" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element minOccurs="0" name="statusCode" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element minOccurs="0" name="statusDescription" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="newIdentifier" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="newIdentifierType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="ownServiceDetails" type="service:OwnsServiceDetails" minOccurs="0"
+                        maxOccurs="unbounded">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="identifierType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="partyRole" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                    <xsd:element name="businessInteractionItem" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                    <xsd:element name="valueNetworkRole" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                    <xsd:element name="customer" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                    <xsd:element name="serviceCharacteristicValue" type="service:ServiceCharacteristicValue"
+                        minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                    <xsd:element name="servicePorting" type="service:ServicePorting" minOccurs="0"
+                        maxOccurs="unbounded">
+                    </xsd:element>
+                    <xsd:element name="servicePlaceDetails" type="service:ServicePlaceDetails" minOccurs="0"
+                        maxOccurs="unbounded">
+                    </xsd:element>
+                    <xsd:element name="serviceAccessPoint" type="service:ServiceAccessPoint" minOccurs="0"
+                        maxOccurs="unbounded">
+                    </xsd:element>
+                    <xsd:element name="serviceSpecification" type="service:ServiceSpecification" minOccurs="0"
+                        maxOccurs="unbounded">
+                    </xsd:element>
+                    <xsd:element name="serviceUsageForService" type="service:ServiceUsage" minOccurs="0"
+                        maxOccurs="unbounded">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerFacingService" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">A CustomerFacingService defines the properties of a particular
+                related Service that represents a realization of a Product within an organization's infrastructure; This
+                is in direct contrast to ResourceFacingServices, which support the network/infrastructure facing part of
+                the service. For example, a VPN is an example of a CustomerFacingService, while the sub-services that
+                perform different types of routing between network devices making up the VPN are examples of
+                ResourceFacingServices. CustomerFacingServices are directly related to Products as well as to
+                ResourceFacingServices. ResourceFacingServices are indirectly related to Products through the
+                relationship between Product and CustomerFacingServices. This enforces the relationship to Products
+                while keeping Services that are not directly realized by Products (i.e., ResourceFacingServices)
+                separated from Products.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="service:Service">
+                <xsd:sequence>
+                    <xsd:element name="cfsStatus" type="xsd:int" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">This is an enumerated integer that defines the
+                                status of this particular CustomerFacingService. Values include: 0: Operational and
+                                billable 1: Degraded but billable 2: In Violation and billable 3: Operational but not
+                                billable 4: In Test and not billable 5: Being Deployed and not billable 6: Failed Value
+                                0 means that this CustomerFacingService is acting per specification, and is fully
+                                billable. Value 1 means that this CustomerFacingService is operational, but is currently
+                                in a degraded state. However, it has not violated any contractual specification and is
+                                fully billable. Value 2 means that this CustomerFacingService is operational, but is
+                                currently in violation of its associated contractual specification(s). Whether it is
+                                billable or not is determined by its associated Policy for handling service violations.
+                                Value 3 means that this CustomerFacingService is currently operational, but has not been
+                                enabled for this particular customer yet and is therefore not billable for this
+                                customer. Value 4 means that this CustomerFacingService is currently being tested, and
+                                is not yet ready to be enabled for this particular customer. Consequently, it is
+                                therefore not billable for this customer. Value 5 means that this CustomerFacingService
+                                is currently being deployed, and therefore has not been enabled for this particular
+                                customer yet. Consequently, it is therefore not billable for this customer. Value 6
+                                means that this CustomerFacingService has currently failed. The set of actions that
+                                should be taken, as well as whether this service can still be billed or not, are
+                                determined by its associated Policy for handling service violations.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="authoriseSystem" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="cfsStatusMessage" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="type" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension - FIXED, MOBILE, INTERNET,
+                                CABLE
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="subType" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension - DIALUP, ADSL,ADSL2, NBN
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="product" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                    <xsd:element name="customerAllowance" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                    <xsd:element name="resourceFacingService" type="service:ResourceFacingService"
+                        minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ServiceBundle" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">Conceptually, a ServiceBundle is thought of as a collection of
+                ResourceFacingServiceSpecifications. This enables the needs of different sets of
+                ResourceFacingServiceSpecifications to be grouped together hence, the name "bundle". Since these are
+                ResoureFacingSpecifications, they define reusable templates for implementing the ResourceFacingServices
+                that are required by a particular CustomerFacingService (as represented by a ServicePackage).
+                ServiceBundles were designed to define a set of Class of Service specifications that were required by a
+                CustomerFacingService to work together. A ServicePackage is the entity that models the requirements of
+                the CustomerFacingService. Thus, ServicePackages can specify different packaging of
+                CustomerFacingServices that are obtained by a Customer via a Product, and ServiceBundles specify the set
+                of ResourceFacingServices that each CustomerFacingService requires. ServiceBundles are a natural way to
+                implement the requirements of a ServicePackage, and are related to a ServicePackage through the
+                ServicePackageUsesServiceBundles aggregation.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="hasMultipleQoSTypes" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">This is a Boolean attribute that, if TRUE, defines
+                        this ServiceBundle as containing more than a single type of QoSService (e.g., DiffServ and
+                        802.1P as an example).
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ResourceFacingService" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">This is an abstract base class for ResourceFacingServices. A
+                ResourceFacingService is an abstraction that defines the characteristics and behavior of a particular
+                Service that is not directly seen or purchased by the Customer. ResourceFacingServices are internal
+                Services that are required to support a CustomerFacingService. The Customer obtains
+                CustomerFacingServices via Products, and is not aware of the ResourceFacingServices which support the
+                CustomerFacingService(s) that is being obtained directly by the Customer via a Product. For example, a
+                VPN is an example of a CustomerFacingService. This particular type of VPN may require BGP to support it.
+                Customers dont purchase BGP, and hopefully arent even aware that BGP is running. Therefore, BGP is an
+                example of a ResourceFacingService. CustomerFacingServices are directly related to Products as well as
+                to ResourceFacingServices. ResourceFacingServices are indirectly related to Products through the
+                relationship between Product and Resource. This enforces the relationship to Products while keeping
+                Services that are not directly obtainable via Products (i.e., ResourceFacingServices) separated from
+                Products.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="service:Service">
+                <xsd:sequence>
+                    <xsd:element name="rfsStatus" type="xsd:int" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">This is an enumerated integer that defines the
+                                status of this particular ResourceFacingService. Values include: 0: Operational and
+                                supporting CFS 1: Degraded but supporting CFS 2: In Violation and not supporting CFS 3:
+                                Operational but not yet supporting a CFS 4: Being Tested 5: Being Deployed 6: Failed
+                                Value 0 means that this ResourceFacingService is acting per specification, and is also
+                                currently supporting one or more CustomerFacingServices. Value 1 means that this
+                                ResourceFacingService is operational, but is currently in a degraded state. This
+                                degraded state indicates congestion or some other problem, but has not yet comprimised
+                                the operation of its associated CustomerFacingServices. Value 2 means that this
+                                ResourceFacingService is operational, but is currently in violation of its associated
+                                specification(s). This in turn means that its associated CustomerFacingServices are
+                                violating their contractual specification(s) unless automatic fail-over has been
+                                enabled. Value 3 means that this ResourceFacingService is acting per specification, but
+                                is not yet currently supporting one or more CustomerFacingServices. Value 4 means that
+                                this ResourceFacingService is currently being tested, and is not yet ready to support a
+                                CustomerFacingService. Value 5 means that this ResourceFacingService is currently being
+                                deployed, and is not yet ready to support a CustomerFacingService. Value 6 means that
+                                this ResourceFacingService has currently failed. The set of actions that should be
+                                taken, as well as whether this service can still be billed or not, are determined by its
+                                associated Policy for handling service violations.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="resourceFacingServiceAtomic" type="xsd:string" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="resources" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                    <xsd:element name="resourceFacingServiceSpec" type="service:ResourceFacingServiceSpec"
+                        minOccurs="0" maxOccurs="1">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ServiceOrder" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">A type of Request that represents a Customer Order's products
+                decomposed into the services through which the products are realized.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:Request">
+                <xsd:sequence>
+                    <xsd:element name="serviceOrderNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="revisionNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="parentOrderNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="parentOrderRevisionNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="orderType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Optus Extension - ACKNOWLEDGED, INPROGRESS,
+                                REJECTED, CANCELLED, COMPLETE
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="statusDescription" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="reasonCode" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="subStatus" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="productOffering" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                    <xsd:element name="service" type="service:Service" minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                    <xsd:element name="serviceOrderItem" type="service:ServiceOrderItem" minOccurs="0"
+                        maxOccurs="unbounded">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ServiceOrderItem" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">The purpose for the ServiceOrder expressed in terms of a
+                ServiceSpecification or a Service.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:BusinessInteractionItem">
+                <xsd:sequence>
+                    <xsd:element name="status" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="statusDescription" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="serviceOrderLIneItemNumber" type="xsd:string" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="serviceOrderItemType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="productOffering" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                    <xsd:element name="service" type="service:Service" minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerFacingServiceSpec" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">A CustomerFacingServiceSpec defines the properties
+                (attributes) common to a particular CustomerFacingService used to realize the associated Product(s).
+                This entity serves as a common basis to build any set of CustomerFacingServices that the service
+                provider needs.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="service:ServiceSpecification">
+                <xsd:sequence>
+                    <xsd:element name="customerFacingServiceSpec" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="resourceFacingServiceSpec" type="service:ResourceFacingServiceSpec"
+                        minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ResourceFacingServiceSpec" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">This is an abstract base class for defining different types of
+                ResourceFacingServiceSpecs. A ResourceFacingServiceSpec is an abstraction that defines the invariant
+                characteristics and behavior of a particular ResourceFacingService. The invariant portion serves as a
+                single common basis to build a set of variable ResourceFacingServices that all use this common
+                ResourceFacingServiceSpec. This class can be thought of as a template, which represents a generic
+                specification for implementing a particular type of Service. A ServiceSpecification may consist of other
+                ServiceSpecifications supplied together as a collection. Members of the collection may be offered
+                individually or collectively. ServiceSpecifications may also exist within groupings, such as within a
+                Product. ServiceSpecification inherits from Specification, which inherits from ManagedEntity.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="service:ServiceSpecification">
+                <xsd:sequence>
+                    <xsd:element name="resourceFacingServiceSpec" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ServiceSpecCharacteristicValue" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">A ServiceSpecCharacteristicValue object is used to define a
+                set of attributes, each of which can be assigned to a corresponding set of attributes in a
+                ServiceSpecCharacteristic object. The values of the attributes in the ServiceSpecCharacteristicValue
+                object describe the values of the attributes that a corresponding ServiceSpecCharacteristic object can
+                take on.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="valueType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A kind of value that the characteristic can take on,
+                        such as numeric, text, and so forth.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="defaultValue" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Indicates if the value is the default value for a
+                        characterisitc.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="value" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A discrete value that the characteristic can take on.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="unitOfMeasure" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A length, surface, volume, dry measure, liquid
+                        measure, money, weight, time, and the like. Iin general, a determinate quantity or magnitude of
+                        the kind designated, taken as a standard of comparison for others of the same kind, in assigning
+                        to them numerical values, as 1 foot, 1 yard, 1 mile, 1 square foot.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="valueFrom" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">The low range value that a characteristic can take on.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="valueTo" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">The upper range value that a characteristic can take
+                        on.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="rangeInterval" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">An indicator that specifies the inclusion or exclusion
+                        of the valueFrom and valueTo attributes. Possible values are "open", "closed", "closedBottom"
+                        and "closedTop".
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="validFor" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">The period of time for which a value is applicable.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ServiceSpecCharacteristic" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">This is an abstract base class that represents the key
+                features of this ServiceSpecification. For example, bandwidth is characteristic of many different types
+                of services; if bandwidth is important (e.g., from the point-of-view of a Customer obtaining this
+                Service via a Product) then bandwidth would be a ServiceCharacteristic for that particular Service. Note
+                that in this example, bandwidth would have to be defined as an invariant feature that multiple Services
+                use. Otherwise, it should be defined as a ServiceCharacteristic.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A unique identifier for the
+                        CharacteristicSpecification.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A word, term, or phrase by which the
+                        CharacteristicSpecification is known and distinguished from other CharacteristicSpecifications.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A narrative that explains the
+                        CharacteristicSpecification.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="unique" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">An indicator that specifies if a value is unique for
+                        the specification. Possible values are; "unique while value is in effect" and "unique whether
+                        value is in effect or not"
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="valueType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A kind of value that the characteristic can take on,
+                        such as numeric, text, and so forth.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="minCardinality" type="xsd:int" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">The minimum number of instances a CharacteristicValue
+                        can take on. For example, zero to five phone numbers in a group calling plan, where zero is the
+                        value for the minCardinality.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="maxCardinality" type="xsd:int" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">The maximum number of instances a CharacteristicValue
+                        can take on. For example, zero to five phone numbers in a group calling plan, where five is the
+                        value for the maxCardinality.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="extensible" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">An indicator that specifies that the values for the
+                        characteristic can be extended by adding new values when instantiating a characteristic for an
+                        Entity.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="derivationFormula" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">A rule or principle represented in symbols, numbers,
+                        or letters, often in the form of an equation used to derive the value of a characteristic value.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="validFor" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">The period of time for which a characteristic is
+                        applicable.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="action" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="type" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="serviceCharacteristicValue" type="service:ServiceCharacteristicValue"
+                minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="serviceSpecCharacteristicValue" type="service:ServiceSpecCharacteristicValue"
+                minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ServiceSpecification" abstract="true">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">This is an abstract base class for defining the
+                ServiceSpecification hierarchy. All Services are characterized as either being possibly visible and
+                usable by a Customer or not. This gives rise to the two subclasses of Service: CustomerFacingService and
+                ResourceFacingService. However, each instance of a Service is made up of changeable as well as invariant
+                attributes, methods, relationships and constraints. A ServiceSpecification defines the invariant
+                characteristics of a Service. It can be conceptually thought of as a template that different Service
+                instances can be instantiated from. Each of these Service instances will have the same invariant
+                characteristics. However, the other characteristics of the instantiated Service will be specific to each
+                instance. This class can be thought of as a template, which represents a generic specification for
+                implementing a particular type of Service. A ServiceSpecification may consist of other
+                ServiceSpecifications supplied together as a collection. Members of the collection may be offered
+                individually or collectively. ServiceSpecifications may also exist within groupings, such as within a
+                Product. ServiceSpecification inherits from Specification, which inherits from ManagedEntity.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:Specification">
+                <xsd:sequence>
+                    <xsd:element name="serviceSpecCharUse" type="service:ServiceSpecCharUse" minOccurs="0"
+                        maxOccurs="unbounded">
+                    </xsd:element>
+                    <xsd:element name="servicedefinition" type="service:ServiceDefinition" minOccurs="0"
+                        maxOccurs="1">
+                    </xsd:element>
+                    <xsd:element name="servicetemplate" type="service:ServiceTemplate" minOccurs="0"
+                        maxOccurs="1">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ServiceUsageSpec" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">A detailed description of a service usage event (for example,
+                a purchase or a usage of a service).
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="serviceUsageSpec" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="_serviceSpecification" type="service:ServiceSpecification" minOccurs="0"
+                maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ServiceUsage" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">An occurrence of employing a Service for its intended purpose.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:Usage">
+                <xsd:sequence>
+                    <xsd:element name="serviceUsage" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ServiceCatalog" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">Represents a grouping of Service Specifications and Service
+                Spec Characteristics.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="serviceSpecification" type="service:ServiceSpecification" minOccurs="0"
+                maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ServiceTemplate" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">Represents a type of Service Specification introduced for the
+                purposes of Service Fulfillment. It defines specific ServiceSpecCharacteristicsValues for the globally
+                set ServiceSpecCharacteristics that can be dynamically referenced by multiple Service instances during
+                their lifecycle span. A ServiceTemplate is checked against its associated ServiceDefinition by verifying
+                the presence of the ServiceSpecCharacteristics and the validity of the corresponding assigned
+                ServiceSpecCharacteristicsValues.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="stStatus" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">The state of the Service Template; it may take on one
+                        of the following values: Draft, Pilot, Commercial, Retired.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="source" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Determines whether the source of the OS providing the
+                        Service Template is external or internal to a given organization.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="serviceLocation" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Gives the URL of where the service component
+                        activation OS is actually located.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ServiceDefinition" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">Represents a type of Service Specification introduced for the
+                purposes of Service Fulfillment. It defines ALL the ServiceSpecCharacteristics SSCs that must be used to
+                create corresponding Service instances. This includes the SSCs which are: globally set the corresponding
+                values are defined only in ServiceTemplates and are sometimes designated as invariant and set per
+                instance since the ServiceDefinition does not contain any value for such SSCs, the corresponding values
+                can be defined only over the Activation Interface and are sometimes designated as variant
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="service:ServiceSpecification">
+                <xsd:sequence>
+                    <xsd:element name="sdStatus" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">The state of the Service Definition; it may
+                                take on one of the following values: Draft, Standard, or Proprietary.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="activationMode" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU">Indicates whether the designed service is
+                                activated through provisioning, or is signaled.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="serviceTemplate" type="service:ServiceTemplate" minOccurs="0"
+                        maxOccurs="unbounded">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ServiceAccessPoint" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">Represents a set of parameters associated (directly or
+                indirectly) with a unique (logical and/or physical) resource where the Service can be accessed.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="type" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Method to group service access points that have
+                        strongly marked and readily defined similarities. This attribute is used in the Service
+                        Definition to identify the type of SAP required at service activation time.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="serviceState" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Indicates the ability of an entity to provide service.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="operationalState" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Indicates whether the set of resources supporting the
+                        service are installed and working.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="adminState" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU">Represents the administrative suspension (or
+                        resumption) of traffic for a given subscriber.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ServiceSpecCharUse" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="name" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="description" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="serviceSpecCharacteristic" type="service:ServiceSpecCharacteristic"
+                minOccurs="0" maxOccurs="1">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ServicePorting" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="portType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="portingRejectReason" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="portStatus" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="gainingSP" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="losingSP" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="eventType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="previousRequestId" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="gainingCarrier" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="losingCarrier" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="authorisedDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="portingRejectParty" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="sameCarrier" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="isPortable" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="assignedCarrier" type="xsd:boolean" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="assignedSP" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="cutOverStatus" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="giveBackStatus" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="authoriseSystem" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="portingRejectCode" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="authorisationType" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="portingQuota" type="service:PortingQuota" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ServiceProblem" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="common:Problem">
+                <xsd:sequence>
+                    <xsd:element name="serviceProblem" type="xsd:string" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="affectedServiceQuantity" type="xsd:byte" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="serviceRestoredDate" type="xsd:dateTime" minOccurs="0" maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="product" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                    <xsd:element name="serviceProblemItem" type="service:ServiceProblemItem" minOccurs="0"
+                        maxOccurs="unbounded">
+                    </xsd:element>
+                    <xsd:element name="service" type="service:Service" minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ServiceBusinessInteractionItem" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="businessInteractionItem" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="service" type="service:Service" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ServiceCharacteristicValue" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="value" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="GsmProblem" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="gsmSector" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="gsmSiteCode" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="SetTopProblemProblem" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="unitLocation" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="unitNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="smartCardNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerFacingServiceAtomic" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="service:CustomerFacingService">
+                <xsd:sequence>
+                    <xsd:element name="customerFacingServiceAtomic" type="xsd:string" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerFacingServiceSpecAtomic" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="service:CustomerFacingServiceSpec">
+                <xsd:sequence>
+                    <xsd:element name="customerFacingServiceSpecAtomic" type="xsd:string" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ResourceFacingServiceSpecAtomic" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="service:ResourceFacingServiceSpec">
+                <xsd:sequence>
+                    <xsd:element name="resourceFacingServiceSpecAtomic" type="xsd:string" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerFacingServiceComposite" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="service:CustomerFacingService">
+                <xsd:sequence>
+                    <xsd:element name="customerFacingServiceComposite" type="xsd:string" minOccurs="0"
+                        maxOccurs="1">
+                        <xsd:annotation>
+                            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element name="customerFacingServices" type="service:CustomerFacingService"
+                        minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ResourceFacingServiceComposite" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="service:ResourceFacingService">
+                <xsd:sequence>
+                    <xsd:element name="resourceFacingServices" type="service:ResourceFacingService"
+                        minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ResourceFacingServiceAtomic" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="service:ResourceFacingService">
+                <xsd:sequence>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ResourceFacingServiceSpecComposite" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="service:ResourceFacingServiceSpec">
+                <xsd:sequence>
+                    <xsd:element name="resourceFacingServiceSpecs" type="service:ResourceFacingServiceSpec"
+                        minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="CustomerFacingServiceSpecComposite" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="service:CustomerFacingServiceSpec">
+                <xsd:sequence>
+                    <xsd:element name="customerFacingServiceSpecs" type="service:CustomerFacingServiceSpec"
+                        minOccurs="0" maxOccurs="unbounded">
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ServiceProblemItem" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="totalAffectedServices" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="serviceProblemItemNumber" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="serviceProblemItemStatus" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="resource" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="serviceProblemItemFor" type="service:ServiceProblemItem" minOccurs="0"
+                maxOccurs="unbounded">
+            </xsd:element>
+            <xsd:element name="service" type="service:Service" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="OwnsServiceDetails" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="service" type="service:Service" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ServicePlaceDetails" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="place" type="common:Place" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="PortingQuota" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU">Optus Extension
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="remainingQuota" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="totalQuota" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="quotaDate" type="xsd:string" minOccurs="1" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="portingQuotaInfo" type="service:PortingQuotaInfo" minOccurs="0" maxOccurs="unbounded">
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="PortingQuotaInfo" abstract="false">
+        <xsd:annotation>
+            <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="id" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="validFor" type="common:TimePeriod" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="numberOfPorting" type="xsd:string" minOccurs="0" maxOccurs="1">
+                <xsd:annotation>
+                    <xsd:documentation xml:lang="en-AU"></xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

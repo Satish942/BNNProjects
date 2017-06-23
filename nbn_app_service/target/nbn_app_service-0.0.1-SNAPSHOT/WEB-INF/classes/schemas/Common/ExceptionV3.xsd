@@ -1,0 +1,354 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.nbnco.com.au/cim/common/exception/v3" version="V3.05"
+    xmlns:exp="http://www.nbnco.com.au/cim/common/exception/v3" xmlns:rbe="http://www.nbnco.com.au/cim/common/rootBusinessEntity/v3"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://www.nbnco.com.au/cim/common/rootBusinessEntity/v3" schemaLocation="RootBusinessEntitiesV3.xsd" />
+    <xsd:complexType name="ApplicationException">
+        <xsd:annotation>
+            <xsd:documentation>Exception thrown by the end application or internal services, chained with the original
+                request and response data expressed as CDATA String.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="returnType" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Application specific return Type. Max Length= 56
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="returnCode" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Application specific return code Max Length= 56
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="returnDescription" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Application specific description of the exception Max Length = 10,000
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="timestamp" type="xsd:dateTime">
+                <xsd:annotation>
+                    <xsd:documentation>Date Time of the Application Exception. The format for date time is
+                        [YYYY]-[MM]-[DD]T[hh]:[mm]:[ss]Z (in UTC) e.g. 2011-06-23T12:00:00Z. Max Length = 20
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="request" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Original request message expressed as CDATA string.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="response" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Original response message if provided expressed as CDATA string.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Exception">
+        <xsd:annotation>
+            <xsd:documentation>Contains the exception which has occurred.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="rbe:Entity">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="timestamp" type="xsd:dateTime">
+                        <xsd:annotation>
+                            <xsd:documentation>Date Time of the Exception</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element minOccurs="0" name="resultingState" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>Resulting state of the component due to this exception
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0" name="ReferencesException" type="exp:Exception" />
+                    <xsd:element minOccurs="0" name="ReferencesApplicationException" type="exp:ApplicationException">
+                        <xsd:annotation>
+                            <xsd:documentation>Contains application specific exception details.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="MessageException">
+        <xsd:annotation>
+            <xsd:documentation>The following fields convey error information: Exception\ID - contains the error code for
+                the exception as defined in the List of Values spreadsheet. Exception\description - contains the
+                associated text which provides the consumer with information about the error which occurred. Refer to
+                the List of Values spreadsheet for the descriptions returned with specific error codes.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="Exception" type="exp:Exception" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="TechnicalException">
+        <xsd:annotation>
+            <xsd:documentation>The following fields convey error information: Exception\ID - contains the error code for
+                the exception as defined in the List of Values spreadsheet. Exception\description - contains the
+                associated text which provides the consumer with information about the error which occurred. Refer to
+                the List of Values spreadsheet for the descriptions returned with specific error codes.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="exp:MessageException" />
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ValidationException">
+        <xsd:annotation>
+            <xsd:documentation>The following fields convey error information: Exception\ID - contains the error code for
+                the exception as defined in the List of Values spreadsheet. Exception\description - contains the
+                associated text which provides the consumer with information about the error which occurred. Refer to
+                the List of Values spreadsheet for the descriptions returned with specific error codes.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="exp:MessageException" />
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="RecordNotFoundException">
+        <xsd:annotation>
+            <xsd:documentation>The following fields convey error information: Exception\ID - contains the error code for
+                the exception as defined in the List of Values spreadsheet. Exception\description - contains the
+                associated text which provides the consumer with information about the error which occurred. Refer to
+                the List of Values spreadsheet for the descriptions returned with specific error codes.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="exp:MessageException" />
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="TechnicalException" type="exp:TechnicalException">
+        <xsd:annotation>
+            <xsd:documentation>This exception is returned when a runtime system error prevents the processing of the
+                request.</xsd:documentation>
+            <xsd:documentation>The error code returned with this will be 000000.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="ValidationException" type="exp:ValidationException">
+        <xsd:annotation>
+            <xsd:documentation>This exception is returned when a validation issue prevents the processing of the
+                request. For example does not contain a mandatory field specified in the interface specification or a
+                validation rule is not met.</xsd:documentation>
+            <xsd:documentation>The error codes returned with this exception will be in the range 001000 to 001999
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="RecordNotFoundException" type="exp:RecordNotFoundException">
+        <xsd:annotation>
+            <xsd:documentation>Returned if no records were found to match the ID specified in the request.
+            </xsd:documentation>
+            <xsd:documentation>The error codes returned with this exception will be in the range 011000 to 011999
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="InvalidAddressException" type="exp:InvalidAddressException">
+        <xsd:annotation>
+            <xsd:documentation>Returned when the address specified in the request is invalid.</xsd:documentation>
+            <xsd:documentation>The error codes returned with this exception will be in the range 012000 to 012999
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="InvalidAddressException">
+        <xsd:annotation>
+            <xsd:documentation>The following fields convey error information: Exception\ID - contains the error code for
+                the exception as defined in the List of Values spreadsheet. Exception\description - contains the
+                associated text which provides the consumer with information about the error which occurred. Refer to
+                the List of Values spreadsheet for the descriptions returned with specific error codes.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="exp:MessageException" />
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="InvalidProductException" type="exp:InvalidProductException">
+        <xsd:annotation>
+            <xsd:documentation>Returned when the product specified in the request is invalid.</xsd:documentation>
+            <xsd:documentation>The error codes returned with this exception will be in the range 006000 to 006999
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="InvalidProductException">
+        <xsd:annotation>
+            <xsd:documentation>The following fields convey error information: Exception\ID - contains the error code for
+                the exception as defined in the List of Values spreadsheet. Exception\description - contains the
+                associated text which provides the consumer with information about the error which occurred. Refer to
+                the List of Values spreadsheet for the descriptions returned with specific error codes.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="exp:MessageException" />
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="InvalidOrderException">
+        <xsd:annotation>
+            <xsd:documentation>The following fields convey error information: Exception\ID - contains the error code for
+                the exception as defined in the List of Values spreadsheet. Exception\description - contains the
+                associated text which provides the consumer with information about the error which occurred. Refer to
+                the List of Values spreadsheet for the descriptions returned with specific error codes.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="exp:MessageException" />
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="InvalidOrderException" type="exp:InvalidOrderException">
+        <xsd:annotation>
+            <xsd:documentation>Returned when the order in the request is invalid.</xsd:documentation>
+            <xsd:documentation>The error codes returned with this exception will be in the range 005000 to 005999
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:element name="LimitExceededException" type="exp:LimitExceededException">
+        <xsd:annotation>
+            <xsd:documentation>Returned when the number of search results exceeds the defined limit.</xsd:documentation>
+            <xsd:documentation>The error codes returned with this exception will be in the range 007000 to 007999
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="LimitExceededException">
+        <xsd:annotation>
+            <xsd:documentation>The following fields convey error information: Exception\ID - contains the error code for
+                the exception as defined in the List of Values spreadsheet. Exception\description - contains the
+                associated text which provides the consumer with information about the error which occurred. Refer to
+                the List of Values spreadsheet for the descriptions returned with specific error codes.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="exp:MessageException" />
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="NotAllowedException" type="exp:NotAllowedException">
+        <xsd:annotation>
+            <xsd:documentation>Returned if the consumer is not allowed to perform the operation with the specified
+                parameters.</xsd:documentation>
+            <xsd:documentation>The error codes returned with this exception will be in the range 008000 to 008999
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="NotAllowedException">
+        <xsd:annotation>
+            <xsd:documentation>The following fields convey error information: Exception\ID - contains the error code for
+                the exception as defined in the List of Values spreadsheet. Exception\description - contains the
+                associated text which provides the consumer with information about the error which occurred. Refer to
+                the List of Values spreadsheet for the descriptions returned with specific error codes.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="exp:MessageException" />
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="AccountNotFoundException" type="exp:AccountNotFoundException">
+        <xsd:annotation>
+            <xsd:documentation>Returned when the retrieval of the account information associated with the Access Seeker
+                ID or Billing Account ID (if provided) fails.</xsd:documentation>
+            <xsd:documentation>The error codes returned with this exception will be in the range 004000 to 004999
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="AccountNotFoundException">
+        <xsd:annotation>
+            <xsd:documentation>The following fields convey error information: Exception\ID - contains the error code for
+                the exception as defined in the List of Values spreadsheet. Exception\description - contains the
+                associated text which provides the consumer with information about the error which occurred. Refer to
+                the List of Values spreadsheet for the descriptions returned with specific error codes.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="exp:MessageException" />
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="AccountHierarchyViolationException" type="exp:AccountHierarchyViolationException">
+        <xsd:annotation>
+            <xsd:documentation>Returned when the optional Billing Account identifier is provided, but it does not belong
+                to Access Seeker identifier.</xsd:documentation>
+            <xsd:documentation>The error codes returned with this exception will be in the range 002000 to 002999
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="AccountHierarchyViolationException">
+        <xsd:annotation>
+            <xsd:documentation>The following fields convey error information: Exception\ID - contains the error code for
+                the exception as defined in the List of Values spreadsheet. Exception\description - contains the
+                associated text which provides the consumer with information about the error which occurred. Refer to
+                the List of Values spreadsheet for the descriptions returned with specific error codes.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="exp:MessageException" />
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="AccountNotActiveException" type="exp:AccountNotActiveException">
+        <xsd:annotation>
+            <xsd:documentation>Returned when an Access Seeker's account has a 'No-Sell flag' set (or) when billing
+                account belonging to an Access Seeker is Inactive or Closed.</xsd:documentation>
+            <xsd:documentation>The error codes returned with this exception will be in the range 003000 to 003999
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="AccountNotActiveException">
+        <xsd:annotation>
+            <xsd:documentation>The following fields convey error information: Exception\ID - contains the error code for
+                the exception as defined in the List of Values spreadsheet. Exception\description - contains the
+                associated text which provides the consumer with information about the error which occurred. Refer to
+                the List of Values spreadsheet for the descriptions returned with specific error codes.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="exp:MessageException" />
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="ProductNotBillableException" type="exp:ProductNotBillableException">
+        <xsd:annotation>
+            <xsd:documentation>Returned when a product specified in the request is not billable.</xsd:documentation>
+            <xsd:documentation>The error codes returned with this exception will be in the range 010000 to 010999
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="ProductNotBillableException">
+        <xsd:annotation>
+            <xsd:documentation>The following fields convey error information: Exception\ID - contains the error code for
+                the exception as defined in the List of Values spreadsheet. Exception\description - contains the
+                associated text which provides the consumer with information about the error which occurred. Refer to
+                the List of Values spreadsheet for the descriptions returned with specific error codes.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="exp:MessageException" />
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="MessageReplayException" type="exp:MessageReplayException" />
+    <xsd:complexType name="MessageReplayException">
+        <xsd:annotation>
+            <xsd:documentation>The error codes returned with this exception will be in the range 009000 to 009999
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="exp:MessageException" />
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:element name="InvalidAppointmentException" type="exp:InvalidAppointmentException">
+        <xsd:annotation>
+            <xsd:documentation>Returned when the appointment in the request is invalid.</xsd:documentation>
+            <xsd:documentation>The error codes returned with this exception will be in the range 013000 to 013999
+            </xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+    <xsd:complexType name="InvalidAppointmentException">
+        <xsd:annotation>
+            <xsd:documentation>The following fields convey error information: Exception\ID - contains the error code for
+                the exception as defined in the List of Values spreadsheet. Exception\description - contains the
+                associated text which provides the consumer with information about the error which occurred. Refer to
+                the List of Values spreadsheet for the descriptions returned with specific error codes.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="exp:MessageException" />
+        </xsd:complexContent>
+    </xsd:complexType>
+</xsd:schema>

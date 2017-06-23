@@ -1,0 +1,45 @@
+<xsd:schema targetNamespace="http://www.nbnco.com.au/cim/manageServiceLimiter/v4" xmlns:dns="http://www.nbnco.com.au/cim/manageServiceLimiter/v4"
+	xmlns:msg="http://www.nbnco.com.au/cim/common/message/v4" xmlns:rbe="http://www.nbnco.com.au/cim/common/rootBusinessEntity/v3"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:common="http://www.group.singtel.com.au/cdm/v2_0_0/common">
+	<xsd:import namespace="http://www.nbnco.com.au/cim/common/rootBusinessEntity/v3" schemaLocation="Common/RootBusinessEntitiesV3.xsd"/>
+	<xsd:import namespace="http://www.nbnco.com.au/cim/common/message/v4" schemaLocation="Common/MessageV4.xsd"/>
+	<xsd:import namespace="http://www.group.singtel.com.au/cdm/v2_0_0/common" schemaLocation="common.xsd"/>
+	<xsd:element name="ManageServiceLimiterNotification" type="dns:manageServiceLimiterNotificationRequest" />
+	<xsd:complexType name="manageServiceLimiterNotificationRequest">
+		<xsd:complexContent>
+			<xsd:extension base="msg:OperationNotification">
+				<xsd:sequence>
+					<xsd:element maxOccurs="unbounded" minOccurs="0" name="ServiceLimit" type="dns:ServiceLimit" />
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ServiceLimit">
+		<xsd:annotation>
+			<xsd:documentation>Represents a service limit.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="rbe:Entity">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" name="Usage" type="rbe:Quantity">
+						<xsd:annotation>
+							<xsd:documentation>The period during which the product is
+								applicable.</xsd:documentation>
+						</xsd:annotation>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+
+	<xsd:complexType name="manageServiceLimiterNotificationResponse" abstract="false">
+		<xsd:annotation>
+			<xsd:documentation xml:lang="en-AU" />
+		</xsd:annotation>
+		<xsd:complexContent>
+			<xsd:extension base="common:BaseDto">
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="ManageServiceLimiterNotificationResponse" type="dns:manageServiceLimiterNotificationResponse"/>
+</xsd:schema>

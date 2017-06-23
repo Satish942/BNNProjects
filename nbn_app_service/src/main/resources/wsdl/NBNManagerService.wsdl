@@ -1,0 +1,1211 @@
+<wsdl:definitions name="NBNManagerService" targetNamespace="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:addrsrv="http://www.group.singtel.com.au/ops/ff/crm/orderhandling/v2_0/AddressService" xmlns:sq="http://www.group.singtel.com.au/ops/ff/cmo/svccfgact/v2_0/ServiceQualificationService" xmlns:nf="http://www.group.singtel.com.au/FaultNotificationService/v2_0/FaultNotificationService" xmlns:ms="http://www.nbnco.com.au/cim/manageServiceLimiter/v4" xmlns:se="http://www.group.singtel.com.au/ServiceOrderService/v2_0/ServiceOrderService" xmlns:tns="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService" xmlns:sf="http://www.optus.com.au/cdm/v1_0/sf" xmlns:exception="http://www.group.singtel.com.au/cdm/v2_0_0/exception" xmlns:ser="http://www.group.singtel.com.au/cdm/v2_0_0/service" xmlns:oiet="http://au.com.singtel.group.commonservices/v1_0/OIETSService" xmlns:appt="http://www.group.singtel.com.au/AppointmentService/v2_0/AppointmentService" xmlns:com="http://www.group.singtel.com.au/cdm/v2_0_0/common" xmlns:un="http://www.group.singtel.com.au/UpdateNotificationService/v1_0/UpdateNotificationService" xmlns:opom="http://www.group.singtel.com.au/OPOMService/v1_0/OPOMService" xmlns:ilpm="http://au.com.singtel.group.commonservices/v1_0/ILPMService" xmlns:sp="http://www.group.singtel.com.au/ops/ff/cmo/svccfgact/v2_0/ServiceProfileService" xmlns:sos="http://au.com.singtel.group.commonservices/v1_0/SOSSQService" xmlns:sms="http://au.com.singtel.group.commonservices/v1_0/ShortMessageService">
+    <wsdl:types>
+    <xsd:schema>
+        <xsd:import namespace="http://www.group.singtel.com.au/ops/ff/crm/orderhandling/v2_0/AddressService"
+        schemaLocation="../schemas/AddressServiceEndpointService_schema1.xsd"/>
+        <xsd:import namespace="http://www.group.singtel.com.au/ops/ff/cmo/svccfgact/v2_0/ServiceQualificationService" schemaLocation="../schemas/ServiceQualificationServiceEndpointService_schema1.xsd"/>
+        <xsd:import namespace="http://www.group.singtel.com.au/ServiceOrderService/v2_0/ServiceOrderService" schemaLocation="../schemas/ServiceOrderServiceEndpointService_schema7.xsd"/>
+        <xsd:import namespace="http://www.group.singtel.com.au/AppointmentService/v2_0/AppointmentService" schemaLocation="../schemas/AppointmentServiceEndpointService_schema7.xsd"/>
+        <xsd:import namespace="http://www.nbnco.com.au/cim/manageServiceLimiter/v4" schemaLocation="../schemas/ManageServiceLimiter.xsd"/>
+        <xsd:import namespace="http://www.group.singtel.com.au/cdm/v2_0_0/service" schemaLocation="../schemas/service.xsd"/>
+        <xsd:import namespace="http://www.group.singtel.com.au/cdm/v2_0_0/exception" schemaLocation="../schemas/exception.xsd"/>
+        <xsd:import namespace="http://au.com.singtel.group.commonservices/v1_0/OIETSService" schemaLocation="../schemas/OIETSService_1_0.xsd"/>
+        <xsd:import namespace="http://au.com.singtel.group.commonservices/v1_0/ILPMService" schemaLocation="../schemas/ILPMService_1_0.xsd"/>
+        <xsd:import namespace="http://www.group.singtel.com.au/FaultNotificationService/v2_0/FaultNotificationService" schemaLocation="../schemas/FaultNotificationEndpointService_schema.xsd"/>
+        <xsd:import namespace="http://www.group.singtel.com.au/UpdateNotificationService/v1_0/UpdateNotificationService" schemaLocation="../schemas/UpdateNotificationService_1_0.xsd"/>
+        <xsd:import namespace="http://www.group.singtel.com.au/OPOMService/v1_0/OPOMService" schemaLocation="../schemas/OPOMService_1_0.xsd"/>
+        <xsd:import namespace="http://www.group.singtel.com.au/ops/ff/cmo/svccfgact/v2_0/ServiceProfileService" schemaLocation="../schemas/ServiceProfileServiceEndpointService_schema1.xsd"/>
+ 		<xsd:import namespace="http://au.com.singtel.group.commonservices/v1_0/SOSSQService" schemaLocation="../schemas/SOSSQService_1_0.xsd"/>
+        <!-- PRE ORDER-NBN Changes starts -->
+        <xsd:import namespace="http://au.com.singtel.group.commonservices/v1_0/ShortMessageService" schemaLocation="../schemas/ShortMessageService_1_0.xsd"/>
+        <!-- PRE ORDER-NBN Changes ends -->
+
+    </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="ServiceException">
+        <wsdl:part name="fault" element="exception:ServiceException"/>
+    </wsdl:message>
+    <wsdl:message name="BusinessException">
+        <wsdl:part name="fault" element="exception:BusinessException"/>
+    </wsdl:message>
+    <!--Site Qualification -->
+    <wsdl:message name="QueryServiceQualificationRequest">
+        <wsdl:part name="queryServiceQualificationRequestDto" element="sq:queryServiceQualificationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="QueryServiceQualificationResponse">
+        <wsdl:part name="queryServiceQualificationResponseDto" element="sq:queryServiceQualificationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="QueryServiceQualificationNotificationRequest">
+        <wsdl:part name="queryServiceQualificationNotificationRequestDto" element="sq:queryServiceQualificationNotificationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="QueryServiceQualificationNotificationResponse">
+        <wsdl:part name="queryServiceQualificationNotificationResponseDto" element="sq:queryServiceQualificationNotificationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="QueryServiceQualificationByIdRequest">
+        <wsdl:part name="queryServiceQualificationByIdRequestDto" element="sq:queryServiceQualificationByIdRequest"/>
+    </wsdl:message>
+    <wsdl:message name="QueryServiceQualificationByIdResponse">
+        <wsdl:part name="queryServiceQualificationByIdResponseDto" element="sq:queryServiceQualificationByIdResponse"/>
+    </wsdl:message>
+    <!--Address Validation -->
+    <wsdl:message name="QueryAddressRequest">
+        <wsdl:part name="queryAddressRequestDto" element="addrsrv:queryAddressRequest"/>
+    </wsdl:message>
+    <wsdl:message name="QueryAddressResponse">
+        <wsdl:part name="queryAddressResponseDto" element="addrsrv:queryAddressResponse"/>
+    </wsdl:message>
+    <wsdl:message name="QueryAddressNotificationRequest">
+        <wsdl:part name="queryAddressNotificationRequestDto" element="addrsrv:queryAddressNotificationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="QueryAddressNotificationResponse">
+        <wsdl:part name="queryAddressNotificationResponseDto" element="addrsrv:queryAddressNotificationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="QueryAddressByIdRequest">
+        <wsdl:part name="queryAddressByIdRequestDto" element="addrsrv:queryAddressByIdRequest"/>
+    </wsdl:message>
+    <wsdl:message name="QueryAddressByIdResponse">
+        <wsdl:part name="queryAddressByIdResponseDto" element="addrsrv:queryAddressByIdResponse"/>
+    </wsdl:message>
+    <!--Order Feasability and Connect Order -->
+    <wsdl:message name="CreateServiceOrderRequest">
+        <wsdl:part name="createServiceOrderRequestDto" element="se:createServiceOrderRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CreateServiceOrderResponse">
+        <wsdl:part name="createServiceOrderResponseDto" element="se:createServiceOrderResponse"/>
+    </wsdl:message>
+    <wsdl:message name="createServiceOrderNotificationRequest">
+        <wsdl:part name="createServiceOrderNotificationRequestDto" element="se:createServiceOrderNotificationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="createServiceOrderNotificationResponse">
+        <wsdl:part name="createServiceOrderNotificationResponseDto" element="se:createServiceOrderNotificationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getServiceOrderByIdRequest">
+        <wsdl:part name="getServiceOrderByIdRequestDto" element="se:getServiceOrderByIdRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getServiceOrderByIdResponse">
+        <wsdl:part name="getServiceOrderByIdResponseDto" element="se:getServiceOrderByIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="UpdateTransactionStatusRequest">
+        <wsdl:part name="updateTransactionStatusRequest" element="se:updateTransactionStatusRequest"/>
+    </wsdl:message>
+    <wsdl:message name="UpdateTransactionStatusResponse">
+        <wsdl:part name="updateTransactionStatusResponse" element="se:updateTransactionStatusResponse"/>
+    </wsdl:message>
+    <wsdl:message name="UpdateNotificationRequest">
+        <wsdl:part name="updateNotificationRequest" element="un:updateNotificationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="UpdateNotificationResponse">
+        <wsdl:part name="updateNotificationResponse" element="un:updateNotificationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="opomUpdateNBNNotifStatusRequest">
+        <wsdl:part name="opomUpdateNBNNotifStatusRequest" element="opom:opomUpdateNBNNotifStatusRequest"/>
+    </wsdl:message>
+    <wsdl:message name="opomUpdateNBNNotifStatusResponse">
+        <wsdl:part name="opomUpdateNBNNotifStatusResponse" element="opom:opomUpdateNBNNotifStatusResponse"/>
+    </wsdl:message>
+    <!--Appointment -->
+    <wsdl:message name="CreateAppointmentRequest">
+        <wsdl:part name="createAppointmentRequestDto" element="appt:createAppointmentRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CreateAppointmentResponse">
+        <wsdl:part name="createAppointmentResponseDto" element="appt:createAppointmentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CreateAppointmentNotificationRequest">
+        <wsdl:part name="createAppointmentNotificationRequestDto" element="appt:createAppointmentNotificationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CreateAppointmentNotificationResponse">
+        <wsdl:part name="createAppointmentNotificationResponseDto" element="appt:createAppointmentNotificationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CancelAppointmentRequest">
+        <wsdl:part name="cancelAppointmentRequestDto" element="appt:cancelAppointmentRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CancelAppointmentResponse">
+        <wsdl:part name="cancelAppointmentResponseDto" element="appt:cancelAppointmentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CancelAppointmentNotificationRequest">
+        <wsdl:part name="cancelAppointmentNotificationRequestDto" element="appt:cancelAppointmentNotificationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CancelAppointmentNotificationResponse">
+        <wsdl:part name="cancelAppointmentNotificationResponseDto" element="appt:cancelAppointmentNotificationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CheckAvailableAppointmentRequest">
+        <wsdl:part name="checkAvailableAppointmentRequestDto" element="appt:checkAvailableAppointmentRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CheckAvailableAppointmentResponse">
+        <wsdl:part name="checkAvailableAppointmentResponseDto" element="appt:checkAvailableAppointmentResponse"/>
+    </wsdl:message>
+    <wsdl:message name="CheckAvailableAppointmentNotificationRequest">
+        <wsdl:part name="checkAvailableAppointmentNotificationRequestDto" element="appt:checkAvailableAppointmentNotificationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="CheckAvailableAppointmentNotificationResponse">
+        <wsdl:part name="checkAvailableAppointmentNotificationResponseDto" element="appt:checkAvailableAppointmentNotificationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetAppointmentByIdRequest">
+        <wsdl:part name="getAppointmentByIdRequestDto" element="appt:getAppointmentByIdRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetAppointmentByIdResponse">
+        <wsdl:part name="getAppointmentResponseDto" element="appt:getAppointmentByIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="GetAppointmentRequest">
+        <wsdl:part name="getAppointmentRequestDto" element="appt:getAppointmentRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetAppointmentResponse">
+        <wsdl:part name="getAppointmentResponseDto" element="appt:getAppointmentResponse"/>
+    </wsdl:message>
+     <wsdl:message name="GetAppointmentNotificationRequest">
+        <wsdl:part name="getAppointmentNotificationRequestDto" element="appt:getAppointmentNotificationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="GetAppointmentNotificationResponse">
+        <wsdl:part name="getAppointmentNotificationResponseDto" element="appt:getAppointmentNotificationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ProcessServiceOrderRequest">
+		<wsdl:part name="processServiceOrderRequestDto" element="se:processServiceOrderRequest"/>
+	</wsdl:message>
+	<wsdl:message name="ProcessServiceOrderResponse">
+		<wsdl:part name="processServiceOrderResponseDto" element="se:processServiceOrderResponse"/>
+	</wsdl:message>
+
+    <!--Oiets Enabler -->
+    <wsdl:message name="nsiCheckCVCAvailableForCSARequest">
+        <wsdl:part name="nsiCheckCVCAvailableForCSARequestDto" element="oiet:nsiCheckCVCAvailableForCSARequest"/>
+    </wsdl:message>
+    <wsdl:message name="nsiCheckCVCAvailableForCSAResponse">
+        <wsdl:part name="nsiCheckCVCAvailableForCSAResponseDto" element="oiet:nsiCheckCVCAvailableForCSAResponse"/>
+    </wsdl:message>
+    <wsdl:message name="nsiReserveCTAGForCSARequest">
+        <wsdl:part name="nsiReserveCTAGForCSARequestDto" element="oiet:nsiReserveCTAGForCSARequest"/>
+    </wsdl:message>
+    <wsdl:message name="nsiReserveCTAGForCSAResponse">
+        <wsdl:part name="nsiReserveCTAGForCSAResponseDto" element="oiet:nsiReserveCTAGForCSAResponse"/>
+    </wsdl:message>
+    <wsdl:message name="nsiReturnReservedCTAGRequest">
+        <wsdl:part name="nsiReturnReservedCTAGRequestDto" element="oiet:nsiReturnReservedCTAGRequest"/>
+    </wsdl:message>
+    <wsdl:message name="nsiReturnReservedCTAGResponse">
+        <wsdl:part name="nsiReturnReservedCTAGResponseDto" element="oiet:nsiReturnReservedCTAGResponse"/>
+    </wsdl:message>
+    <wsdl:message name="saveAVCRequest">
+        <wsdl:part name="saveAVCRequestDto" element="oiet:saveAVCRequest"/>
+    </wsdl:message>
+    <wsdl:message name="saveAVCResponse">
+        <wsdl:part name="saveAVCResponseDto" element="oiet:saveAVCResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getSpeedDetailsRequest">
+        <wsdl:part name="getSpeedDetailsRequestDto" element="oiet:getSpeedDetailsRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getSpeedDetailsResponse">
+        <wsdl:part name="getSpeedDetailsResponseDto" element="oiet:getSpeedDetailsResponse"/>
+    </wsdl:message>
+    <wsdl:message name="nsiBatchCheckCVCAvailableForCSARequest">
+        <wsdl:part name="nsiBatchCheckCVCAvailableForCSARequestDto" element="oiet:nsiBatchCheckCVCAvailableForCSARequest"/>
+    </wsdl:message>
+    <wsdl:message name="nsiBatchCheckCVCAvailableForCSAResponse">
+        <wsdl:part name="nsiBatchCheckCVCAvailableForCSAResponseDto" element="oiet:nsiBatchCheckCVCAvailableForCSAResponse"/>
+    </wsdl:message>
+    <!--Service Limiter ManageServiceLimiterNotification -->
+    <wsdl:message name="ManageServiceLimiterNotificationRequest">
+        <wsdl:part name="manageServiceLimiterNotificationRequest" element="ms:ManageServiceLimiterNotification"/>
+    </wsdl:message>
+    <wsdl:message name="ManageServiceLimiterNotificationResponse">
+        <wsdl:part name="manageServiceLimiterNotificationResponse" element="ms:ManageServiceLimiterNotificationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="HandleFaultNotificationRequest">
+        <wsdl:part name="handleFaultNotificationRequest" element="nf:handleFaultNotificationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="HandleFaultNotificationResponse">
+        <wsdl:part name="handleFaultNotificationResponse" element="nf:handleFaultNotificationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="ilpmRetrieveBillingPackageIdRequest">
+        <wsdl:part name="ilpmRetrieveBillingPackageIdRequest" element="ilpm:ilpmRetrieveBillingPackageIdRequest"/>
+    </wsdl:message>
+    <wsdl:message name="ilpmRetrieveBillingPackageIdResponse">
+        <wsdl:part name="ilpmRetrieveBillingPackageIdResponse" element="ilpm:ilpmRetrieveBillingPackageIdResponse"/>
+    </wsdl:message>
+    <wsdl:message name="nsiGetCvcCtagAvcByGsidRequest">
+        <wsdl:part name="nsiGetCvcCtagAvcByGsidRequest" element="oiet:getNsiCvcCtagAvcByGsidRequest"/>
+    </wsdl:message>
+    <wsdl:message name="nsiGetCvcCtagAvcByGsidResponse">
+        <wsdl:part name="nsiGetCvcCtagAvcByGsidResponse" element="oiet:getNsiCvcCtagAvcByGsidResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getServiceOrderRequest">
+        <wsdl:part name="getServiceOrderRequestDto" element="se:getServiceOrderRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getServiceOrderResponse">
+        <wsdl:part name="getServiceOrderResponseDto" element="se:getServiceOrderResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getServiceOrderNotificationRequest">
+        <wsdl:part name="getServiceOrderNotificationRequestDto" element="se:getServiceOrderNotificationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getServiceOrderNotificationResponse">
+        <wsdl:part name="getServiceOrderNotificationResponseDto" element="se:getServiceOrderNotificationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getServiceProfileRequest">
+        <wsdl:part name="getServiceProfileRequestDto" element="sp:getServiceProfileRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getServiceProfileResponse">
+        <wsdl:part name="getServiceProfileResponseDto" element="sp:getServiceProfileResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getServiceProfileNotificationRequest">
+        <wsdl:part name="getServiceProfileNotificationRequestDto" element="sp:getServiceProfileNotificationRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getServiceProfileNotificationResponse">
+        <wsdl:part name="getServiceProfileNotificationResponseDto" element="sp:getServiceProfileNotificationResponse"/>
+    </wsdl:message>
+    <wsdl:message name="getServiceProfileByIdRequest">
+        <wsdl:part name="getServiceProfileByIdRequestDto" element="sp:getServiceProfileByIdRequest"/>
+    </wsdl:message>
+    <wsdl:message name="getServiceProfileByIdResponse">
+        <wsdl:part name="getServiceProfileByIdResponseDto" element="sp:getServiceProfileByIdResponse"/>
+    </wsdl:message>
+    <!-- PRE ORDER-NBN Changes starts -->
+    <wsdl:message name="performServiceQualificationRequest">
+      <wsdl:part name="performServiceQualificationRequest" element="sos:performServiceQualificationRequest"/>
+   </wsdl:message>
+   <wsdl:message name="performServiceQualificationResponse">
+      <wsdl:part name="performServiceQualificationResponse" element="sos:performServiceQualificationResponse"/>
+    </wsdl:message>
+	<wsdl:message name="sendSmsRequest">
+		<wsdl:part name="sendSmsRequest" element="sms:sendSmsRequest" />
+	</wsdl:message>
+	<wsdl:message name="sendSmsResponse">
+		<wsdl:part name="sendSmsResponse" element="sms:sendSmsResponse" />
+	</wsdl:message>
+	<wsdl:message name="receiveSmsRequest">
+		<wsdl:part name="receiveSmsRequest" element="sms:receiveSmsRequest" />
+	</wsdl:message>
+	<wsdl:message name="receiveSmsResponse">
+		<wsdl:part name="receiveSmsResponse" element="sms:receiveSmsResponse" />
+	</wsdl:message>
+	<wsdl:message name="BookNearestAppointmentRequest">
+      <wsdl:part name="bookNearestAppointmentRequestDto" element="appt:bookNearestAppointmentRequest"/>
+   </wsdl:message>
+   <wsdl:message name="BookNearestAppointmentResponse">
+      <wsdl:part name="bookNearestAppointmentResponseDto" element="appt:bookNearestAppointmentResponse"/>
+   </wsdl:message>
+    <wsdl:message name="CancelServiceOrderRequest">
+      <wsdl:part name="cancelServiceOrderRequestDto" element="se:cancelServiceOrderRequest"/>
+   </wsdl:message>
+   <wsdl:message name="CancelServiceOrderResponse">
+      <wsdl:part name="cancelServiceOrderResponseDto" element="se:cancelServiceOrderResponse"/>
+   </wsdl:message>
+	<!-- PRE ORDER-NBN Changes end -->
+    <wsdl:portType name="NBNManagerService">
+        <wsdl:operation name="queryServiceQualification">
+            <wsdl:input name="QueryServiceQualificationRequest" message="tns:QueryServiceQualificationRequest"/>
+            <wsdl:output name="QueryServiceQualificationResponse" message="tns:QueryServiceQualificationResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="queryServiceQualificationNotification">
+            <wsdl:input name="QueryServiceQualificationNotificationRequest" message="tns:QueryServiceQualificationNotificationRequest"/>
+            <wsdl:output name="QueryServiceQualificationNotificationResponse" message="tns:QueryServiceQualificationNotificationResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="queryServiceQualificationById">
+            <wsdl:input name="QueryServiceQualificationByIdRequest" message="tns:QueryServiceQualificationByIdRequest"/>
+            <wsdl:output name="QueryServiceQualificationByIdResponse" message="tns:QueryServiceQualificationByIdResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="queryAddress">
+            <wsdl:input name="QueryAddressRequest" message="tns:QueryAddressRequest"/>
+            <wsdl:output name="QueryAddressResponse" message="tns:QueryAddressResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="queryAddressNotification">
+            <wsdl:input name="QueryAddressNotificationRequest" message="tns:QueryAddressNotificationRequest"/>
+            <wsdl:output name="QueryAddressNotificationResponse" message="tns:QueryAddressNotificationResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="queryAddressById">
+            <wsdl:input name="QueryAddressByIdRequest" message="tns:QueryAddressByIdRequest"/>
+            <wsdl:output name="QueryAddressByIdResponse" message="tns:QueryAddressByIdResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createServiceOrder">
+            <wsdl:input name="CreateServiceOrderRequest" message="tns:CreateServiceOrderRequest"/>
+            <wsdl:output name="CreateServiceOrderResponse" message="tns:CreateServiceOrderResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createServiceOrderNotification">
+            <wsdl:input name="createServiceOrderNotificationRequest" message="tns:createServiceOrderNotificationRequest"/>
+            <wsdl:output name="createServiceOrderNotificationResponse" message="tns:createServiceOrderNotificationResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getServiceOrderById">
+            <wsdl:input name="getServiceOrderByIdRequest" message="tns:getServiceOrderByIdRequest"/>
+            <wsdl:output name="getServiceOrderByIdResponse" message="tns:getServiceOrderByIdResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createAppointment">
+            <wsdl:input name="CreateAppointmentRequest" message="tns:CreateAppointmentRequest"/>
+            <wsdl:output name="CreateAppointmentResponse" message="tns:CreateAppointmentResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="createAppointmentNotification">
+            <wsdl:input name="CreateAppointmentNotificationRequest" message="tns:CreateAppointmentNotificationRequest"/>
+            <wsdl:output name="CreateAppointmentNotificationResponse" message="tns:CreateAppointmentNotificationResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="cancelAppointment">
+            <wsdl:input name="CancelAppointmentRequest" message="tns:CancelAppointmentRequest"/>
+            <wsdl:output name="CancelAppointmentResponse" message="tns:CancelAppointmentResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="cancelAppointmentNotification">
+            <wsdl:input name="CancelAppointmentNotificationRequest" message="tns:CancelAppointmentNotificationRequest"/>
+            <wsdl:output name="CancelAppointmentNotificationResponse" message="tns:CancelAppointmentNotificationResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="checkAvailableAppointment">
+            <wsdl:input name="CheckAvailableAppointmentRequest" message="tns:CheckAvailableAppointmentRequest"/>
+            <wsdl:output name="CheckAvailableAppointmentResponse" message="tns:CheckAvailableAppointmentResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="checkAvailableAppointmentNotification">
+            <wsdl:input name="CheckAvailableAppointmentNotificationRequest" message="tns:CheckAvailableAppointmentNotificationRequest"/>
+            <wsdl:output name="CheckAvailableAppointmentNotificationResponse" message="tns:CheckAvailableAppointmentNotificationResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAppointmentById">
+            <wsdl:input name="GetAppointmentByIdRequest" message="tns:GetAppointmentByIdRequest"/>
+            <wsdl:output name="GetAppointmentByIdResponse" message="tns:GetAppointmentByIdResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAppointment">
+            <wsdl:input name="GetAppointmentRequest" message="tns:GetAppointmentRequest"/>
+            <wsdl:output name="GetAppointmentResponse" message="tns:GetAppointmentResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getAppointmentNotification">
+            <wsdl:input name="GetAppointmentNotificationRequest" message="tns:GetAppointmentNotificationRequest"/>
+            <wsdl:output name="GetAppointmentNotificationResponse" message="tns:GetAppointmentNotificationResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="ManageServiceLimiterNotification">
+            <wsdl:input name="ManageServiceLimiterNotificationRequest" message="tns:ManageServiceLimiterNotificationRequest"/>
+            <wsdl:output name="ManageServiceLimiterNotificationResponse" message="tns:ManageServiceLimiterNotificationResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="nsiReserveCTAGForCSA">
+            <wsdl:input name="nsiReserveCTAGForCSARequest" message="tns:nsiReserveCTAGForCSARequest"/>
+            <wsdl:output name="nsiReserveCTAGForCSAResponse" message="tns:nsiReserveCTAGForCSAResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="nsiReturnReservedCTAG">
+            <wsdl:input name="nsiReturnReservedCTAGRequest" message="tns:nsiReturnReservedCTAGRequest"/>
+            <wsdl:output name="nsiReturnReservedCTAGResponse" message="tns:nsiReturnReservedCTAGResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="saveAVC">
+            <wsdl:input name="saveAVCRequest" message="tns:saveAVCRequest"/>
+            <wsdl:output name="saveAVCResponse" message="tns:saveAVCResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getSpeedDetails">
+            <wsdl:input name="getSpeedDetailsRequest" message="tns:getSpeedDetailsRequest"/>
+            <wsdl:output name="getSpeedDetailsResponse" message="tns:getSpeedDetailsResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="nsiBatchCheckCVCAvailableForCSA">
+            <wsdl:input name="nsiBatchCheckCVCAvailableForCSARequest" message="tns:nsiBatchCheckCVCAvailableForCSARequest"/>
+            <wsdl:output name="nsiBatchCheckCVCAvailableForCSAResponse" message="tns:nsiBatchCheckCVCAvailableForCSAResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateTransactionStatus">
+            <wsdl:input name="UpdateTransactionStatusRequest" message="tns:UpdateTransactionStatusRequest"/>
+            <wsdl:output name="UpdateTransactionStatusResponse" message="tns:UpdateTransactionStatusResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="handleFaultNotificationService">
+            <wsdl:input name="HandleFaultNotificationRequest" message="tns:HandleFaultNotificationRequest"/>
+            <wsdl:output name="HandleFaultNotificationResponse" message="tns:HandleFaultNotificationResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="retrieveBillingPackageService">
+            <wsdl:input name="RetrieveBillingPackageByIdRequest" message="tns:ilpmRetrieveBillingPackageIdRequest"/>
+            <wsdl:output name="RetrieveBillingPackageByIdResponse" message="tns:ilpmRetrieveBillingPackageIdResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="nsiGetCvcCtagAvcByGsid">
+            <wsdl:input name="nsiGetCvcCtagAvcByGsidRequest" message="tns:nsiGetCvcCtagAvcByGsidRequest"/>
+            <wsdl:output name="nsiGetCvcCtagAvcByGsidResponse" message="tns:nsiGetCvcCtagAvcByGsidResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getServiceOrder">
+            <wsdl:input name="getServiceOrderRequest" message="tns:getServiceOrderRequest"/>
+            <wsdl:output name="getServiceOrderResponse" message="tns:getServiceOrderResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getServiceOrderNotification">
+            <wsdl:input name="getServiceOrderNotificationRequest" message="tns:getServiceOrderNotificationRequest"/>
+            <wsdl:output name="getServiceOrderNotificationResponse" message="tns:getServiceOrderNotificationResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="updateNotification">
+            <wsdl:input name="UpdateNotificationRequest" message="tns:UpdateNotificationRequest"/>
+            <wsdl:output name="UpdateNotificationResponse" message="tns:UpdateNotificationResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="opomUpdateNBNNotifStatus">
+            <wsdl:input name="opomUpdateNBNNotifStatusRequest" message="tns:opomUpdateNBNNotifStatusRequest"/>
+            <wsdl:output name="opomUpdateNBNNotifStatusResponse" message="tns:opomUpdateNBNNotifStatusResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getServiceProfile">
+            <wsdl:input name="getServiceProfile" message="tns:getServiceProfileRequest"/>
+            <wsdl:output name="getServiceProfileResponse" message="tns:getServiceProfileResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getServiceProfileNotification">
+            <wsdl:input name="getServiceProfileNotificationRequest" message="tns:getServiceProfileNotificationRequest"/>
+            <wsdl:output name="getServiceProfileNotificationResponse" message="tns:getServiceProfileNotificationResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+        <wsdl:operation name="getServiceProfileById">
+            <wsdl:input name="getServiceProfileByIdRequest" message="tns:getServiceProfileByIdRequest"/>
+            <wsdl:output name="getServiceProfileByIdResponse" message="tns:getServiceProfileByIdResponse"/>
+            <wsdl:fault name="ServiceException" message="tns:ServiceException"/>
+            <wsdl:fault name="BusinessException" message="tns:BusinessException"/>
+        </wsdl:operation>
+
+	<!-- PRE Order-NBN Changes starts -->
+	<wsdl:operation name="processServiceOrder">
+		<wsdl:input name="ProcessServiceOrderRequest" message="tns:ProcessServiceOrderRequest" />
+		<wsdl:output name="ProcessServiceOrderResponse" message="tns:ProcessServiceOrderResponse" />
+		<wsdl:fault name="ServiceException" message="tns:ServiceException" />
+		<wsdl:fault name="BusinessException" message="tns:BusinessException" />
+	</wsdl:operation>
+	<wsdl:operation name="performServiceQualification">
+		<wsdl:input name="PerformServiceQualificationRequest" message="tns:performServiceQualificationRequest" />
+		<wsdl:output name="PerformServiceQualificationResponse" message="tns:performServiceQualificationResponse" />
+		<wsdl:fault name="ServiceException" message="tns:ServiceException" />
+		<wsdl:fault name="BusinessException" message="tns:BusinessException" />
+	</wsdl:operation>
+	<wsdl:operation name="sendSms">
+		<wsdl:input name="SendSmsRequest" message="tns:sendSmsRequest" />
+		<wsdl:output name="SendSmsResponse" message="tns:sendSmsResponse" />
+		<wsdl:fault name="ServiceException" message="tns:ServiceException" />
+		<wsdl:fault name="BusinessException" message="tns:BusinessException" />
+	</wsdl:operation>
+	<wsdl:operation name="receiveSms">
+		<wsdl:input name="ReceiveSmsRequest" message="tns:receiveSmsRequest" />
+		<wsdl:output name="ReceiveSmsResponse" message="tns:receiveSmsResponse" />
+		<wsdl:fault name="ServiceException" message="tns:ServiceException" />
+		<wsdl:fault name="BusinessException" message="tns:BusinessException" />
+	</wsdl:operation>
+	<wsdl:operation name="bookNearestAppointment">
+		<wsdl:input name="BookNearestAppointmentRequest" message="tns:BookNearestAppointmentRequest" />
+		<wsdl:output name="BookNearestAppointmentResponse" message="tns:BookNearestAppointmentResponse" />
+		<wsdl:fault name="ServiceException" message="tns:ServiceException" />
+		<wsdl:fault name="BusinessException" message="tns:BusinessException" />
+	</wsdl:operation>
+	<wsdl:operation name="cancelServiceOrder">
+		<wsdl:input name="CancelServiceOrderRequest" message="tns:CancelServiceOrderRequest" />
+		<wsdl:output name="CancelServiceOrderResponse" message="tns:CancelServiceOrderResponse" />
+		<wsdl:fault name="ServiceException" message="tns:ServiceException" />
+		<wsdl:fault name="BusinessException" message="tns:BusinessException" />
+	</wsdl:operation>
+		<!-- PRE Order-NBN Changes ends -->
+    </wsdl:portType>
+	<wsdl:binding name="NBNManagerServiceSoapBinding" type="tns:NBNManagerService">
+		<soap:binding style="document"
+			transport="http://schemas.xmlsoap.org/soap/http" />
+		<wsdl:operation name="queryServiceQualification">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/queryServiceQualification" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="queryServiceQualificationNotification">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/QueryServiceQualificationNotification" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="queryServiceQualificationById">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/queryServiceQualificationById" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="queryAddress">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/queryAddress" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="queryAddressNotification">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/queryAddressNotification" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="queryAddressById">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/queryAddressById" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="createServiceOrder">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/createServiceOrder" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="createServiceOrderNotification">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/createServiceOrderNotification" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getServiceOrderById">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/getServiceOrderById" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="createAppointment">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/createAppointment" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="createAppointmentNotification">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/createAppointmentNotification" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="cancelAppointment">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/cancelAppointment" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="cancelAppointmentNotification">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/cancelAppointmentNotification" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="checkAvailableAppointment">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/checkAvailableAppointment" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="checkAvailableAppointmentNotification">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/checkAvailableAppointmentNotification" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getAppointmentById">
+			<soap:operation
+				soapAction="http://localhost:7001/appointmentservice/AppointmentService/getAppointmentById" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getAppointment">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/getAppointment" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getAppointmentNotification">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/getAppointmentNotification" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		
+		<wsdl:operation name="nsiReserveCTAGForCSA">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/nsiReserveCTAGForCSA" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="nsiReturnReservedCTAG">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/nsiReturnReservedCTAG" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="saveAVC">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/saveAVC" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getSpeedDetails">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/getSpeedDetails" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="nsiBatchCheckCVCAvailableForCSA">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/nsiBatchCheckCVCAvailableForCSA" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="ManageServiceLimiterNotification">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/ManageServiceLimiterNotification" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="updateTransactionStatus">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/updateTransactionStatus" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="handleFaultNotificationService">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/handleFaultNotificationService" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="retrieveBillingPackageService">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/retrieveBillingPackageService" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="nsiGetCvcCtagAvcByGsid">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/nsiGetCvcCtagAvcByGsid" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getServiceOrder">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/getServiceOrder" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getServiceOrderNotification">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/getServiceOrderNotification" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="updateNotification">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/updateNotification" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="opomUpdateNBNNotifStatus">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/opomUpdateNBNNotifStatus" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getServiceProfile">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/getServiceProfile" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getServiceProfileNotification">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/getServiceProfileNotification" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="getServiceProfileById">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/getServiceProfileById" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="processServiceOrder">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/processServiceOrder" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault name="ServiceException" use="literal" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault name="BusinessException" use="literal" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<!-- PRE ORDER-NBN Changes starts -->
+		<wsdl:operation name="performServiceQualification">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/performServiceQualification" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="sendSms">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/sendSms" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="receiveSms">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/receiveSms" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="bookNearestAppointment">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/bookNearestAppointment" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<wsdl:operation name="cancelServiceOrder">
+			<soap:operation
+				soapAction="http://www.optus.com.au/sdp/enabler/nbn/NBNManagerService/cancelServiceOrder" />
+			<wsdl:input>
+				<soap:body use="literal" />
+			</wsdl:input>
+			<wsdl:output>
+				<soap:body use="literal" />
+			</wsdl:output>
+			<wsdl:fault name="ServiceException">
+				<soap:fault use="literal" name="ServiceException" />
+			</wsdl:fault>
+			<wsdl:fault name="BusinessException">
+				<soap:fault use="literal" name="BusinessException" />
+			</wsdl:fault>
+		</wsdl:operation>
+		<!-- PRE ORDER-NBN Changes ends -->
+	</wsdl:binding>
+    <wsdl:service name="NBNManagerService">
+        <wsdl:port name="NBNManagerServicePort" binding="tns:NBNManagerServiceSoapBinding">
+            <soap:address location="http://localhost:9001/NBNManagerService/NBNManagerService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

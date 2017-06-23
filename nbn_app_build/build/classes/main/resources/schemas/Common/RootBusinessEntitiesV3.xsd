@@ -1,0 +1,700 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.nbnco.com.au/cim/common/rootBusinessEntity/v3" version="V3.06"
+    xmlns:rbe="http://www.nbnco.com.au/cim/common/rootBusinessEntity/v3" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:annotation>
+        <xsd:documentation>Business entities within the Root Business Entities represent characteristics that are common
+            to all entities in the information model, independent of the specific knowledge domain that they originate
+            in.</xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType abstract="true" name="ManagedEntity">
+        <xsd:annotation>
+            <xsd:documentation>This is an abstract base class that is used to represent entities in a managed
+                environment that have the following semantics in common: (1) a ManagedBusinessEntity owns or is
+                otherwise responsible for them, (2) management of the entity is critical for providing a service and/or
+                maintaining the environment, and (3) the entity is "important" from a management point-of-view. As such,
+                it is a point at which semantically important relationships can be created; this avoids duplicating
+                these relationships on multiple subclasses as well as forcing ManagedObject to support these
+                relationships.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="rbe:Entity">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="managementMethodCurrent" type="xsd:integer">
+                        <xsd:annotation>
+                            <xsd:documentation>This is an enumerated integer that defines the particular type of
+                                management method that is currently being used. Values include: 0: Unknown 1: None 2:
+                                CLI 3: SNMP 4: TL1 5: CMIP 6: Proprietary</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element minOccurs="0" name="managementMethodSupported" type="xsd:integer">
+                        <xsd:annotation>
+                            <xsd:documentation>This is an array of integers that define the different management methods
+                                that are supported by this object. Values include: 0: Unknown 1: None 2: CLI 3: SNMP 4:
+                                TL1 5: CMIP 6: Proprietary</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element minOccurs="0" name="status" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>Current condition of the ManagedEntity</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="URL">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="protocol" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Type of protocol like http, ftp sip &amp; gopher.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="host" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Fully qualified domain name or host name</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="port" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Network port number of the server</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="path" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>The path component contains data, specific to the authority (or the scheme if
+                        there is no authority component),</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="query" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>String of information to be interpreted by the resource</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="fragment" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Consists of additional reference information to be interpreted by the user agent
+                        after the retrieval action has been successfully completed</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="URI">
+        <xsd:annotation>
+            <xsd:documentation>URI</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="scheme" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Scheme name such as http &amp; ftp.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="schemeSpecificPart" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>The string after the scheme name</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="authority" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>The authority that governs the rest of the namespace defined by remainder of the
+                        URI</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="userInfo" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>User name</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="host" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Fully qualified domain name or host name</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="port" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Network port number of the server</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="path" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>The path component contains data, specific to the authority (or the scheme if
+                        there is no authority component), identifying the resource within the scope of that scheme and
+                        authority</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="query" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>String of information to be interpreted by the resource</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="fragment" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Consists of additional reference information to be interpreted by the user agent
+                        after the retrieval action has been successfully completed</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="TimePeriod">
+        <xsd:annotation>
+            <xsd:documentation>A base / value business entity used to represent a period of time, between two time
+                points. Max Length= 20
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="startDateTime" type="xsd:dateTime">
+                <xsd:annotation>
+                    <xsd:documentation>An instant of time, starting at the TimePeriod. The format for date time is
+                        [YYYY]-[MM]-[DD]T[hh]:[mm]:[ss]Z (in UTC) e.g. 2011-06-23T12:00:00Z. Max Length= 20
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="endDateTime" type="xsd:dateTime">
+                <xsd:annotation>
+                    <xsd:documentation>An instant of time, ending at the TimePeriod. The format for date time is
+                        [YYYY]-[MM]-[DD]T[hh]:[mm]:[ss]Z (in UTC) e.g. 2011-06-23T12:00:00Z. Max Length= 20
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Rate">
+        <xsd:annotation>
+            <xsd:documentation>A base / value business entity used to represent the change in one quantity in terms of
+                another</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="numerator" type="rbe:Quantity">
+                <xsd:annotation>
+                    <xsd:documentation>The top number of the rate</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="denominator" type="rbe:Quantity">
+                <xsd:annotation>
+                    <xsd:documentation>The bottom number of the rate</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Range">
+        <xsd:annotation>
+            <xsd:documentation>Range of values</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="lowerValue" type="rbe:Quantity">
+                <xsd:annotation>
+                    <xsd:documentation>The lower value produced by the function</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="upperValue" type="rbe:Quantity">
+                <xsd:annotation>
+                    <xsd:documentation>The upper value produced by the function</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Quantity">
+        <xsd:annotation>
+            <xsd:documentation>A base / value business entity used to represent measurements.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="amount" type="xsd:double">
+                <xsd:annotation>
+                    <xsd:documentation>Set type as float</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="units" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>The unit of measure for the quantity, such as meters, cubic yards, kilograms [ISO
+                        1000].</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Money">
+        <xsd:annotation>
+            <xsd:documentation>A base / value business entity used to represent money</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="amount" type="xsd:double">
+                <xsd:annotation>
+                    <xsd:documentation>A positive floating point number.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="units" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Currency.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Duration">
+        <xsd:annotation>
+            <xsd:documentation>A base / value business entity used to represent a length of time.Duration is a type of
+                Quantity</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="units" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Unit of measurement</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="amount" type="xsd:double">
+                <xsd:annotation>
+                    <xsd:documentation>cost</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CostRate">
+        <xsd:annotation>
+            <xsd:documentation>A base / value business entity used to represent a cost per time unit.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="numerator" type="rbe:Money">
+                <xsd:annotation>
+                    <xsd:documentation>Cost</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="denominator" type="rbe:Duration">
+                <xsd:annotation>
+                    <xsd:documentation>Unit time</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Characteristic">
+        <xsd:annotation>
+            <xsd:documentation>A quality or distinctive feature that defines an entity. The characteristic can be take
+                on a discrete value, such as colour, can take on a range of values, or can be derived from a formula.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="unique" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>An indicator that specifies if a value is unique for the specification. Possible
+                        values are; "unique while value is in effect" and "unique whether value is in effect or not"
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="readOnly" type="xsd:boolean">
+                <xsd:annotation>
+                    <xsd:documentation>This attribute specifies that a characteristic field should be read-only and
+                        cannot be modified. It is returned in the MPO notification with a value determined by NBN. This
+                        is a boolean field with possible value of TRUE or FALSE</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="valueType" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>A kind of value that the characteristic can take on, such as numeric, text, and
+                        so forth.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="minCardinality" type="xsd:integer">
+                <xsd:annotation>
+                    <xsd:documentation>The minimum number of instances a CharacteristicValue can take on. For example,
+                        zero to five phone numbers in a group calling plan, where zero is the value for the
+                        minCardinality.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="maxCardinality" type="xsd:integer">
+                <xsd:annotation>
+                    <xsd:documentation>The maximum number of instances a CharacteristicValue can take on. For example,
+                        zero to five phone numbers in a group calling plan, where five is the value for the
+                        maxCardinality.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="extensible" type="xsd:boolean">
+                <xsd:annotation>
+                    <xsd:documentation>An indicator that specifies that the values for the characteristic can be
+                        extended by adding new values when instantiating a characteristic for an Entity.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="derivationFormula" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>A rule or principle represented in symbols, numbers, or letters, often in the
+                        form of an equation used to derive the value of a characteristic value.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="validFor" type="rbe:TimePeriod">
+                <xsd:annotation>
+                    <xsd:documentation>The period of time for which a CharacteristicSpecification is applicable.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="CharacteristicEnumeratedBy" type="rbe:CharacteristicSpecValue">
+                <xsd:annotation>
+                    <xsd:documentation>characteristic enumerated by characteristic value</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="ID" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Used for a unique identification in a name/value pair</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="name" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Used for a user-friendly identification in a name/value pair. It is NOT used as a
+                        naming attribute (i.e., to uniquely identify an instance of the object).</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="description" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>This is a string, and defines a textual free-form description of the object.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="type" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Categorization of the Characteristic</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CharacteristicValue">
+        <xsd:annotation>
+            <xsd:documentation>A value of a CharacteristicSpecifcation chosen or entered (if no values are specified)
+                for a Entity that further defines what the Entity is.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="value" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Contains the value of the characteristic</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="validFor" type="rbe:TimePeriod">
+                <xsd:annotation>
+                    <xsd:documentation>The period for which the characteristic value is applicable.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="Characteristic" type="rbe:Characteristic">
+                <xsd:annotation>
+                    <xsd:documentation />
+                    <xsd:documentation>The associated quality or distinctive feature that defines an entity
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType abstract="true" name="Entity">
+        <xsd:annotation>
+            <xsd:documentation>This is an abstract base class that is used to represent entities that cannot be directly
+                managed (e.g., a hub).</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="rbe:RootEntity">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0" name="SpecifiedBy" type="rbe:EntitySpecification">
+                        <xsd:annotation>
+                            <xsd:documentation>This association defines the set of Entities whose invariant attributes,
+                                methods, relationships, and constraints are specified by this particular
+                                EntitySpecification. Note that an Entity does not have to be associated with an
+                                EntitySpecification. However, if there can be more than one different instantiation of
+                                an Entity, or if several Entities are related to each other, then the use of this
+                                association is highly encouraged. This is because it enables all common characteristics
+                                and behavior of different Entities to be related to each other, and treated as an atomic
+                                unit.
+                            </xsd:documentation>
+                            <xsd:documentation>Specified by Entity Specification</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0" name="EntityRelationship" type="rbe:EntityRelationship">
+                        <xsd:annotation>
+                            <xsd:documentation>This association defines the set of Entities that are involved with, or
+                                related to, each other in order to build a particular type of Entity.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element minOccurs="0" name="type" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>Categorization of the entity</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="EntityRelationship">
+        <xsd:annotation>
+            <xsd:documentation>This association defines the set of Entities that are involved with, or related to, each
+                other in order to build a particular type of Entity.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="type" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Categorization of the relationship</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="minCardinality" type="xsd:integer">
+                <xsd:annotation>
+                    <xsd:documentation>Minimum number of instances an EntityRelationship can take on</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="maxCardinality" type="xsd:integer">
+                <xsd:annotation>
+                    <xsd:documentation>Maximum number of instances an EntityRelationship can take on</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="validFor" type="rbe:TimePeriod">
+                <xsd:annotation>
+                    <xsd:documentation>The period of time for which this relationship is applicable</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="unbounded" name="Entity" type="rbe:Entity" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="EntitySpecification">
+        <xsd:annotation>
+            <xsd:documentation>The template having associated invariant characteristics of a managed entity
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="rbe:Specification">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="type" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>Specification type</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element minOccurs="0" name="category" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>Specification category</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0" name="CharacteristicSpecification"
+                        type="rbe:Characteristic">
+                        <xsd:annotation>
+                            <xsd:documentation />
+                            <xsd:documentation>Associated distinctive features that defines an entity
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0" name="EntitySpecificationRelationship"
+                        type="rbe:EntitySpecificationRelationship">
+                        <xsd:annotation>
+                            <xsd:documentation>This association defines the set of Entities that are involved with, or
+                                related to, each other in order to build a particular type of Entity.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="EntitySpecificationRelationship">
+        <xsd:annotation>
+            <xsd:documentation>This association defines the set of Entities that are involved with, or related to, each
+                other in order to build a particular type of Entity.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="type" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Categorization of the Entity Specification relatioship</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="minCardinality" type="xsd:integer">
+                <xsd:annotation>
+                    <xsd:documentation>Minimum number of instances an EntitySpecificationRelationship can take on
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="maxCardinality" type="xsd:integer">
+                <xsd:annotation>
+                    <xsd:documentation>Maximum number of instances an EntitySpecificationRelationship can take on
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="validFor" type="rbe:TimePeriod">
+                <xsd:annotation>
+                    <xsd:documentation>The period of time for which this relationship is applicable</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="EntitySpecification" type="rbe:EntitySpecification" />
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="RootEntityVersion">
+        <xsd:annotation>
+            <xsd:documentation>This class represents the ability to distinguish between different instances of Entity or
+                EntitySpecification. It represents a particular form or variety of an Entity or EntitySpecification that
+                is different from others or from the original. The form represents differences in attributes, methods,
+                relationships, and/or constraints that characterize this particular Entity or EntitySpecification, but
+                which are not enough to warrant creating a new Entity or EntitySpecification.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="revisionName" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>This defines the name of this revision of this ServiceSpecification.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="revisionFormat" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>This attribute defines the specific revision format used in this version. Each
+                        field of the revision is separated by a period. For example, if the desired format is &lt;major
+                        number&gt;&lt;.&gt;&lt;minor number&gt;, then the value of this string could be:
+                        major-number.minor-number The semantics of the format should be described in the
+                        revisionSemantics attribute of this class.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="revisionNumber" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>This is the revision number of this instance. This includes subfileds such as
+                        major number, minor number, and so forth. The subfields are separated by a period delimited. The
+                        format of the subfields is provided in the revisionFormat attribute of this class.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="revisionReason" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>This is a string that describes the reason for creating this version.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="revisionSemantics" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>This is a string that is used to define the particular semantics of this version.
+                        This string should include as a minimum a description of the format of the revisionNumber.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="revisionTimestamp" type="xsd:dateTime">
+                <xsd:annotation>
+                    <xsd:documentation>This defines the date and time of the revision.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="revisionValidityPeriod" type="rbe:TimePeriod">
+                <xsd:annotation>
+                    <xsd:documentation>This defines the time period in which this revision is valid for.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType abstract="true" name="Specification">
+        <xsd:annotation>
+            <xsd:documentation>This is an abstract base class that is used to define the invariant characteristics
+                (attributes, methods, and relationships) of a managed entity.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="rbe:RootEntity" />
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="CharacteristicSpecValue">
+        <xsd:annotation>
+            <xsd:documentation>CharacteristicSpecValue can represent discrete value or a range of values.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="valueType" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>value type</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="defaulted" type="xsd:boolean">
+                <xsd:annotation>
+                    <xsd:documentation>defaulted values</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="value" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>the values used</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="unitOfMeasure" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>unit of measure</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="valueFrom" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>lower bound values</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="valueTo" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>the upper bound value</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="rangeInterval" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>range interval</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="validFor" type="rbe:TimePeriod">
+                <xsd:annotation>
+                    <xsd:documentation>The period of time for which a CharacteristicSpecValue is applicable.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Note">
+        <xsd:annotation>
+            <xsd:documentation>This is a field used for Reason codes.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="rbe:Entity">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="noteType" type="xsd:string" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType abstract="true" name="RootEntity">
+        <xsd:annotation>
+            <xsd:documentation>This is the top of the SID class hierarchy. The purpose of the RootEntity is to define a
+                set of attributes that are common to all SID entities that derive from it. These properties enable us to
+                name and describe all objects (manageable and unmanageable) in the environment.</xsd:documentation>
+            <xsd:documentation>This is the top of the DEN-ng class hierarchy. These properties enable us to name,
+                describe, and identify all objects (manageable and unmanageable) in the environment.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="ID" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Unambiguously distinguishes different instances of this object.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="name" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Represents a user-friendly identifier of an object. It is a (possibly ambiguous)
+                        name by which the object is commonly known in some limited scope (such as an organization) and
+                        conforms to the naming conventions of the country or culture with which it is associated. It is
+                        NOT used as a naming attribute (i.e., to uniquely identify an instance of the object).
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="description" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>This is a string, and defines a textual free-form description of the object.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="DescribedBy" type="rbe:CharacteristicValue">
+                <xsd:annotation>
+                    <xsd:documentation>2010-09-07 NBN: Renamed association to DescribedBy</xsd:documentation>
+                    <xsd:documentation>Distinctive features that describe the RootEntity</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element maxOccurs="unbounded" minOccurs="0" name="VersionDetails" type="rbe:VersionDetails">
+                <xsd:annotation>
+                    <xsd:documentation>Version details</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="version" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>This is a graphic string that identifies the version of the object.
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="VersionDetails">
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="RootEntityVersion" type="rbe:RootEntityVersion" />
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

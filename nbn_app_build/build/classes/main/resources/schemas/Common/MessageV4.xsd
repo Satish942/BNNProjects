@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.nbnco.com.au/cim/common/message/v4" version="V4.00"
+    xmlns:ase="http://www.nbnco.com.au/cim/common/accessSeeker/v3" xmlns:exp="http://www.nbnco.com.au/cim/common/exception/v3"
+    xmlns:msg="http://www.nbnco.com.au/cim/common/message/v4" xmlns:rbe="http://www.nbnco.com.au/cim/common/rootBusinessEntity/v3"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:import namespace="http://www.nbnco.com.au/cim/common/exception/v3" schemaLocation="ExceptionV3.xsd" />
+    <xsd:import namespace="http://www.nbnco.com.au/cim/common/accessSeeker/v3" schemaLocation="AccessSeekerV3.xsd" />
+    <xsd:import namespace="http://www.nbnco.com.au/cim/common/rootBusinessEntity/v3" schemaLocation="RootBusinessEntitiesV3.xsd" />
+    <xsd:complexType name="BatchDetail">
+        <xsd:annotation>
+            <xsd:documentation>Details of the Batch</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="rbe:RootEntity">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="batchType" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>Batch types. Refer to the "List of Values" spreadsheet for a complete
+                                list of values.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element minOccurs="0" name="accessSeekerBatchID" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>Access Seeker unique identifier to identify the batch</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element minOccurs="0" name="status" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>Current condition of the batch. Refer to the "List of Values" spreadsheet
+                                for a complete list of values.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element minOccurs="0" name="date" type="rbe:TimePeriod">
+                        <xsd:annotation>
+                            <xsd:documentation>Batch date.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element minOccurs="0" name="BatchStatisticsInformation" type="msg:BatchStatisticsInformation">
+                        <xsd:annotation>
+                            <xsd:documentation>Batch statistics information including batchPriority, number Of Batch
+                                records processed, records with errors and records with valid and invalid data.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0" name="Document" type="msg:Document">
+                        <xsd:annotation>
+                            <xsd:documentation>This class provides document file information for Batch Detail.
+                            </xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType abstract="true" name="MessageSpecification">
+        <xsd:annotation>
+            <xsd:documentation>Specification for messages that supports scalable transactions and operates on a
+                participant.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="rbe:RootEntity">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="AccessSeeker" type="ase:AccessSeeker">
+                        <xsd:annotation>
+                            <xsd:documentation>Association with the involved access seeker</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0" name="BatchDetail" type="msg:BatchDetail">
+                        <xsd:annotation>
+                            <xsd:documentation>Specific batch detail to which this message specification is associated
+                                with</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element minOccurs="0" name="MessageInteractionException" type="exp:Exception" />
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="OperationRequest">
+        <xsd:annotation>
+            <xsd:documentation>The act of asking that something be done that typically involves a Response. Request is a
+                type of Business Interaction</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="msg:MessageSpecification" />
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="OperationResponse">
+        <xsd:annotation>
+            <xsd:documentation>A reply to a Request.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="msg:MessageSpecification" />
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="OperationNotification">
+        <xsd:annotation>
+            <xsd:documentation>Notification for a request</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="msg:MessageSpecification">
+                <xsd:sequence>
+                    <xsd:element minOccurs="0" name="notificationType" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>Notification type for a request</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="BatchStatisticsInformation">
+        <xsd:annotation>
+            <xsd:documentation>Batch statistics information including batchPriority, number Of Batch records processed,
+                records with errors and records with valid and invalid data.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element minOccurs="0" name="totalNumberOfBatchRecords" type="xsd:integer">
+                <xsd:annotation>
+                    <xsd:documentation>Total Number of Batch records</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="numberOfBatchRecordsProcessed" type="xsd:integer">
+                <xsd:annotation>
+                    <xsd:documentation>Number of batch records processed</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="numberOfBatchRecordsWithErrors" type="xsd:integer">
+                <xsd:annotation>
+                    <xsd:documentation>Number of batch records with errors</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="numberOfBatchRecordsWithInvalidData" type="xsd:integer">
+                <xsd:annotation>
+                    <xsd:documentation>Number of batch records with invalid data</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="numberOfBatchRecordsWithValidData" type="xsd:integer">
+                <xsd:annotation>
+                    <xsd:documentation>Number of batch records with valid data</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element minOccurs="0" name="batchPriority" type="xsd:string">
+                <xsd:annotation>
+                    <xsd:documentation>Batch Priority Max Length = 56
+                    </xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="Document">
+        <xsd:annotation>
+            <xsd:documentation>This class provides document file information.</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="rbe:Entity">
+                <xsd:sequence>
+                    <xsd:element maxOccurs="unbounded" minOccurs="0" name="documentType" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>The type of document.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element minOccurs="0" name="searchDateRange" type="rbe:TimePeriod">
+                        <xsd:annotation>
+                            <xsd:documentation>Search date range for the document</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element minOccurs="0" name="URL" type="rbe:URL">
+                        <xsd:annotation>
+                            <xsd:documentation>URL for the document.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element minOccurs="0" name="documentSize" type="xsd:integer">
+                        <xsd:annotation>
+                            <xsd:documentation>The size of the document.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                    <xsd:element minOccurs="0" name="MIMEType" type="xsd:string">
+                        <xsd:annotation>
+                            <xsd:documentation>The MIME Type of the document.</xsd:documentation>
+                        </xsd:annotation>
+                    </xsd:element>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+</xsd:schema>
